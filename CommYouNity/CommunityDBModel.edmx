@@ -1,0 +1,441 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TheCommunityDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Community">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="text" Nullable="false" />
+          <Property Name="OfficerName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ImgSrc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LocationId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CommunityTask">
+          <Key>
+            <PropertyRef Name="CommId" />
+            <PropertyRef Name="TaskId" />
+          </Key>
+          <Property Name="CommId" Type="int" Nullable="false" />
+          <Property Name="TaskId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Zip" Type="int" Nullable="false" />
+          <Property Name="ImgSrc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GoogleMap" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LocationTask">
+          <Key>
+            <PropertyRef Name="LocationId" />
+            <PropertyRef Name="TaskId" />
+          </Key>
+          <Property Name="LocationId" Type="int" Nullable="false" />
+          <Property Name="TaskId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Phone" Type="int" Nullable="false" />
+          <Property Name="AboutMe" Type="text" />
+          <Property Name="CommunityId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MemberTask">
+          <Key>
+            <PropertyRef Name="MemberId" />
+            <PropertyRef Name="TaskId" />
+          </Key>
+          <Property Name="MemberId" Type="int" Nullable="false" />
+          <Property Name="TaskId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SingleTask">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StartTime" Type="date" Nullable="false" />
+          <Property Name="EndTime" Type="date" Nullable="false" />
+          <Property Name="Description" Type="text" Nullable="false" />
+          <Property Name="Budget" Type="money" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="Flag" Type="bit" />
+        </EntityType>
+        <Association Name="FK_Community_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="Community" Type="Self.Community" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Community">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommunityTask_Community">
+          <End Role="Community" Type="Self.Community" Multiplicity="1" />
+          <End Role="CommunityTask" Type="Self.CommunityTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Community">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CommunityTask">
+              <PropertyRef Name="CommId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommunityTask_SingleTask">
+          <End Role="SingleTask" Type="Self.SingleTask" Multiplicity="1" />
+          <End Role="CommunityTask" Type="Self.CommunityTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SingleTask">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CommunityTask">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationTask_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="LocationTask" Type="Self.LocationTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LocationTask">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationTask_SingleTask">
+          <End Role="SingleTask" Type="Self.SingleTask" Multiplicity="1" />
+          <End Role="LocationTask" Type="Self.LocationTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SingleTask">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LocationTask">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_Community">
+          <End Role="Community" Type="Self.Community" Multiplicity="1" />
+          <End Role="Member" Type="Self.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Community">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="CommunityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberTask_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="MemberTask" Type="Self.MemberTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MemberTask">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberTask_SingleTask">
+          <End Role="SingleTask" Type="Self.SingleTask" Multiplicity="1" />
+          <End Role="MemberTask" Type="Self.MemberTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SingleTask">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MemberTask">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TheCommunityDBModelStoreContainer">
+          <EntitySet Name="Community" EntityType="Self.Community" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommunityTask" EntityType="Self.CommunityTask" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LocationTask" EntityType="Self.LocationTask" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MemberTask" EntityType="Self.MemberTask" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SingleTask" EntityType="Self.SingleTask" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Community_Location" Association="Self.FK_Community_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Community" EntitySet="Community" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommunityTask_Community" Association="Self.FK_CommunityTask_Community">
+            <End Role="Community" EntitySet="Community" />
+            <End Role="CommunityTask" EntitySet="CommunityTask" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommunityTask_SingleTask" Association="Self.FK_CommunityTask_SingleTask">
+            <End Role="SingleTask" EntitySet="SingleTask" />
+            <End Role="CommunityTask" EntitySet="CommunityTask" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationTask_Location" Association="Self.FK_LocationTask_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="LocationTask" EntitySet="LocationTask" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationTask_SingleTask" Association="Self.FK_LocationTask_SingleTask">
+            <End Role="SingleTask" EntitySet="SingleTask" />
+            <End Role="LocationTask" EntitySet="LocationTask" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_Community" Association="Self.FK_Member_Community">
+            <End Role="Community" EntitySet="Community" />
+            <End Role="Member" EntitySet="Member" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberTask_Member" Association="Self.FK_MemberTask_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="MemberTask" EntitySet="MemberTask" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberTask_SingleTask" Association="Self.FK_MemberTask_SingleTask">
+            <End Role="SingleTask" EntitySet="SingleTask" />
+            <End Role="MemberTask" EntitySet="MemberTask" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TheCommunityDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Community">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OfficerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ImgSrc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LocationId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Location" Relationship="Self.FK_Community_Location" FromRole="Community" ToRole="Location" />
+          <NavigationProperty Name="Members" Relationship="Self.FK_Member_Community" FromRole="Community" ToRole="Member" />
+          <NavigationProperty Name="SingleTasks" Relationship="Self.CommunityTask" FromRole="Community" ToRole="SingleTask" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Zip" Type="Int32" Nullable="false" />
+          <Property Name="ImgSrc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GoogleMap" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Communities" Relationship="Self.FK_Community_Location" FromRole="Location" ToRole="Community" />
+          <NavigationProperty Name="SingleTasks" Relationship="Self.LocationTask" FromRole="Location" ToRole="SingleTask" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="Int32" Nullable="false" />
+          <Property Name="AboutMe" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CommunityId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Community" Relationship="Self.FK_Member_Community" FromRole="Member" ToRole="Community" />
+          <NavigationProperty Name="SingleTasks" Relationship="Self.MemberTask" FromRole="Member" ToRole="SingleTask" />
+        </EntityType>
+        <EntityType Name="SingleTask">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Budget" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="Flag" Type="Boolean" />
+          <NavigationProperty Name="Communities" Relationship="Self.CommunityTask" FromRole="SingleTask" ToRole="Community" />
+          <NavigationProperty Name="Locations" Relationship="Self.LocationTask" FromRole="SingleTask" ToRole="Location" />
+          <NavigationProperty Name="Members" Relationship="Self.MemberTask" FromRole="SingleTask" ToRole="Member" />
+        </EntityType>
+        <Association Name="FK_Community_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="Community" Type="Self.Community" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Community">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_Community">
+          <End Role="Community" Type="Self.Community" Multiplicity="1" />
+          <End Role="Member" Type="Self.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Community">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="CommunityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CommunityTask">
+          <End Role="Community" Type="Self.Community" Multiplicity="*" />
+          <End Role="SingleTask" Type="Self.SingleTask" Multiplicity="*" />
+        </Association>
+        <Association Name="LocationTask">
+          <End Role="Location" Type="Self.Location" Multiplicity="*" />
+          <End Role="SingleTask" Type="Self.SingleTask" Multiplicity="*" />
+        </Association>
+        <Association Name="MemberTask">
+          <End Role="Member" Type="Self.Member" Multiplicity="*" />
+          <End Role="SingleTask" Type="Self.SingleTask" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="TheCommunityDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Communities" EntityType="Self.Community" />
+          <EntitySet Name="Locations" EntityType="Self.Location" />
+          <EntitySet Name="Members" EntityType="Self.Member" />
+          <EntitySet Name="SingleTasks" EntityType="Self.SingleTask" />
+          <AssociationSet Name="FK_Community_Location" Association="Self.FK_Community_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Community" EntitySet="Communities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_Community" Association="Self.FK_Member_Community">
+            <End Role="Community" EntitySet="Communities" />
+            <End Role="Member" EntitySet="Members" />
+          </AssociationSet>
+          <AssociationSet Name="CommunityTask" Association="Self.CommunityTask">
+            <End Role="Community" EntitySet="Communities" />
+            <End Role="SingleTask" EntitySet="SingleTasks" />
+          </AssociationSet>
+          <AssociationSet Name="LocationTask" Association="Self.LocationTask">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="SingleTask" EntitySet="SingleTasks" />
+          </AssociationSet>
+          <AssociationSet Name="MemberTask" Association="Self.MemberTask">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="SingleTask" EntitySet="SingleTasks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TheCommunityDBModelStoreContainer" CdmEntityContainer="TheCommunityDBEntities">
+          <EntitySetMapping Name="Communities">
+            <EntityTypeMapping TypeName="TheCommunityDBModel.Community">
+              <MappingFragment StoreEntitySet="Community">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="OfficerName" ColumnName="OfficerName" />
+                <ScalarProperty Name="ImgSrc" ColumnName="ImgSrc" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="TheCommunityDBModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="ImgSrc" ColumnName="ImgSrc" />
+                <ScalarProperty Name="GoogleMap" ColumnName="GoogleMap" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Members">
+            <EntityTypeMapping TypeName="TheCommunityDBModel.Member">
+              <MappingFragment StoreEntitySet="Member">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="AboutMe" ColumnName="AboutMe" />
+                <ScalarProperty Name="CommunityId" ColumnName="CommunityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SingleTasks">
+            <EntityTypeMapping TypeName="TheCommunityDBModel.SingleTask">
+              <MappingFragment StoreEntitySet="SingleTask">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Budget" ColumnName="Budget" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="CommunityTask" TypeName="TheCommunityDBModel.CommunityTask" StoreEntitySet="CommunityTask">
+            <EndProperty Name="Community">
+              <ScalarProperty Name="Id" ColumnName="CommId" />
+            </EndProperty>
+            <EndProperty Name="SingleTask">
+              <ScalarProperty Name="Id" ColumnName="TaskId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="LocationTask" TypeName="TheCommunityDBModel.LocationTask" StoreEntitySet="LocationTask">
+            <EndProperty Name="Location">
+              <ScalarProperty Name="Id" ColumnName="LocationId" />
+            </EndProperty>
+            <EndProperty Name="SingleTask">
+              <ScalarProperty Name="Id" ColumnName="TaskId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="MemberTask" TypeName="TheCommunityDBModel.MemberTask" StoreEntitySet="MemberTask">
+            <EndProperty Name="Member">
+              <ScalarProperty Name="Id" ColumnName="MemberId" />
+            </EndProperty>
+            <EndProperty Name="SingleTask">
+              <ScalarProperty Name="Id" ColumnName="TaskId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
