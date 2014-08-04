@@ -179,6 +179,7 @@
       <DependentUpon>CommunityDBModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CommunitiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\SingleTasksController.cs" />
@@ -280,6 +281,11 @@
     <Content Include="Views\SingleTasks\Details.cshtml" />
     <Content Include="Views\SingleTasks\Edit.cshtml" />
     <Content Include="Views\SingleTasks\Index.cshtml" />
+    <Content Include="Views\Communities\Create.cshtml" />
+    <Content Include="Views\Communities\Delete.cshtml" />
+    <Content Include="Views\Communities\Details.cshtml" />
+    <Content Include="Views\Communities\Edit.cshtml" />
+    <Content Include="Views\Communities\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
