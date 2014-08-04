@@ -7,4 +7,17 @@ Connecting individuals who have recently relocated to the city or moved to new a
 •	Allow Block Clubs themselves to push alerts out to their membership roster
 The user will then be able to find their closest block clubs and reach out for additional information regarding officers, meeting times, meeting locations, etc. Alerts will include emergency or security alerts, meeting reminders, activity/program alerts, or community meeting alerts. The application will be based on an interface that is intuitive, engaging, fun to use. Ultimately this application will facilitate networking between individual residents and Block Clubs, and between Block Clubs across the city.
 
-Group Members: Odiljon Adhmedov, Pamela Finger, Matthew Kowalski, and Tom Gregory
+Group Members: 
+Odiljon Adhmedov
+https://github.com/odil-akhmedov
+
+Pamela Finger 
+https://github.com/pjfinger
+
+Matthew Kowalski
+https://github.com/unixarcade
+http://luminosity.livejournal.com
+
+
+Tom Gregory
+https://github.com/thogrego
