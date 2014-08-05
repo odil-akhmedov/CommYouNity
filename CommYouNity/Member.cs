@@ -28,6 +28,7 @@ namespace CommYouNity
 
         [Column(TypeName = "text")]
         public string AboutMe { get; set; }
+        public string ImgSrc { get; set; }
 
         public int? CommunityId { get; set; }
 

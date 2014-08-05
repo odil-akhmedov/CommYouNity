@@ -99,6 +99,9 @@ namespace CommYouNity
             modelBuilder.Entity<Member>()
                 .Property(e => e.AboutMe)
                 .IsUnicode(false);
+            modelBuilder.Entity<Member>()
+                .Property(e => e.ImgSrc)
+                .IsUnicode(false);
 
             modelBuilder.Entity<Member>()
                 .HasMany(e => e.MemberTasks)
