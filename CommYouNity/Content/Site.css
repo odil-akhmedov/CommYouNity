@@ -35,9 +35,6 @@ scrollbar-face-color :Aquamarine;
 scrollbar-arrow-color:AliceBlue; 
 
 
-
-
-
 }
 
 .formbg{
@@ -168,4 +165,6 @@ list-style-type:none;
 color:white;
 }
 
-
+.jumbotron{
+    background-color:lightsteelblue;
+}
