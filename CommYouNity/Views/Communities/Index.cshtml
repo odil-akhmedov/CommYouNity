@@ -4,28 +4,27 @@
     ViewBag.Title = "Communities List";
 }
 
-<h2>Index</h2>
+<h2>Communities List</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    @Html.DisplayNameFor(model => model.communityName)
     <tr>
         <th>
-            Location
+            @Html.DisplayNameFor(model => model.singleCommunity.Name)
         </th>
         <th>
-            Community
+            @Html.DisplayNameFor(model => model.singleCommunity.Name)
         </th>
         <th>
-            Description
+            @Html.DisplayNameFor(model => model.singleCommunity.Description)
         </th>
         <th>
-            Officer Name
+            @Html.DisplayNameFor(model => model.singleCommunity.OfficerName)
         </th>
         <th>
-            Image
+            @Html.DisplayNameFor(model => model.singleCommunity.ImgSrc)
         </th>
     </tr>
     @*<tr>

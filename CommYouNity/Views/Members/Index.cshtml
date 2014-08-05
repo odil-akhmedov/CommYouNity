@@ -12,22 +12,22 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Community.Name)
+            @Html.DisplayNameFor(model => model.singleMember.FullName)
         </th>
-        <th>
+        @*<th>
             First Name
         </th>
         <th>
             Last Name
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.singleMember.Phone)
         </th>
         <th>
-            Phone #
+            @Html.DisplayNameFor(model => model.singleMember.AboutMe)
         </th>
         <th>
-            AboutMe
-        </th>
-        <th>
-            Image
+            @Html.DisplayNameFor(model => model.singleMember.ImgSrc)
         </th>
         <th></th>
     </tr>
@@ -56,12 +56,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Community.Name)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.FirstName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.LastName)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Phone)
             </td>
@@ -86,13 +86,7 @@
         <th>
             Task
         </th>
-        @*<th>
-                Start Time
-            </th>
-            <th>
-                End Time
-            </th>*@
-        <th>
+          <th>
             Description
         </th>
         <th>

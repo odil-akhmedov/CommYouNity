@@ -13,16 +13,16 @@
     @Html.DisplayNameFor(model => model.locationName)
     <tr>
         <th>
-            Location
+            @Html.DisplayNameFor(model => model.singleLocation.Name)
         </th>
         <th>
-            Zip
+            @Html.DisplayNameFor(model => model.singleLocation.Zip)
         </th>
         <th>
-            Image
+            @Html.DisplayNameFor(model => model.singleLocation.ImgSrc)
         </th>
         <th>
-            Google Map
+            @Html.DisplayNameFor(model => model.singleLocation.GoogleMap)
         </th>
         <th></th>
     </tr>
