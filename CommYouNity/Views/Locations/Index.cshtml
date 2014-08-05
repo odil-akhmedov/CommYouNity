@@ -72,6 +72,10 @@
     Tasks
     <tr>
         <th>
+            Owner
+            @*@Html.DisplayNameFor(model => model.Location.Name)*@
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.singleLocationTask.Name)
         </th>
         @*<th>
@@ -127,6 +131,9 @@
         @foreach (var item in Model.locationTask)
         {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location.Name)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>

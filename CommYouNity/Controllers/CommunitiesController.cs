@@ -34,12 +34,18 @@ namespace CommYouNity.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Community community = db.Communities.Find(id);
-            if (community == null)
+            Community community2 = db.Communities.Find(id);
+            if (community2 == null)
             {
                 return HttpNotFound();
             }
-            return View(community);
+            CommunityTaskView result = new CommunityTaskView();
+            result.singleCommunity = community2;
+            result.communityTask = db.CommunityTasks.Where(i => i.CommunityId == id).ToList();
+
+            return View(result);
+            
+            //return View(community);
         }
 
         // GET: Communities/Create

@@ -79,6 +79,10 @@
     Tasks
     <tr>
         <th>
+            Owner
+            @*@Html.DisplayNameFor(model => model.Community.Name)*@
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.singleCommunityTask.Name)
         </th>
         <th>
@@ -100,7 +104,10 @@
 
         @foreach (var item in Model.communityTask)
         {
-<tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Community.Name)
+                </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>

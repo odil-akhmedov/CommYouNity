@@ -35,9 +35,6 @@ scrollbar-face-color :Aquamarine;
 scrollbar-arrow-color:AliceBlue; 
 
 
-
-
-
 }
 
 .formbg{
@@ -84,7 +81,6 @@ font-size:75px;
 
 h2{
     text-align: center;
-    text-decoration: underline;
 }
 
 form, p {
@@ -169,4 +165,6 @@ list-style-type:none;
 color:white;
 }
 
-
+.jumbotron{
+    background-color:lightsteelblue;
+}
