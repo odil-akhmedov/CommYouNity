@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CommYouNity.Community>
+﻿@model IEnumerable<CommYouNity.LocationTask>
 
 @{
     ViewBag.Title = "Index";
@@ -18,13 +18,25 @@
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OfficerName)
+            @Html.DisplayNameFor(model => model.Budget)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ImgSrc)
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Priority)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Flag)
         </th>
         <th></th>
     </tr>
@@ -38,13 +50,25 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.StartTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndTime)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.OfficerName)
+            @Html.DisplayFor(modelItem => item.Budget)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ImgSrc)
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Priority)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Flag)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

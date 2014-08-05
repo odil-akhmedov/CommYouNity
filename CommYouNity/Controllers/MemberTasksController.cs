@@ -10,112 +10,112 @@ using CommYouNity;
 
 namespace CommYouNity.Controllers
 {
-    public class MembersController : Controller
+    public class MemberTasksController : Controller
     {
         private CommunityDataModel db = new CommunityDataModel();
 
-        // GET: Members
+        // GET: MemberTasks
         public ActionResult Index()
         {
-            var members = db.Members.Include(m => m.Community);
-            return View(members.ToList());
+            var memberTasks = db.MemberTasks.Include(m => m.Member);
+            return View(memberTasks.ToList());
         }
 
-        // GET: Members/Details/5
+        // GET: MemberTasks/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Member member = db.Members.Find(id);
-            if (member == null)
+            MemberTask memberTask = db.MemberTasks.Find(id);
+            if (memberTask == null)
             {
                 return HttpNotFound();
             }
-            return View(member);
+            return View(memberTask);
         }
 
-        // GET: Members/Create
+        // GET: MemberTasks/Create
         public ActionResult Create()
         {
-            ViewBag.CommunityId = new SelectList(db.Communities, "Id", "Name");
+            ViewBag.MemberId = new SelectList(db.Members, "Id", "FirstName");
             return View();
         }
 
-        // POST: Members/Create
+        // POST: MemberTasks/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Phone,AboutMe,CommunityId")] Member member)
+        public ActionResult Create([Bind(Include = "Id,Name,StartTime,EndTime,Description,Budget,Status,Priority,Flag,MemberId")] MemberTask memberTask)
         {
             if (ModelState.IsValid)
             {
-                db.Members.Add(member);
+                db.MemberTasks.Add(memberTask);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CommunityId = new SelectList(db.Communities, "Id", "Name", member.CommunityId);
-            return View(member);
+            ViewBag.MemberId = new SelectList(db.Members, "Id", "FirstName", memberTask.MemberId);
+            return View(memberTask);
         }
 
-        // GET: Members/Edit/5
+        // GET: MemberTasks/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Member member = db.Members.Find(id);
-            if (member == null)
+            MemberTask memberTask = db.MemberTasks.Find(id);
+            if (memberTask == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CommunityId = new SelectList(db.Communities, "Id", "Name", member.CommunityId);
-            return View(member);
+            ViewBag.MemberId = new SelectList(db.Members, "Id", "FirstName", memberTask.MemberId);
+            return View(memberTask);
         }
 
-        // POST: Members/Edit/5
+        // POST: MemberTasks/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Phone,AboutMe,CommunityId")] Member member)
+        public ActionResult Edit([Bind(Include = "Id,Name,StartTime,EndTime,Description,Budget,Status,Priority,Flag,MemberId")] MemberTask memberTask)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(member).State = EntityState.Modified;
+                db.Entry(memberTask).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CommunityId = new SelectList(db.Communities, "Id", "Name", member.CommunityId);
-            return View(member);
+            ViewBag.MemberId = new SelectList(db.Members, "Id", "FirstName", memberTask.MemberId);
+            return View(memberTask);
         }
 
-        // GET: Members/Delete/5
+        // GET: MemberTasks/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Member member = db.Members.Find(id);
-            if (member == null)
+            MemberTask memberTask = db.MemberTasks.Find(id);
+            if (memberTask == null)
             {
                 return HttpNotFound();
             }
-            return View(member);
+            return View(memberTask);
         }
 
-        // POST: Members/Delete/5
+        // POST: MemberTasks/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Member member = db.Members.Find(id);
-            db.Members.Remove(member);
+            MemberTask memberTask = db.MemberTasks.Find(id);
+            db.MemberTasks.Remove(memberTask);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -7,7 +7,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{84187EDF-E6C5-4BD8-ABC1-BC7CD4029F54}</ProjectGuid>
+    <ProjectGuid>{16B97BC9-CF97-4AF0-A511-A2D9F26F6081}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -160,77 +160,39 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Community.cs">
-      <DependentUpon>CommunityDBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CommunityDBModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CommunityDBModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CommunityDBModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CommunityDBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CommunityDBModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CommunityDBModel.edmx</DependentUpon>
-    </Compile>
+    <Compile Include="Community.cs" />
+    <Compile Include="CommunityDataModel.cs" />
+    <Compile Include="CommunityTask.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CommunitiesController.cs" />
+    <Compile Include="Controllers\CommunityTasksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
+    <Compile Include="Controllers\LocationTasksController.cs" />
     <Compile Include="Controllers\MembersController.cs" />
-    <Compile Include="Controllers\SingleTasksController.cs" />
+    <Compile Include="Controllers\MemberTasksController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Location.cs">
-      <DependentUpon>CommunityDBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Member.cs">
-      <DependentUpon>CommunityDBModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Location.cs" />
+    <Compile Include="LocationTask.cs" />
+    <Compile Include="Member.cs" />
+    <Compile Include="MemberTask.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LocationTaskView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SingleTask.cs">
-      <DependentUpon>CommunityDBModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\detroitanight.png" />
-    <Content Include="Assets\detroitbuttonface.png" />
-    <Content Include="Assets\projectbackground.jpg" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <None Include="Content\Site.css.old" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="CommunityDBModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CommunityDBModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="CommunityDBModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CommunityDBModel.edmx</DependentUpon>
-      <LastGenOutput>CommunityDBModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="CommunityDBModel.edmx.diagram">
-      <DependentUpon>CommunityDBModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="CommunityDBModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CommunityDBModel.edmx</DependentUpon>
-      <LastGenOutput>CommunityDBModel.cs</LastGenOutput>
-    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -278,11 +240,6 @@
     <Content Include="Views\Locations\Details.cshtml" />
     <Content Include="Views\Locations\Edit.cshtml" />
     <Content Include="Views\Locations\Index.cshtml" />
-    <Content Include="Views\SingleTasks\Create.cshtml" />
-    <Content Include="Views\SingleTasks\Delete.cshtml" />
-    <Content Include="Views\SingleTasks\Details.cshtml" />
-    <Content Include="Views\SingleTasks\Edit.cshtml" />
-    <Content Include="Views\SingleTasks\Index.cshtml" />
     <Content Include="Views\Communities\Create.cshtml" />
     <Content Include="Views\Communities\Delete.cshtml" />
     <Content Include="Views\Communities\Details.cshtml" />
@@ -293,6 +250,21 @@
     <Content Include="Views\Members\Details.cshtml" />
     <Content Include="Views\Members\Edit.cshtml" />
     <Content Include="Views\Members\Index.cshtml" />
+    <Content Include="Views\LocationTasks\Create.cshtml" />
+    <Content Include="Views\LocationTasks\Delete.cshtml" />
+    <Content Include="Views\LocationTasks\Details.cshtml" />
+    <Content Include="Views\LocationTasks\Edit.cshtml" />
+    <Content Include="Views\LocationTasks\Index.cshtml" />
+    <Content Include="Views\CommunityTasks\Create.cshtml" />
+    <Content Include="Views\CommunityTasks\Delete.cshtml" />
+    <Content Include="Views\CommunityTasks\Details.cshtml" />
+    <Content Include="Views\CommunityTasks\Edit.cshtml" />
+    <Content Include="Views\CommunityTasks\Index.cshtml" />
+    <Content Include="Views\MemberTasks\Create.cshtml" />
+    <Content Include="Views\MemberTasks\Delete.cshtml" />
+    <Content Include="Views\MemberTasks\Details.cshtml" />
+    <Content Include="Views\MemberTasks\Edit.cshtml" />
+    <Content Include="Views\MemberTasks\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -303,9 +275,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -323,7 +292,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>58238</DevelopmentServerPort>
+          <DevelopmentServerPort>6079</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:58238/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

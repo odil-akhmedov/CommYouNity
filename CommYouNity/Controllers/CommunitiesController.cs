@@ -12,7 +12,7 @@ namespace CommYouNity.Controllers
 {
     public class CommunitiesController : Controller
     {
-        private TheCommunityDBEntities db = new TheCommunityDBEntities();
+        private CommunityDataModel db = new CommunityDataModel();
 
         // GET: Communities
         public ActionResult Index()

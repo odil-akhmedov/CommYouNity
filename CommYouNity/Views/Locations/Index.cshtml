@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CommYouNity.Location>
+﻿@model CommYouNity.Models.LocationTaskView
 
 @{
     ViewBag.Title = "Index";
@@ -10,44 +10,154 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
+    @Html.DisplayNameFor(model => model.locationName)
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Location
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Zip)
+            Zip
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ImgSrc)
+            Image
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.GoogleMap)
+            Google Map
         </th>
         <th></th>
     </tr>
+    @*@Html.DisplayNameFor(model => model.locationName)
+            <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.locationName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.locationZip)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.locationImgSrc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.locationGoogleMap)
+            </th>
+            <th></th>
+        </tr>*@
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Zip)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImgSrc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GoogleMap)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })|
-            @Html.ActionLink("Create new Task", "Index", "SingleTasks", new { id = item.Id})
-        </td>
-    </tr>
-}
-    
+    @foreach (var item in Model.location)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zip)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImgSrc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GoogleMap)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>
+
+<table>
+    Tasks
+    <tr>
+        <th>
+            Task
+        </th>
+        @*<th>
+                Start Time
+            </th>
+            <th>
+                End Time
+            </th>*@
+        <th>
+            Description
+        </th>
+        <th>
+            Budget
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            Priority
+        </th>
+        <th>
+            Flag
+        </th>
+        <th></th>
+        @*@Html.DisplayNameFor(model => model.locationTaskName)
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.locationTaskName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.locationTaskStartTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.locationTaskEndTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.locationTaskDescription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.locationTaskBudget)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.locationTaskStatus)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.locationTaskPriority)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.locationTaskFlag)
+                </th>
+                <th></th>
+            </tr>*@
+        @foreach (var item in Model.locationTask)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.StartTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndTime)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Budget)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Priority)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Flag)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                @Html.ActionLink(linkText: "Edit", actionName: "Edit", controllerName: "LocationTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
+                @Html.ActionLink(linkText: "Details", actionName: "Details", controllerName: "LocationTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
+                @Html.ActionLink(linkText: "Delete", actionName: "Delete", controllerName: "LocationTasks", routeValues: new { id = item.Id }, htmlAttributes: null)
+        </tr>
+        }
+    </table>

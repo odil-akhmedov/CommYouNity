@@ -7,17 +7,23 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CommYouNity;
+using CommYouNity.Models;
 
 namespace CommYouNity.Controllers
 {
     public class LocationsController : Controller
     {
-        private TheCommunityDBEntities db = new TheCommunityDBEntities();
+        private CommunityDataModel db = new CommunityDataModel();
 
         // GET: Locations
         public ActionResult Index()
         {
-            return View(db.Locations.ToList());
+            LocationTaskView result = new LocationTaskView();
+            result.location = db.Locations.ToList();
+            result.locationTask = db.LocationTasks.ToList();
+            //var result2 = db.Locations.Include(i => i.LocationTasks);
+            return View(result);
+            //return View(db.Locations.ToList());
         }
 
         // GET: Locations/Details/5
