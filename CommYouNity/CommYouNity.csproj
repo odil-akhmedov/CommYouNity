@@ -179,12 +179,16 @@
     <Compile Include="Member.cs" />
     <Compile Include="MemberTask.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CommunityTaskView.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LocationTaskView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\detroitanight.png" />
+    <Content Include="Assets\detroitbuttonface.png" />
+    <Content Include="Assets\projectbackground.jpg" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
