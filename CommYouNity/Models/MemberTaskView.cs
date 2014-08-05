@@ -13,7 +13,7 @@ namespace CommYouNity.Models
         public String memberPhone = "Phone #";
         public String memberAboutMe = "About Me";
         public String memberImgSrc = "Image";
-
+        public Member singleMember { get; set; }
         public List<MemberTask> memberTask { get; set; }
 
         public String memberTaskName = "Task";

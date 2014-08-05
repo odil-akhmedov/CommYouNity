@@ -23,6 +23,13 @@ namespace CommYouNity
         [Required]
         [StringLength(30)]
         public string LastName { get; set; }
+        public string FullName
+        {
+            get
+            {
+                return LastName + ", " + FirstName;
+            }
+        }
 
         public int Phone { get; set; }
 
