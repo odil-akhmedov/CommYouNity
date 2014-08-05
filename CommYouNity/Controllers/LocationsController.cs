@@ -42,7 +42,7 @@ namespace CommYouNity.Controllers
 
             LocationTaskView result = new LocationTaskView();
             result.singleLocation = location2;
-            result.locationTask = db.LocationTasks.ToList();
+            result.locationTask = db.LocationTasks.Where(i => i.LocationId == id).ToList();
    
             return View(result);
             //return View(location);
