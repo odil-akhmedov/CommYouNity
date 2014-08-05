@@ -12,6 +12,7 @@ namespace CommYouNity.Models
         public String communityDescription = "Description";
         public String communityOfficerName = "Officer";
         public String communityImgSrc = "Image";
+        public Community singleCommunity { get; set; }
         public List<CommunityTask> communityTask { get; set; }
 
         public String communityTaskName = "Task";
