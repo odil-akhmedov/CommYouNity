@@ -33,12 +33,19 @@ namespace CommYouNity.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Location location = db.Locations.Find(id);
-            if (location == null)
+
+            Location location2 = db.Locations.Find(id);
+            if (location2 == null)
             {
                 return HttpNotFound();
             }
-            return View(location);
+
+            LocationTaskView result = new LocationTaskView();
+            result.singleLocation = location2;
+            result.locationTask = db.LocationTasks.ToList();
+   
+            return View(result);
+            //return View(location);
         }
 
         // GET: Locations/Create
