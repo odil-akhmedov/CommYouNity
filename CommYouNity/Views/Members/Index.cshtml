@@ -13,7 +13,7 @@
     <table class="table">
         <tr>
             <th>
-               ... @Html.DisplayNameFor(model => model.singleMember.FullName)
+              @Html.DisplayNameFor(model => model.singleMember.FullName)
             </th>
             @*<th>
                     First Name
@@ -103,9 +103,9 @@
                 @Html.DisplayFor(modelItem => item.Flag)
             </td>
             <td>
-                @Html.ActionLink(linkText: "Edit", actionName: "Edit", controllerName: "MemberTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
+                @*@Html.ActionLink(linkText: "Edit", actionName: "Edit", controllerName: "MemberTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
                 @Html.ActionLink(linkText: "Details", actionName: "Details", controllerName: "MemberTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
-                @Html.ActionLink(linkText: "Delete", actionName: "Delete", controllerName: "MemberTasks", routeValues: new { id = item.Id }, htmlAttributes: null)
+                @Html.ActionLink(linkText: "Delete", actionName: "Delete", controllerName: "MemberTasks", routeValues: new { id = item.Id }, htmlAttributes: null)*@
         </tr>
         }
 
