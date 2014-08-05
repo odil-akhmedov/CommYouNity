@@ -27,7 +27,7 @@ namespace CommYouNity
 
         [Column(TypeName = "money")]
         public decimal? Budget { get; set; }
-
+        [Display(Name = "Completed")]
         public bool Status { get; set; }
 
         public int? Priority { get; set; }
