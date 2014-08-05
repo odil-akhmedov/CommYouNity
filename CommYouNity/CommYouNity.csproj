@@ -259,16 +259,16 @@
     <Content Include="Views\LocationTasks\Details.cshtml" />
     <Content Include="Views\LocationTasks\Edit.cshtml" />
     <Content Include="Views\LocationTasks\Index.cshtml" />
-    <Content Include="Views\CommunityTasks\Create.cshtml" />
-    <Content Include="Views\CommunityTasks\Delete.cshtml" />
-    <Content Include="Views\CommunityTasks\Details.cshtml" />
-    <Content Include="Views\CommunityTasks\Edit.cshtml" />
-    <Content Include="Views\CommunityTasks\Index.cshtml" />
     <Content Include="Views\MemberTasks\Create.cshtml" />
     <Content Include="Views\MemberTasks\Delete.cshtml" />
     <Content Include="Views\MemberTasks\Details.cshtml" />
     <Content Include="Views\MemberTasks\Edit.cshtml" />
     <Content Include="Views\MemberTasks\Index.cshtml" />
+    <Content Include="Views\CommunityTasks\Create.cshtml" />
+    <Content Include="Views\CommunityTasks\Delete.cshtml" />
+    <Content Include="Views\CommunityTasks\Details.cshtml" />
+    <Content Include="Views\CommunityTasks\Edit.cshtml" />
+    <Content Include="Views\CommunityTasks\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
