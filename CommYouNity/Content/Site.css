@@ -83,6 +83,7 @@ font-size:75px;
 
 }
 
+
 form, p {
 font-family: 'Varela Round', sans-serif;
 color:white;
@@ -119,7 +120,7 @@ border: 2px inset #d7b9c9
   height: 20px;
   padding-bottom: 5px;
   padding-left: 1px;
-  border-style:solid;
+  border-style: solid;
   border-color:black;
   border-width:1px;
   font-family: 'Varela Round', sans-serif;
@@ -138,22 +139,22 @@ border: 2px inset #d7b9c9
 a:link {
     text-decoration: none;
     color: red;
-border-bottom:dashed;
-cursor:crosshair;
+border-bottom:solid;
+cursor: pointer;
 }
 
 a:visited {
     text-decoration: none;
     color: red;
-border-bottom:dashed;
-cursor:crosshair;
+border-bottom: solid;
+cursor: pointer;
 }
 
 a:active {
     text-decoration: none;
-    color: #red;
-border-bottom:dashed;
-cursor:crosshair;
+    color: red;
+border-bottom: solid;
+cursor: pointer;
 }
 
 
@@ -164,6 +165,5 @@ padding:5px;
 list-style-type:none;
 
 }
-
 
 
