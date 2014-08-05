@@ -15,6 +15,7 @@ namespace CommYouNity.Models
         public String memberImgSrc = "Image";
         public Member singleMember { get; set; }
         public List<MemberTask> memberTask { get; set; }
+        public MemberTask singleMemberTask { get; set; }
 
         public String memberTaskName = "Task";
         public String memberTaskStartTime = "Starting time";

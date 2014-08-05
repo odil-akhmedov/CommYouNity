@@ -79,28 +79,28 @@
     Tasks
     <tr>
         <th>
-            Task
+            @Html.DisplayNameFor(model => model.singleCommunityTask.Name)
         </th>
         <th>
-            Description
+            @Html.DisplayNameFor(model => model.singleCommunityTask.Description)
         </th>
         <th>
-            Budget
+            @Html.DisplayNameFor(model => model.singleCommunityTask.Budget)
         </th>
         <th>
-            Status
+            @Html.DisplayNameFor(model => model.singleCommunityTask.Status)
         </th>
         <th>
-            Priority
+            @Html.DisplayNameFor(model => model.singleCommunityTask.Priority)
         </th>
         <th>
-            Flag
+            @Html.DisplayNameFor(model => model.singleCommunityTask.Flag)
         </th>
         <th></th>
-       
+
         @foreach (var item in Model.communityTask)
         {
-        <tr>
+<tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>

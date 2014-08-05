@@ -14,6 +14,7 @@ namespace CommYouNity.Models
         public String communityImgSrc = "Image";
         public Community singleCommunity { get; set; }
         public List<CommunityTask> communityTask { get; set; }
+        public CommunityTask singleCommunityTask { get; set; }
 
         public String communityTaskName = "Task";
         public String communityTaskStartTime = "Starting time";

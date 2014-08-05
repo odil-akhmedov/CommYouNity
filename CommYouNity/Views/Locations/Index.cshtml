@@ -4,7 +4,7 @@
     ViewBag.Title = "Location List";
 }
 
-<h2>Index</h2>
+<h2>Location List</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -72,7 +72,7 @@
     Tasks
     <tr>
         <th>
-            Task
+            @Html.DisplayNameFor(model => model.singleLocationTask.Name)
         </th>
         @*<th>
                 Start Time
@@ -81,19 +81,19 @@
                 End Time
             </th>*@
         <th>
-            Description
+            @Html.DisplayNameFor(model => model.singleLocationTask.Description)
         </th>
         <th>
-            Budget
+            @Html.DisplayNameFor(model => model.singleLocationTask.Budget)
         </th>
         <th>
-            Status
+            @Html.DisplayNameFor(model => model.singleLocationTask.Status)
         </th>
         <th>
-            Priority
+            @Html.DisplayNameFor(model => model.singleLocationTask.Priority)
         </th>
         <th>
-            Flag
+            @Html.DisplayNameFor(model => model.singleLocationTask.Flag)
         </th>
         <th></th>
         @*@Html.DisplayNameFor(model => model.locationTaskName)
