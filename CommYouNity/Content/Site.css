@@ -80,9 +80,12 @@ font-family: 'Indie Flower', cursive;
 color:white;
 text-align:center;
 font-size:75px;
-
 }
 
+h2{
+    text-align: center;
+    text-decoration: underline;
+}
 
 form, p {
 font-family: 'Varela Round', sans-serif;
@@ -160,10 +163,10 @@ cursor: pointer;
 
 
 
-li, ul {
+li, ul,  ol{
 padding:5px;
 list-style-type:none;
-
+color:white;
 }
 
 
