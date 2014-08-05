@@ -55,7 +55,7 @@ namespace CommYouNity.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Phone,AboutMe,CommunityId")] Member member)
+        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Phone,AboutMe,ImgSrc,CommunityId")] Member member)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace CommYouNity.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Phone,AboutMe,CommunityId")] Member member)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Phone,AboutMe,ImgSrc,CommunityId")] Member member)
         {
             if (ModelState.IsValid)
             {
