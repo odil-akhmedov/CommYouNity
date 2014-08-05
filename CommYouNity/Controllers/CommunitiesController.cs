@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CommYouNity;
+using CommYouNity.Models;
 
 namespace CommYouNity.Controllers
 {
@@ -18,7 +19,12 @@ namespace CommYouNity.Controllers
         public ActionResult Index()
         {
             var communities = db.Communities.Include(c => c.Location);
-            return View(communities.ToList());
+            CommunityTaskView result = new CommunityTaskView();
+            result.community = db.Communities.Include(c => c.Location).ToList();
+            result.communityTask = db.CommunityTasks.ToList();
+            return View(result);
+          
+            //return View(communities.ToList());
         }
 
         // GET: Communities/Details/5
