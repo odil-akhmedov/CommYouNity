@@ -1,10 +1,10 @@
 ﻿@model CommYouNity.Models.MemberTaskView
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Members List";
 }
 
-<h2>Index</h2>
+<h2>Members List</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -54,7 +54,7 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Community.Name)
+                @Html.DisplayFor(modelItem => item.FullName)
             </td>
             @*<td>
                 @Html.DisplayFor(modelItem => item.FirstName)
@@ -84,28 +84,28 @@
     Tasks
     <tr>
         <th>
-            Task
-        </th>
-          <th>
-            Description
+            @Html.DisplayNameFor(model => model.singleMemberTask.Name)
         </th>
         <th>
-            Budget
+            @Html.DisplayNameFor(model => model.singleMemberTask.Description)
         </th>
         <th>
-            Status
+            @Html.DisplayNameFor(model => model.singleMemberTask.Budget)
         </th>
         <th>
-            Priority
+            @Html.DisplayNameFor(model => model.singleMemberTask.Status)
         </th>
         <th>
-            Flag
+            @Html.DisplayNameFor(model => model.singleMemberTask.Priority)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.singleMemberTask.Flag)
         </th>
         <th></th>
-       
+
         @foreach (var item in Model.memberTask)
         {
-        <tr>
+<tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>

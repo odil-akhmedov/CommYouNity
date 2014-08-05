@@ -16,6 +16,7 @@ namespace CommYouNity.Models
         public String locationGoogleMap = "Google map";
 
         public List<LocationTask> locationTask { get; set; }
+        public LocationTask singleLocationTask { get; set; }
 
         public String locationTaskName = "Task";
         public String locationTaskStartTime = "Starting time";
