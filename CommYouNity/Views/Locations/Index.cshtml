@@ -49,7 +49,8 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.ActionLink(linkText: item.Name, actionName: "Index", controllerName: "Communities", routeValues: new { id = item.Id }, htmlAttributes: null)
+                @*@Html.DisplayFor(modelItem => item.Name)*@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Zip)

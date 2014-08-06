@@ -16,16 +16,38 @@ namespace CommYouNity.Controllers
         private CommunityDataModel db = new CommunityDataModel();
 
         // GET: Communities
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
             var communities = db.Communities.Include(c => c.Location);
             CommunityTaskView result = new CommunityTaskView();
-            result.community = db.Communities.Include(c => c.Location).ToList();
+            
             result.communityTask = db.CommunityTasks.ToList();
+
+            if (id != null)
+            {
+                result.community = db.Communities.Include(c => c.Location).Where(i => i.LocationId == id).ToList();
+            }
+            else {
+                result.community = db.Communities.Include(c => c.Location).ToList();
+            }
+
             return View(result);
           
             //return View(communities.ToList());
         }
+
+        //public ActionResult Index(int? id)
+        //{
+        //    var communities = db.Communities.Include(c => c.Location).Where(c => c.LocationId == id);
+
+        //    return View(communities.ToList());
+        //    //CommunityTaskView result = new CommunityTaskView();
+        //    //result.community = db.Communities.Include(c => c.Location).ToList();
+        //    //result.communityTask = db.CommunityTasks.ToList();
+        //    //return View(result);
+
+        //    //return View(communities.ToList());
+        //}
 
         // GET: Communities/Details/5
         public ActionResult Details(int? id)
