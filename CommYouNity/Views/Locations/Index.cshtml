@@ -1,4 +1,6 @@
-﻿@model CommYouNity.Models.LocationTaskView
+﻿<div class="formbg">
+    
+    @model CommYouNity.Models.LocationTaskView
 
 @{
     ViewBag.Title = "Location List";
@@ -163,8 +165,9 @@
                     @Html.ActionLink("Details", "Details", new { id = item.Id }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
                 @*@Html.ActionLink(linkText: "Edit", actionName: "Edit", controllerName: "LocationTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
-                @Html.ActionLink(linkText: "Details", actionName: "Details", controllerName: "LocationTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
-                @Html.ActionLink(linkText: "Delete", actionName: "Delete", controllerName: "LocationTasks", routeValues: new { id = item.Id }, htmlAttributes: null)*@
+                    @Html.ActionLink(linkText: "Details", actionName: "Details", controllerName: "LocationTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
+                    @Html.ActionLink(linkText: "Delete", actionName: "Delete", controllerName: "LocationTasks", routeValues: new { id = item.Id }, htmlAttributes: null)*@
         </tr>
         }
     </table>
+</div>
