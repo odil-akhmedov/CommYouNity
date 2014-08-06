@@ -16,12 +16,6 @@
                 <th>
                     @Html.DisplayNameFor(model => model.singleMember.FullName)
                 </th>
-                @*<th>
-                        First Name
-                    </th>
-                    <th>
-                        Last Name
-                    </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.singleMember.Phone)
                 </th>
@@ -33,24 +27,28 @@
                 </th>
                 <th></th>
             </tr>
-            @*<tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Community.Name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.FirstName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.LastName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Phone)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.AboutMe)
-                    </th>
-                    <th></th>
-                </tr>*@
+            @foreach (var item in Model.member)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AboutMe)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ImgSrc)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
         </table>
         <table>
             Tasks
@@ -111,56 +109,5 @@
                 }
 
             </table>
-            <table>
-                Tasks
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.singleMemberTask.Name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.singleMemberTask.Description)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.singleMemberTask.Budget)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.singleMemberTask.Status)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.singleMemberTask.Priority)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.singleMemberTask.Flag)
-                    </th>
-                    <th></th>
-
-                    @foreach (var item in Model.memberTask)
-                    {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Description)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Budget)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Status)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Priority)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Flag)
-                        </td>
-                        <td>
-                            @Html.ActionLink(linkText: "Edit", actionName: "Edit", controllerName: "MemberTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
-                            @Html.ActionLink(linkText: "Details", actionName: "Details", controllerName: "MemberTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
-                            @Html.ActionLink(linkText: "Delete", actionName: "Delete", controllerName: "MemberTasks", routeValues: new { id = item.Id }, htmlAttributes: null)
-                    </tr>
-                    }
-                </table>
-            </div>
+             </div>
 </div>
