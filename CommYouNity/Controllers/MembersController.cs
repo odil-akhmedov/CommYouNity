@@ -16,11 +16,34 @@ namespace CommYouNity.Controllers
         private CommunityDataModel db = new CommunityDataModel();
 
         // GET: Members
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder)
         {
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.CommunitySortParm = sortOrder == "Community" ? "community_desc" : "Community";
+            //var membs = from m in db.Members
+            //        select m;
             var members = db.Members.Include(m => m.Community);
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    members = members.OrderByDescending(m => m.LastName);
+                    break;
+                case "Community":
+                    members = members.OrderBy(m => m.Community.Name);
+                    break;
+                case "community_desc":
+                    members = members.OrderByDescending(m => m.Community.Name);
+                    break;
+                default:
+                    members = members.OrderBy(m => m.LastName);
+                    break;
+            }
+              
+          
+            
             MemberTaskView result = new MemberTaskView();
-            result.member = db.Members.Include(c => c.Community).ToList();
+            //result.member = db.Members.Include(c => c.Community).ToList();
+            result.member = members.ToList();
             result.memberTask = db.MemberTasks.ToList();
             return View(result);
 
