@@ -31,7 +31,7 @@ namespace CommYouNity
             }
         }
 
-        public int Phone { get; set; }
+        public Int64 Phone { get; set; }
 
         [Column(TypeName = "text")]
         public string AboutMe { get; set; }

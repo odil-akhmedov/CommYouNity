@@ -95,6 +95,9 @@ namespace CommYouNity
             modelBuilder.Entity<Member>()
                 .Property(e => e.LastName)
                 .IsUnicode(false);
+            //modelBuilder.Entity<Member>()
+            //    .Property(e => e.Phone)
+            //    .IsUnicode(false);
 
             modelBuilder.Entity<Member>()
                 .Property(e => e.AboutMe)
