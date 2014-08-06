@@ -35,12 +35,17 @@ namespace CommYouNity.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Member member = db.Members.Find(id);
-            if (member == null)
+            Member member2 = db.Members.Find(id);
+            if (member2 == null)
             {
                 return HttpNotFound();
             }
-            return View(member);
+            MemberTaskView result = new MemberTaskView();
+            result.singleMember = member2;
+            result.memberTask = db.MemberTasks.Where(i => i.MemberId == id).ToList();
+
+            return View(result);
+            //return View(member);
         }
 
         // GET: Members/Create
