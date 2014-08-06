@@ -20,8 +20,6 @@ namespace CommYouNity.Controllers
         {
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.CommunitySortParm = sortOrder == "Community" ? "community_desc" : "Community";
-            //var membs = from m in db.Members
-            //        select m;
             var members = db.Members.Include(m => m.Community);
             switch (sortOrder)
             {
@@ -37,18 +35,11 @@ namespace CommYouNity.Controllers
                 default:
                     members = members.OrderBy(m => m.LastName);
                     break;
-            }
-              
-          
-            
+            }            
             MemberTaskView result = new MemberTaskView();
-            //result.member = db.Members.Include(c => c.Community).ToList();
             result.member = members.ToList();
             result.memberTask = db.MemberTasks.ToList();
             return View(result);
-
-            //var members = db.Members.Include(m => m.Community);
-            //return View(members.ToList());
         }
 
         // GET: Members/Details/5
