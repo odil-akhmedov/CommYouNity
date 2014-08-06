@@ -25,6 +25,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.singleMember.ImgSrc)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.singleMember.Community)
+                </th>
                 <th></th>
             </tr>
             @foreach (var item in Model.member)
@@ -41,6 +44,9 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.ImgSrc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Community.Name)
                     </td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
