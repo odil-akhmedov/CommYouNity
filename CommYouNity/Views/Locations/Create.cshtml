@@ -3,62 +3,160 @@
 @{
     ViewBag.Title = "Create";
 }
+<script type="text/javascript">
+    //get file size
+    function GetFileSize(fileid) {
+        try {
+            var fileSize = 0;
+            //for IE
+            if ($.browser.msie) {
+                //before making an object of ActiveXObject,
+                //please make sure ActiveX is enabled in your IE browser
+                var objFSO = new ActiveXObject("Scripting.FileSystemObject"); var filePath = $("#" + fileid)[0].value;
+                var objFile = objFSO.getFile(filePath);
+                var fileSize = objFile.size; //size in kb
+                fileSize = fileSize / 1048576; //size in mb
+            }
+                //for FF, Safari, Opeara and Others
+            else {
+                fileSize = $("#" + fileid)[0].files[0].size //size in kb
+                fileSize = fileSize / 1048576; //size in mb
+            }
+            return fileSize;
+        }
+        catch (e) {
+            alert("Error is :" + e);
+        }
+    }
 
-<h2>Create</h2>
+    //get file path from client system
+    function getNameFromPath(strFilepath) {
+        var objRE = new RegExp(/([^\/\\]+)$/);
+        var strName = objRE.exec(strFilepath);
+
+        if (strName == null) {
+            return null;
+        }
+        else {
+            return strName[0];
+        }
+    }
+
+    $("#btnSubmit").live("click", function () {
+        if ($('#fileToUpload').val() == "") {
+            $("#spanfile").html("Please upload file");
+            return false;
+        }
+        else {
+            return checkfile();
+        }
+    });
+
+    function checkfile() {
+        var file = getNameFromPath($("#fileToUpload").val());
+        if (file != null) {
+            var extension = file.substr((file.lastIndexOf('.') + 1));
+            // alert(extension);
+            switch (extension) {
+                case 'jpg':
+                case 'png':
+                case 'gif':
+                case 'pdf':
+                    flag = true;
+                    break;
+                default:
+                    flag = false;
+            }
+        }
+        if (flag == false) {
+            $("#spanfile").text("You can upload only jpg,png,gif,pdf extension file");
+            return false;
+        }
+        else {
+            var size = GetFileSize('fileToUpload');
+            if (size > 3) {
+                $("#spanfile").text("You can upload file up to 3 MB");
+                return false;
+            }
+            else {
+                $("#spanfile").text("");
+            }
+        }
+    }
+
+    $(function () {
+        $("#fileToUpload").change(function () {
+            checkfile();
+        });
+    });
+</script>
+
+    <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+    @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Location</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            <h4>Location</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Zip, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Zip, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Zip, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Zip, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Zip, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Zip, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ImgSrc, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ImgSrc, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ImgSrc, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.ImgSrc, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ImgSrc, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ImgSrc, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.GoogleMap, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.GoogleMap, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.GoogleMap, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.GoogleMap, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.GoogleMap, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.GoogleMap, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
+            @using (Html.BeginForm("FileUpload", "Location", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.ValidationSummary();
+            <ol>
+                    <li class="lifile">
+                        <input type="file" id="fileToUpload" name="file" />
+                        <span class="field-validation-error" id="spanfile"></span>
+                    </li>
+                </ol>
+            <input type="submit" id="btnSubmit" value="Upload" />
+        }
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
             </div>
         </div>
+}
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
     </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
+    @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-}
+    }
