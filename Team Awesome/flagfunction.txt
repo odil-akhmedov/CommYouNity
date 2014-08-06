@@ -1,0 +1,28 @@
+FlagFunction(flag){
+
+// 0 is on 1 is off
+// false is alert true is task
+var flag;
+var taskoralert;
+if flag == "false" {
+taskoralert = "alert";
+
+
+
+// js to change element
+form.document.getElementById('Flag').options['value'].innerHTML='Alert'
+
+
+return taskoralert;
+
+}
+
+if flag == "true" {
+taskoralert = "task";
+
+form.document.getElementById('Flag').options['value'].innerHTML='Task'
+return taskoralert
+
+}
+
+}

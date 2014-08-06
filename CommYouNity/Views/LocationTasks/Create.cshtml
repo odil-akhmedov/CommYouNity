@@ -3,7 +3,23 @@
 @{
     ViewBag.Title = "Create";
 }
+<script type="text/javascript">
+    function TaskOrAlert() {
+        var select = document.getElementById('Flag');//.options['value'].innerHTML = 'Alert'
 
+
+        // 0 is on 1 is off
+        // false is alert true is task
+        var flag;
+        var taskoralert;
+        if (select.option['value'].innerHTML == "false") {
+            //taskoralert = "alert";
+            select.option['value'].innerHTML = "Alert"
+        } else {
+            select.option['value'].innerHTML = "Task"
+        }
+    }
+</script>
 <h2>Create</h2>
 
 
@@ -76,7 +92,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Flag, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <div class="checkbox">
+                <div class="checkbox" onchange="TaskOrAlert();">
                     @Html.EditorFor(model => model.Flag)
                     @Html.ValidationMessageFor(model => model.Flag, "", new { @class = "text-danger" })
                 </div>

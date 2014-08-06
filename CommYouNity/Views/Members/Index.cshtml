@@ -14,7 +14,7 @@
         <table class="table">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.singleMember.FullName)
+                    @Html.ActionLink("LastName", "Index", new { sortOrder = ViewBag.NameSortParm })
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.singleMember.Phone)
@@ -26,7 +26,7 @@
                     @Html.DisplayNameFor(model => model.singleMember.ImgSrc)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.singleMember.Community)
+                    @Html.ActionLink("Community", "Index", new { sortOrder = ViewBag.CommunitySortParm })
                 </th>
                 <th></th>
             </tr>
