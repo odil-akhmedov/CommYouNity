@@ -136,14 +136,22 @@
             {
             <tr>
                 <td id="taskOrAlert">
-                    @if (item.Flag.Value == false)
-                    { <p>Alert</p>}
-                    else if (item.Flag.Value == true)
-                    { <p>Task</p>}
+                    @{if (item.Flag == false)
+                    {
+                        <p>Alert</p>
+                    }
+                    else if (item.Flag == true)
+                    {
+                        <p>Task</p>
+                    }
                     else
-                    { @Html.DisplayFor(modelItem => item.Flag)}
+                    {
+                        Html.DisplayFor(modelItem => item.Flag);
+                    }
+                    }
 
                 </td>
+
 
                 <td>
                     @Html.DisplayFor(modelItem => item.Location.Name)
