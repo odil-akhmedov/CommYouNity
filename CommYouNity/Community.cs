@@ -22,15 +22,12 @@ namespace CommYouNity
         public string Name { get; set; }
 
         [Column(TypeName = "text")]
-        [Required]
         public string Description { get; set; }
 
         [Required]
         [StringLength(50)]
         public string OfficerName { get; set; }
 
-        [Required]
-        [StringLength(50)]
         public string ImgSrc { get; set; }
 
         public int LocationId { get; set; }

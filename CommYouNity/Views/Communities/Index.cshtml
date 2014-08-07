@@ -47,7 +47,8 @@
                     @Html.DisplayFor(modelItem => item.OfficerName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ImgSrc)
+                    <img src="@item.ImgSrc" alt="@item.Name" width="150" height="100" />
+                    @*@Html.DisplayFor(modelItem => item.ImgSrc)*@
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

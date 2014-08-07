@@ -278,7 +278,10 @@
     <Content Include="Test\Rsstest.cshtml" />
     <Content Include="Test\ViewPage1.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="img\communities\" />
+    <Folder Include="img\members\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

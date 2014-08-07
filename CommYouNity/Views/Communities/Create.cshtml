@@ -7,7 +7,7 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "Communities", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -54,6 +54,15 @@
                 @Html.ValidationMessageFor(model => model.LocationId, "", new { @class = "text-danger" })
             </div>
         </div>
+        <fieldset>
+            <legend>Upload a file</legend>
+            <div class="editor-field">
+                @Html.TextBox("file", "", new { type = "file" })
+            </div>
+            @*<div class="editor-field">
+                <input type="submit" value="Upload" />
+            </div>*@
+        </fieldset>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
