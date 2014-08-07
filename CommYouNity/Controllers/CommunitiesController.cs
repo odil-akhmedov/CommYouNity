@@ -84,8 +84,31 @@ namespace CommYouNity.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,OfficerName,ImgSrc,LocationId")] Community community)
+        public ActionResult Create([Bind(Include = "Id,Name,Description,OfficerName,LocationId")] Community community, HttpPostedFileBase file)
         {
+            try
+            {
+                if (file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    fileName = DateTime.Now.ToFileTimeUtc().ToString() + "_" + fileName;
+
+                    var path = Path.Combine(Server.MapPath("~/img/communities/"), fileName);
+                    file.SaveAs(path);
+
+                    //var serverPath = "/img/communities/"+ DateTime.Today.ToString() + "_" + fileName;
+                    var serverPath = "/img/communities/" + fileName;
+                    community.ImgSrc = serverPath;
+                }
+                ViewBag.Message = "Upload successful";
+                //return RedirectToAction("Index");
+            }
+            catch
+            {
+                ViewBag.Message = "Upload failed";
+                community.ImgSrc = "";
+                //return RedirectToAction("Uploads");
+            }
             if (ModelState.IsValid)
             {
                 db.Communities.Add(community);
@@ -126,9 +149,12 @@ namespace CommYouNity.Controllers
                 if (file.ContentLength > 0)
                 {
                     var fileName = Path.GetFileName(file.FileName);
-                    var path = Path.Combine(Server.MapPath("~/img/communities"), fileName);
+                    fileName = DateTime.Now.ToFileTimeUtc().ToString() + "_" + fileName;
+
+                    var path = Path.Combine(Server.MapPath("~/img/communities/"), fileName);
                     file.SaveAs(path);
 
+                    //var serverPath = "/img/communities/"+ DateTime.Today.ToString() + "_" + fileName;
                     var serverPath = "/img/communities/" + fileName;
                     community.ImgSrc = serverPath;
                 }
