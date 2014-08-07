@@ -38,7 +38,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.singleCommunity.ImgSrc)
+            <img src="@Model.singleCommunity.ImgSrc" alt="@Model.singleCommunity.Name" width=" 150" height="100" />
+            @*@Html.DisplayFor(model => model.singleCommunity.ImgSrc)*@
         </dd>
 
     </dl>
