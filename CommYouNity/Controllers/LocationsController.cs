@@ -17,10 +17,22 @@ namespace CommYouNity.Controllers
         private CommunityDataModel db = new CommunityDataModel();
 
         // GET: Locations
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder)
         {
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            var locations = from l in db.Locations
+                            select l;
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    locations = locations.OrderByDescending(l => l.Name);
+                    break;
+                default:
+                    locations = locations.OrderBy(l => l.Name);
+                    break;
+            }
             LocationTaskView result = new LocationTaskView();
-            result.location = db.Locations.ToList();
+            result.location = locations.ToList();
             result.locationTask = db.LocationTasks.ToList();
             //var result2 = db.Locations.Include(i => i.LocationTasks);
             return View(result);
