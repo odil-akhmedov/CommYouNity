@@ -92,26 +92,7 @@ namespace CommYouNity.Controllers
 
             return View(location);
         }
-        [HttpPost]
-        public ActionResult Upload(HttpPostedFileBase file)
-        {
-            try
-            {
-                if (file.ContentLength > 0)
-                {
-                    var fileName = Path.GetFileName(file.FileName);
-                    var path = Path.Combine(Server.MapPath("~/App_Data/Images"), fileName);
-                    file.SaveAs(path);
-                }
-                ViewBag.Message = "Upload successful";
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                ViewBag.Message = "Upload failed";
-                return RedirectToAction("Uploads");
-            }
-        }
+        
 
 
         // GET: Locations/Edit/5
@@ -134,8 +115,29 @@ namespace CommYouNity.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Zip,ImgSrc,GoogleMap")] Location location)
+        public ActionResult Edit([Bind(Include = "Id,Name,Zip,GoogleMap")] Location location, HttpPostedFileBase file)
         {
+            try
+            {
+                if (file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/img/locations"), fileName);
+                    file.SaveAs(path);
+
+                    var serverPath = "/img/locations/" + fileName;
+                    location.ImgSrc = serverPath;
+                }
+                ViewBag.Message = "Upload successful";
+                //return RedirectToAction("Index");
+            }
+            catch
+            {
+                ViewBag.Message = "Upload failed";
+                location.ImgSrc = "";
+                //return RedirectToAction("Uploads");
+            }
+
             if (ModelState.IsValid)
             {
                 db.Entry(location).State = EntityState.Modified;
@@ -143,6 +145,27 @@ namespace CommYouNity.Controllers
                 return RedirectToAction("Index");
             }
             return View(location);
+        }
+
+        [HttpPost]
+        public ActionResult Upload(HttpPostedFileBase file)
+        {
+            try
+            {
+                if (file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/App_Data/Images"), fileName);
+                    file.SaveAs(path);
+                }
+                ViewBag.Message = "Upload successful";
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                ViewBag.Message = "Upload failed";
+                return RedirectToAction("Uploads");
+            }
         }
 
         // GET: Locations/Delete/5
