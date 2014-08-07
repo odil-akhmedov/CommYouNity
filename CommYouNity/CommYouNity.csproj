@@ -163,6 +163,7 @@
     <Compile Include="Community.cs" />
     <Compile Include="CommunityDataModel.cs" />
     <Compile Include="CommunityTask.cs" />
+    <Compile Include="Controllers\CookieController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CommunitiesController.cs" />
     <Compile Include="Controllers\CommunityTasksController.cs" />
