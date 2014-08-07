@@ -37,8 +37,7 @@ namespace CommYouNity.Controllers
                 default:
                     members = members.OrderBy(m => m.LastName);
                     break;
-<<<<<<< HEAD
-            }
+           }
          
             MemberTaskView result = new MemberTaskView();
             //result.member = db.Members.Include(c => c.Community).ToList();
@@ -50,10 +49,7 @@ namespace CommYouNity.Controllers
             {
                 result.member = members.ToList();
             } 
-=======
-            }            
-            MemberTaskView result = new MemberTaskView();
->>>>>>> origin/master
+
             result.member = members.ToList();
             result.memberTask = db.MemberTasks.ToList();
             return View(result);
