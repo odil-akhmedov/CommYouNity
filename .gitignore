@@ -216,6 +216,7 @@ CommYouNity/Web.config
 CommYouNity/Web.config
 CommYouNity/Web.config
 <<<<<<< HEAD
+<<<<<<< HEAD
 *.config
 Web.config
 =======
@@ -224,3 +225,6 @@ CommYouNity/Web.config
 
 *.config
 CommYouNity/Web.config
+=======
+CommYouNity/Web.config
+>>>>>>> origin/master
