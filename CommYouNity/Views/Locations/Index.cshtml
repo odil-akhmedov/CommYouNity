@@ -6,6 +6,25 @@
         ViewBag.Title = "Location List";
     }
 
+    <script type="text/javascript">
+        $(document).ready(function ()
+        {
+            var imageLinks = $('a[href$=".png"], a[href$=".jpg"], a[href$=".gif"], a[href$=".bmp"]');
+            if (imageLinks.children('img').length)
+            {
+                imageLinks.children('img').each(function ()
+                {
+                    var currentTitle = $(this).attr('title');
+                    $(this).attr('title', currentTitle + ' (click to enlarge image)');
+                });
+                imageLinks.click(function (e)
+                {
+                    e.preventDefault();
+                    $(this).children('img').toggleClass('expanded');
+                });
+            }
+        });
+    </script>
     <h2>Location List</h2>
 
     <p>
@@ -41,7 +60,9 @@
                     @Html.DisplayFor(modelItem => item.GoogleMap)
                 </td>
                 <td>
-                    <img src="@item.ImgSrc" alt="@item.Name" width="150" height="100"/>
+                    <div class="img">
+                        <a href="@item.ImgSrc"><img src="@item.ImgSrc" alt="@item.Name" width="150" height="100" /></a>
+                    </div>
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

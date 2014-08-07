@@ -178,3 +178,18 @@ list-style-type:none;
 .jumbotron{
     background-color:lightsteelblue;
 }
+
+.img{
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid black;
+    height: auto;
+    width: auto;
+    float: left;
+    text-align: center;
+    max-width: 100%;
+}
+
+.img-expanded{
+    max-width: none;
+}
