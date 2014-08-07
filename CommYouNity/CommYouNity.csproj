@@ -163,6 +163,7 @@
     <Compile Include="Community.cs" />
     <Compile Include="CommunityDataModel.cs" />
     <Compile Include="CommunityTask.cs" />
+    <Compile Include="Controllers\CookieController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CommunitiesController.cs" />
     <Compile Include="Controllers\CommunityTasksController.cs" />
@@ -199,8 +200,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\communities\1-cuisinart-gourmet-meals.jpg" />
+    <Content Include="img\communities\Taco-Night-A-Meal-for-the-Whole-Family-2-size-3.jpg" />
     <Content Include="img\locations\meal02.jpg" />
     <Content Include="img\locations\meal09.JPG" />
+    <Content Include="img\members\main_bg.jpg" />
+    <Content Include="img\members\meal-m.jpg" />
+    <Content Include="img\members\Untitled.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -278,10 +284,7 @@
     <Content Include="Test\Rsstest.cshtml" />
     <Content Include="Test\ViewPage1.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="img\communities\" />
-    <Folder Include="img\members\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
