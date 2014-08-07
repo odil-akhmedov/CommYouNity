@@ -21,8 +21,8 @@ namespace CommYouNity.Controllers
         {
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.CommunitySortParm = sortOrder == "Community" ? "community_desc" : "Community";
-
             var members = db.Members.Include(m => m.Community);
+
             switch (sortOrder)
             {
                 case "name_desc":
@@ -49,11 +49,9 @@ namespace CommYouNity.Controllers
             {
                 result.member = members.ToList();
             } 
+            result.member = members.ToList();
             result.memberTask = db.MemberTasks.ToList();
             return View(result);
-
-            //var members = db.Members.Include(m => m.Community);
-            //return View(members.ToList());
         }
 
         // GET: Members/Details/5
