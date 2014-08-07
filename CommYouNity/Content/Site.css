@@ -187,4 +187,9 @@ list-style-type:none;
     width: auto;
     float: left;
     text-align: center;
+    max-width: 100%;
+}
+
+.img-expanded{
+    max-width: none;
 }
