@@ -19,7 +19,7 @@ namespace CommYouNity.Controllers
         // GET: Communities
         public ActionResult Index(int? id, string sortOrder)
         {
-            //ViewBag.LocationSortParm = String;
+
             var communities = db.Communities.Include(c => c.Location);
             CommunityTaskView result = new CommunityTaskView();
             
@@ -37,20 +37,6 @@ namespace CommYouNity.Controllers
           
             //return View(communities.ToList());
         }
-
-        //public ActionResult Index(int? id)
-        //{
-        //    var communities = db.Communities.Include(c => c.Location).Where(c => c.LocationId == id);
-
-        //    return View(communities.ToList());
-        //    //CommunityTaskView result = new CommunityTaskView();
-        //    //result.community = db.Communities.Include(c => c.Location).ToList();
-        //    //result.communityTask = db.CommunityTasks.ToList();
-        //    //return View(result);
-
-        //    //return View(communities.ToList());
-        //}
-
         // GET: Communities/Details/5
         public ActionResult Details(int? id)
         {
