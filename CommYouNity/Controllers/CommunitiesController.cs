@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using CommYouNity;
 using CommYouNity.Models;
+using System.IO;
 
 namespace CommYouNity.Controllers
 {
@@ -117,8 +118,29 @@ namespace CommYouNity.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,OfficerName,ImgSrc,LocationId")] Community community)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description,OfficerName,LocationId")] Community community, HttpPostedFileBase file)
         {
+
+            try
+            {
+                if (file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/img/communities"), fileName);
+                    file.SaveAs(path);
+
+                    var serverPath = "/img/communities/" + fileName;
+                    community.ImgSrc = serverPath;
+                }
+                ViewBag.Message = "Upload successful";
+                //return RedirectToAction("Index");
+            }
+            catch
+            {
+                ViewBag.Message = "Upload failed";
+                community.ImgSrc = "";
+                //return RedirectToAction("Uploads");
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(community).State = EntityState.Modified;
