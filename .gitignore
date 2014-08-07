@@ -215,3 +215,5 @@ $RECYCLE.BIN/
 CommYouNity/Web.config
 CommYouNity/Web.config
 CommYouNity/Web.config
+*.config
+Web.config
