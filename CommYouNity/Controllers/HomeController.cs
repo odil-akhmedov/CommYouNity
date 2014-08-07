@@ -8,7 +8,7 @@ namespace CommYouNity.Controllers
 {
     public class HomeController : Controller
     {
-       [Authorize]
+       //[Authorize]
         public ActionResult About()
         {
             ViewBag.Message = "Community Reimagined";
