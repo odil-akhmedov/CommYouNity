@@ -47,7 +47,9 @@
                     @Html.DisplayFor(modelItem => item.OfficerName)
                 </td>
                 <td>
-                    <img src="@item.ImgSrc" alt="@item.Name" width="150" height="100" />
+                    <div class="img">
+                        <a href="@item.ImgSrc"><img src="@item.ImgSrc" alt="@item.Name" width="150" height="100" /></a>
+                    </div>
                     @*@Html.DisplayFor(modelItem => item.ImgSrc)*@
                 </td>
                 <td>

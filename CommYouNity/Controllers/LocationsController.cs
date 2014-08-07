@@ -67,6 +67,7 @@ namespace CommYouNity.Controllers
                 if (file.ContentLength > 0)
                 {
                     var fileName = Path.GetFileName(file.FileName);
+                    fileName = DateTime.Now.ToFileTimeUtc().ToString() + "_" + fileName;
                     var path = Path.Combine(Server.MapPath("~/img/locations"), fileName);
                     file.SaveAs(path);
 
@@ -122,6 +123,7 @@ namespace CommYouNity.Controllers
                 if (file.ContentLength > 0)
                 {
                     var fileName = Path.GetFileName(file.FileName);
+                    fileName = DateTime.Now.ToFileTimeUtc().ToString() + "_" + fileName;
                     var path = Path.Combine(Server.MapPath("~/img/locations"), fileName);
                     file.SaveAs(path);
 
