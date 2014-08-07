@@ -275,7 +275,7 @@
     <Content Include="Test\ViewPage1.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\Images\" />
     <Folder Include="img\locations\" />
   </ItemGroup>
   <ItemGroup>

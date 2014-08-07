@@ -60,8 +60,27 @@ namespace CommYouNity.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Zip,ImgSrc,GoogleMap")] Location location)
+        public ActionResult Create([Bind(Include = "Id,Name,Zip,ImgSrc,GoogleMap")] Location location, HttpPostedFileBase file)
         {
+            try
+            {
+                if (file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/App_Data/Images"), fileName);
+                    file.SaveAs(path);
+                    
+                    //location.ImgSrc = path;
+                }
+                ViewBag.Message = "Upload successful";
+                //return RedirectToAction("Index");
+            }
+            catch
+            {
+                ViewBag.Message = "Upload failed";
+                //return RedirectToAction("Uploads");
+            }
+
             if (ModelState.IsValid)
             {
                 db.Locations.Add(location);
@@ -71,6 +90,27 @@ namespace CommYouNity.Controllers
 
             return View(location);
         }
+        [HttpPost]
+        public ActionResult Upload(HttpPostedFileBase file)
+        {
+            try
+            {
+                if (file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/App_Data/Images"), fileName);
+                    file.SaveAs(path);
+                }
+                ViewBag.Message = "Upload successful";
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                ViewBag.Message = "Upload failed";
+                return RedirectToAction("Uploads");
+            }
+        }
+
 
         // GET: Locations/Edit/5
         public ActionResult Edit(int? id)
@@ -129,43 +169,7 @@ namespace CommYouNity.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
-        public ActionResult FileUpload(HttpPostedFileBase file)
-        {
-            if (ModelState.IsValid)
-            {
-                if (file == null)
-                {
-                    ModelState.AddModelError("File", "Please Upload Your file");
-                }
-                else if (file.ContentLength > 0)
-                {
-                    int MaxContentLength = 1024 * 1024 * 3; //3 MB
-                    string[] AllowedFileExtensions = new string[] { ".jpg", ".gif", ".png", ".pdf" };
-
-                    if (!AllowedFileExtensions.Contains(file.FileName.Substring(file.FileName.LastIndexOf('.'))))
-                    {
-                        ModelState.AddModelError("File", "Please file of type: " + string.Join(", ", AllowedFileExtensions));
-                    }
-
-                    else if (file.ContentLength > MaxContentLength)
-                    {
-                        ModelState.AddModelError("File", "Your file is too large, maximum allowed size is: " + MaxContentLength + " MB");
-                    }
-                    else
-                    {
-                        //TO:DO
-                        var fileName = Path.GetFileName(file.FileName);
-                        var path = Path.Combine(Server.MapPath("~/img/locations"), fileName);
-                        file.SaveAs(path);
-                        ModelState.Clear();
-                        ViewBag.Message = "File uploaded successfully";
-                    }
-                }
-            }
-            return View();
-        }
-
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)

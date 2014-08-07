@@ -16,12 +16,11 @@ namespace CommYouNity.Controllers
         private CommunityDataModel db = new CommunityDataModel();
 
         // GET: Members
-        public ActionResult Index(string sortOrder)
+        public ActionResult Index(int? id, string sortOrder)
         {
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.CommunitySortParm = sortOrder == "Community" ? "community_desc" : "Community";
-            //var membs = from m in db.Members
-            //        select m;
+
             var members = db.Members.Include(m => m.Community);
             switch (sortOrder)
             {
@@ -38,12 +37,17 @@ namespace CommYouNity.Controllers
                     members = members.OrderBy(m => m.LastName);
                     break;
             }
-              
-          
-            
+         
             MemberTaskView result = new MemberTaskView();
             //result.member = db.Members.Include(c => c.Community).ToList();
-            result.member = members.ToList();
+            if (id != null)
+            {
+                result.member = members.Where(i => i.CommunityId == id).ToList();
+            }
+            else
+            {
+                result.member = members.ToList();
+            } 
             result.memberTask = db.MemberTasks.ToList();
             return View(result);
 
