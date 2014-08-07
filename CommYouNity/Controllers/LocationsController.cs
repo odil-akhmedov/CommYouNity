@@ -60,17 +60,18 @@ namespace CommYouNity.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Zip,ImgSrc,GoogleMap")] Location location, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "Id,Name,Zip,GoogleMap")] Location location, HttpPostedFileBase file)
         {
             try
             {
                 if (file.ContentLength > 0)
                 {
                     var fileName = Path.GetFileName(file.FileName);
-                    var path = Path.Combine(Server.MapPath("~/App_Data/Images"), fileName);
+                    var path = Path.Combine(Server.MapPath("~/img/locations"), fileName);
                     file.SaveAs(path);
-                    
-                    //location.ImgSrc = path;
+
+                    var serverPath = "~/img/locations/" + fileName;
+                    location.ImgSrc = serverPath;
                 }
                 ViewBag.Message = "Upload successful";
                 //return RedirectToAction("Index");
@@ -78,6 +79,7 @@ namespace CommYouNity.Controllers
             catch
             {
                 ViewBag.Message = "Upload failed";
+                location.ImgSrc = "";
                 //return RedirectToAction("Uploads");
             }
 

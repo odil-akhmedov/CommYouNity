@@ -21,10 +21,10 @@
                 @Html.DisplayNameFor(model => model.singleLocation.Zip)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.singleLocation.ImgSrc)
+                @Html.DisplayNameFor(model => model.singleLocation.GoogleMap)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.singleLocation.GoogleMap)
+                @Html.DisplayNameFor(model => model.singleLocation.ImgSrc)
             </th>
             <th></th>
         </tr>
@@ -38,10 +38,11 @@
                     @Html.DisplayFor(modelItem => item.Zip)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ImgSrc)
+                    @Html.DisplayFor(modelItem => item.GoogleMap)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.GoogleMap)
+                    <img src="@item.ImgSrc" alt="image" width="150" height="100"/>
+                    @Html.DisplayFor(modelItem => item.ImgSrc)
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

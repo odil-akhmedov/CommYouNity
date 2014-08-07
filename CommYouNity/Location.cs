@@ -23,11 +23,7 @@ namespace CommYouNity
 
         public int Zip { get; set; }
 
-        [Required]
-        [StringLength(50)]
         public string ImgSrc { get; set; }
-
-        [Required]
         public string GoogleMap { get; set; }
 
         public virtual ICollection<Community> Communities { get; set; }
