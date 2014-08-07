@@ -13,17 +13,16 @@
         <tr>
 
             <th>
-                @Html.DisplayNameFor(model => model.singleCommunity.Location)
+                @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm})
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.singleCommunity.Name)*@
-                Location
+                @Html.ActionLink("Location", "Index", new { sortOrder = ViewBag.LocationSortParm })
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.singleCommunity.Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.singleCommunity.OfficerName)
+                @Html.ActionLink("OfficerName", "Index", new { sortOrder = ViewBag.OfficerNameSortParm})
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.singleCommunity.ImgSrc)
