@@ -8,7 +8,6 @@ using System.Web;
 using System.Web.Mvc;
 using CommYouNity;
 using CommYouNity.Models;
-using System.IO;
 
 namespace CommYouNity.Controllers
 {
@@ -17,8 +16,9 @@ namespace CommYouNity.Controllers
         private CommunityDataModel db = new CommunityDataModel();
 
         // GET: Communities
-        public ActionResult Index(int? id)
+        public ActionResult Index(int? id, string sortOrder)
         {
+            //ViewBag.LocationSortParm = String;
             var communities = db.Communities.Include(c => c.Location);
             CommunityTaskView result = new CommunityTaskView();
             
@@ -36,6 +36,19 @@ namespace CommYouNity.Controllers
           
             //return View(communities.ToList());
         }
+
+        //public ActionResult Index(int? id)
+        //{
+        //    var communities = db.Communities.Include(c => c.Location).Where(c => c.LocationId == id);
+
+        //    return View(communities.ToList());
+        //    //CommunityTaskView result = new CommunityTaskView();
+        //    //result.community = db.Communities.Include(c => c.Location).ToList();
+        //    //result.communityTask = db.CommunityTasks.ToList();
+        //    //return View(result);
+
+        //    //return View(communities.ToList());
+        //}
 
         // GET: Communities/Details/5
         public ActionResult Details(int? id)
@@ -70,28 +83,8 @@ namespace CommYouNity.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,OfficerName,LocationId")] Community community, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "Id,Name,Description,OfficerName,ImgSrc,LocationId")] Community community)
         {
-            try
-            {
-                if (file.ContentLength > 0)
-                {
-                    var fileName = Path.GetFileName(file.FileName);
-                    var path = Path.Combine(Server.MapPath("~/img/communities"), fileName);
-                    file.SaveAs(path);
-
-                    var serverPath = "/img/communities/" + fileName;
-                    community.ImgSrc = serverPath;
-                }
-                ViewBag.Message = "Upload successful";
-                //return RedirectToAction("Index");
-            }
-            catch
-            {
-                ViewBag.Message = "Upload failed";
-                community.ImgSrc = "";
-                //return RedirectToAction("Uploads");
-            }
             if (ModelState.IsValid)
             {
                 db.Communities.Add(community);
@@ -124,28 +117,8 @@ namespace CommYouNity.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,OfficerName,LocationId")] Community community, HttpPostedFileBase file)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description,OfficerName,ImgSrc,LocationId")] Community community)
         {
-            try
-            {
-                if (file.ContentLength > 0)
-                {
-                    var fileName = Path.GetFileName(file.FileName);
-                    var path = Path.Combine(Server.MapPath("~/img/communities"), fileName);
-                    file.SaveAs(path);
-
-                    var serverPath = "/img/communities/" + fileName;
-                    community.ImgSrc = serverPath;
-                }
-                ViewBag.Message = "Upload successful";
-                //return RedirectToAction("Index");
-            }
-            catch
-            {
-                ViewBag.Message = "Upload failed";
-                community.ImgSrc = "";
-                //return RedirectToAction("Uploads");
-            }
             if (ModelState.IsValid)
             {
                 db.Entry(community).State = EntityState.Modified;
