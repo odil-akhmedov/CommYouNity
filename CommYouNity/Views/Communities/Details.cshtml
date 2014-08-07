@@ -38,8 +38,9 @@
         </dt>
 
         <dd>
-            <img src="@Model.singleCommunity.ImgSrc" alt="@Model.singleCommunity.Name" width=" 150" height="100" />
-            @*@Html.DisplayFor(model => model.singleCommunity.ImgSrc)*@
+            <div class="img">
+                <a href="@Model.singleCommunity.ImgSrc"><img src="@Model.singleCommunity.ImgSrc" alt="@Model.singleCommunity.Name" width=" 150" height="100" /></a>
+            </div>
         </dd>
 
     </dl>
@@ -48,7 +49,7 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.singleCommunity.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
-<table>
+<table class="table">
     Tasks
     <tr>
         <th>

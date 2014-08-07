@@ -76,6 +76,7 @@ namespace CommYouNity.Controllers
         }
 
         // GET: Members/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.CommunityId = new SelectList(db.Communities, "Id", "Name");
@@ -85,6 +86,7 @@ namespace CommYouNity.Controllers
         // POST: Members/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Phone,AboutMe,CommunityId")] Member member, HttpPostedFileBase file)
@@ -94,6 +96,7 @@ namespace CommYouNity.Controllers
                 if (file.ContentLength > 0)
                 {
                     var fileName = Path.GetFileName(file.FileName);
+                    fileName = DateTime.Now.ToFileTimeUtc().ToString() + "_" + fileName;
                     var path = Path.Combine(Server.MapPath("~/img/members"), fileName);
                     file.SaveAs(path);
 
@@ -121,6 +124,7 @@ namespace CommYouNity.Controllers
         }
 
         // GET: Members/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -148,6 +152,7 @@ namespace CommYouNity.Controllers
                 if (file.ContentLength > 0)
                 {
                     var fileName = Path.GetFileName(file.FileName);
+                    fileName = DateTime.Now.ToFileTimeUtc().ToString() + "_" + fileName;
                     var path = Path.Combine(Server.MapPath("~/img/members"), fileName);
                     file.SaveAs(path);
 
