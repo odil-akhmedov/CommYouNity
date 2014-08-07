@@ -31,7 +31,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.singleLocation.ImgSrc)
+            <img src="@Model.singleLocation.ImgSrc" alt="@Model.singleLocation.Name"  width=" 150" height="100" />
+            @*@Html.DisplayFor(model => model.singleLocation.ImgSrc)*@
         </dd>
 
         <dt>

@@ -70,7 +70,7 @@ namespace CommYouNity.Controllers
                     var path = Path.Combine(Server.MapPath("~/img/locations"), fileName);
                     file.SaveAs(path);
 
-                    var serverPath = "~/img/locations/" + fileName;
+                    var serverPath = "/img/locations/" + fileName;
                     location.ImgSrc = serverPath;
                 }
                 ViewBag.Message = "Upload successful";

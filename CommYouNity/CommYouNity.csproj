@@ -188,6 +188,8 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Images\meal02.jpg" />
+    <Content Include="App_Data\Images\meal09.JPG" />
     <Content Include="Assets\detroitanight.png" />
     <Content Include="Assets\detroitbuttonface.png" />
     <Content Include="Assets\projectbackground.jpg" />
@@ -197,6 +199,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\locations\meal02.jpg" />
+    <Content Include="img\locations\meal09.JPG" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -274,10 +278,7 @@
     <Content Include="Test\Rsstest.cshtml" />
     <Content Include="Test\ViewPage1.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\Images\" />
-    <Folder Include="img\locations\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
