@@ -8,11 +8,7 @@ namespace CommYouNity.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
-        {
-            return View();
-        }
-
+       
         public ActionResult About()
         {
             ViewBag.Message = "Community Reimagined";
@@ -24,6 +20,18 @@ namespace CommYouNity.Controllers
         {
             ViewBag.Message = "Contact Us";
 
+            return View();
+        }
+
+        public ActionResult Index()
+        {
+            ViewData["Message"] = "Welcome to ASP.NET MVC!";
+            string cookie = "There is no cookie!";
+            if (this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("Cookie"))
+            {
+                cookie = "Yeah - Cookie: " + this.ControllerContext.HttpContext.Request.Cookies["Cookie"].Value;
+            }
+            ViewData["Cookie"] = cookie;
             return View();
         }
     }
