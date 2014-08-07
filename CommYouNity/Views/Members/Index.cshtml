@@ -46,7 +46,6 @@
                         <div class="img">
                             <a href="@item.ImgSrc"><img src="@item.ImgSrc" alt="@item.FullName" width="150" height="100" /></a>
                         </div>
-                        @*@Html.DisplayFor(modelItem => item.ImgSrc)*@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Community.Name)
@@ -59,7 +58,7 @@
                 </tr>
             }
         </table>
-        <table>
+        <table class="table">
             Tasks
             <tr>
                 <th>
