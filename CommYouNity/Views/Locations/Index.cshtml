@@ -41,7 +41,9 @@
                     @Html.DisplayFor(modelItem => item.GoogleMap)
                 </td>
                 <td>
-                    <img src="@item.ImgSrc" alt="@item.Name" width="150" height="100"/>
+                    <div class="img">
+                        <img src="@item.ImgSrc" alt="@item.Name" width="150" height="100" />
+                    </div>
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
