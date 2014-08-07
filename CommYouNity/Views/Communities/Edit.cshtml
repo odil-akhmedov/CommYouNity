@@ -56,7 +56,7 @@
                 @Html.ValidationMessageFor(model => model.LocationId, "", new { @class = "text-danger" })
             </div>
         </div>
-        <img src="@Model.ImgSrc" alt="@Model.Name" width=" 150" height="100" />
+            <a href="@Model.ImgSrc"><img src="@Model.ImgSrc" alt="@Model.Name" width=" 150" height="100" /></a>
         <fieldset>
             <legend>Update an image a file</legend>
             <div class="editor-field">

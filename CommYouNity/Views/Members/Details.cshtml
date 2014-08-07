@@ -54,8 +54,9 @@
         </dt>
 
         <dd>
-            <img src="@Model.singleMember.ImgSrc" alt="@Model.singleMember.FullName" width=" 150" height="100" />
-            @*@Html.DisplayFor(model => model.singleMember.ImgSrc)*@
+            <div class="img">
+                <a href="@Model.singleMember.ImgSrc"><img src="@Model.singleMember.ImgSrc" alt="@Model.singleMember.FullName" width=" 150" height="100" /></a>
+            </div>
         </dd>
 
     </dl>
@@ -64,7 +65,7 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.singleMember.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
-<table>
+<table class="table">
     Tasks
     <tr>
         <th>
