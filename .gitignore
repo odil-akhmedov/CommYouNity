@@ -215,5 +215,12 @@ $RECYCLE.BIN/
 CommYouNity/Web.config
 CommYouNity/Web.config
 CommYouNity/Web.config
+<<<<<<< HEAD
 *.config
 Web.config
+=======
+CommYouNity/Web.config
+>>>>>>> origin/master
+
+*.config
+CommYouNity/Web.config
