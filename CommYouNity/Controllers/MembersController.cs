@@ -142,8 +142,28 @@ namespace CommYouNity.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Phone,AboutMe,ImgSrc,CommunityId")] Member member)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Phone,AboutMe,CommunityId")] Member member, HttpPostedFileBase file)
         {
+            try
+            {
+                if (file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/img/members"), fileName);
+                    file.SaveAs(path);
+
+                    var serverPath = "/img/members/" + fileName;
+                    member.ImgSrc = serverPath;
+                }
+                ViewBag.Message = "Upload successful";
+                //return RedirectToAction("Index");
+            }
+            catch
+            {
+                ViewBag.Message = "Upload failed";
+                member.ImgSrc = "";
+                //return RedirectToAction("Uploads");
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(member).State = EntityState.Modified;
