@@ -1,11 +1,12 @@
 ﻿@model CommYouNity.CommunityTask
 
+<div class="formbg">
 @{
     ViewBag.Title = "Details";
 }
 
 <h2>Details</h2>
-
+    <hr />
 <div>
     <h4>CommunityTask</h4>
     <hr />
@@ -88,3 +89,4 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+</div>
