@@ -285,6 +285,7 @@
     <Content Include="Views\CommunityTasks\Index.cshtml" />
     <Content Include="Test\Rsstest.cshtml" />
     <Content Include="Test\ViewPage1.cshtml" />
+    <Content Include="Views\Members\SendEmail.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

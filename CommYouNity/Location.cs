@@ -22,7 +22,8 @@ namespace CommYouNity
         public string Name { get; set; }
 
         public int Zip { get; set; }
-
+        public string Email { get; set; }
+        public string Password { get; set; }
         public string ImgSrc { get; set; }
         public string GoogleMap { get; set; }
 

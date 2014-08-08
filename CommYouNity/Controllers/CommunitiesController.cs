@@ -19,19 +19,44 @@ namespace CommYouNity.Controllers
         // GET: Communities
         public ActionResult Index(int? id, string sortOrder)
         {
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.LocationSortParm = sortOrder == "Location" ? "location_desc" : "Location";
+            ViewBag.OfficerNameSortParm = sortOrder == "OfficerName" ? "officerName_desc" : "OfficerName";
 
             var communities = db.Communities.Include(c => c.Location);
-            CommunityTaskView result = new CommunityTaskView();
-            
-            result.communityTask = db.CommunityTasks.ToList();
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    communities = communities.OrderByDescending(c => c.Name);
+                    break;
+                case "Location":
+                    communities = communities.OrderBy(c => c.Location.Name);
+                    break;
+                case "location_desc":
+                    communities = communities.OrderByDescending(c => c.Location.Name);
+                    break;
+                case "OfficerName":
+                    communities = communities.OrderBy(c => c.OfficerName);
+                    break;
+                case "officerName_desc":
+                    communities = communities.OrderByDescending(c => c.OfficerName);
+                    break;
+                default:
+                    communities = communities.OrderBy(c => c.Name);
+                    break;
+            }
 
+            CommunityTaskView result = new CommunityTaskView();
+            result.communityTask = db.CommunityTasks.ToList();
             if (id != null)
             {
-                result.community = db.Communities.Include(c => c.Location).Where(i => i.LocationId == id).ToList();
+                result.community = communities.Where(i => i.LocationId == id).ToList();
             }
-            else {
-                result.community = db.Communities.Include(c => c.Location).ToList();
+            else 
+            {
+                result.community = communities.ToList();
             }
+
 
             return View(result);
           
@@ -70,7 +95,7 @@ namespace CommYouNity.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,OfficerName,LocationId")] Community community, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "Id,Name,Description,OfficerName,Email,LocationId")] Community community, HttpPostedFileBase file)
         {
             try
             {
@@ -127,7 +152,7 @@ namespace CommYouNity.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,OfficerName,LocationId")] Community community, HttpPostedFileBase file)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description,OfficerName,Email,LocationId")] Community community, HttpPostedFileBase file)
         {
 
             try

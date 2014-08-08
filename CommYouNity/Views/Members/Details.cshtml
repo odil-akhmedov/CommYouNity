@@ -41,6 +41,13 @@
         <dd>
             @Html.DisplayFor(model => model.singleMember.Phone)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.singleMember.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.singleMember.Email)
+        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.singleMember.AboutMe)
@@ -128,3 +135,4 @@
         </tr>
         }
     </table>
+@Html.ActionLink(linkText: "Create new task", actionName: "Create", controllerName: "MemberTasks");

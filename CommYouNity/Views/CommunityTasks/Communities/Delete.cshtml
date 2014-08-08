@@ -1,4 +1,4 @@
-﻿@model CommYouNity.Member
+﻿@model CommYouNity.Community
 
 @{
     ViewBag.Title = "Delete";
@@ -8,39 +8,39 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Member</h4>
+    <h4>Community</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Community.Name)
+            @Html.DisplayNameFor(model => model.Location.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Community.Name)
+            @Html.DisplayFor(model => model.Location.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
+            @Html.DisplayNameFor(model => model.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FirstName)
+            @Html.DisplayFor(model => model.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LastName)
+            @Html.DisplayNameFor(model => model.Description)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.LastName)
+            @Html.DisplayFor(model => model.Description)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Phone)
+            @Html.DisplayNameFor(model => model.OfficerName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Phone)
+            @Html.DisplayFor(model => model.OfficerName)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Email)
@@ -49,20 +49,14 @@
         <dd>
             @Html.DisplayFor(model => model.Email)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AboutMe)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AboutMe)
-        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.ImgSrc)
         </dt>
+
         <dd>
-            <a href="@Model.ImgSrc"><img src="@Model.ImgSrc" alt="@Model.FullName" width=" 150" height="100" /></a>
+            <a href="@Model.ImgSrc"><img src="@Model.ImgSrc" alt="@Model.Name" width=" 150" height="100" /></a>
         </dd>
+
     </dl>
 
     @using (Html.BeginForm()) {

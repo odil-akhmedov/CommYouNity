@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using CommYouNity;
 using CommYouNity.Models;
 using System.IO;
+using System.Net.Mail;
 
 namespace CommYouNity.Controllers
 {
@@ -72,7 +73,7 @@ namespace CommYouNity.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Zip,GoogleMap")] Location location, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "Id,Name,Zip,Email,GoogleMap")] Location location, HttpPostedFileBase file)
         {
             try
             {
@@ -128,7 +129,7 @@ namespace CommYouNity.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Zip,GoogleMap")] Location location, HttpPostedFileBase file)
+        public ActionResult Edit([Bind(Include = "Id,Name,Zip,Email,GoogleMap")] Location location, HttpPostedFileBase file)
         {
             try
             {
@@ -151,6 +152,32 @@ namespace CommYouNity.Controllers
                 location.ImgSrc = "";
                 //return RedirectToAction("Uploads");
             }
+
+            //var emailToAddresses = 
+            //var fromAddress = new MailAddress("akhmedoff.odil@gmail.com", "From Name");
+            //var toAddress = new MailAddress("akhmedoff.o.k@gmail.com", "To Name");
+            //const string fromPassword = "paramaribo";
+            //const string subject = "Subject";
+            //const string body = "CommYouNity";
+
+            //var smtp = new SmtpClient
+            //{
+            //    Host = "smtp.gmail.com",
+            //    Port = 587,
+            //    EnableSsl = true,
+            //    DeliveryMethod = SmtpDeliveryMethod.Network,
+            //    UseDefaultCredentials = false,
+            //    Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            //};
+            //using (var message = new MailMessage(fromAddress, toAddress)
+            //{
+            //    Subject = subject,
+            //    Body = body
+            //})
+            //{
+            //    smtp.Send(message);
+            //}
+
 
             if (ModelState.IsValid)
             {

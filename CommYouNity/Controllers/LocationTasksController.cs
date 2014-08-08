@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CommYouNity;
+using System.Net.Mail;
 
 namespace CommYouNity.Controllers
 {
@@ -50,6 +51,29 @@ namespace CommYouNity.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,StartTime,EndTime,Description,Budget,Status,Priority,Flag,LocationId")] LocationTask locationTask)
         {
+            var fromAddress = new MailAddress("akhmedoff.odil@gmail.com", "From Name");
+            var toAddress = new MailAddress("akhmedoff.o.k@gmail.com", "To Name");
+            const string fromPassword = "paramaribo";
+            const string subject = "Subject";
+            const string body = "CommYouNity";
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = subject,
+                Body = body
+            })
+            {
+                smtp.Send(message);
+            }
             if (ModelState.IsValid)
             {
                 db.LocationTasks.Add(locationTask);
