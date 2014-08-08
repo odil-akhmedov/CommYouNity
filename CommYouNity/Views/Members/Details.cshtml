@@ -3,136 +3,138 @@
 @{
     ViewBag.Title = "Details";
 }
+<div class="form-horizontal">
 
-<h2>Details</h2>
+    <h2>Details</h2>
+<hr />
+    <div>
+        <h4>Member</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.singleMember.Community.Name)
+            </dt>
 
-<div>
-    <h4>Member</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.singleMember.Community.Name)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.singleMember.Community.Name)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.singleMember.Community.Name)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.singleMember.FirstName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.singleMember.FirstName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.singleMember.FirstName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.singleMember.FirstName)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.singleMember.LastName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.singleMember.LastName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.singleMember.LastName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.singleMember.LastName)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.singleMember.Phone)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.singleMember.Phone)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.singleMember.Phone)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.singleMember.Email)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.singleMember.Phone)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.singleMember.Email)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.singleMember.Email)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.singleMember.Email)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.singleMember.AboutMe)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.singleMember.AboutMe)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.singleMember.AboutMe)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.singleMember.ImgSrc)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.singleMember.AboutMe)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.singleMember.ImgSrc)
-        </dt>
+            <dd>
+                <div class="img">
+                    <a href="@Model.singleMember.ImgSrc"><img src="@Model.singleMember.ImgSrc" alt="@Model.singleMember.FullName" width=" 150" height="100" /></a>
+                </div>
+            </dd>
 
-        <dd>
-            <div class="img">
-                <a href="@Model.singleMember.ImgSrc"><img src="@Model.singleMember.ImgSrc" alt="@Model.singleMember.FullName" width=" 150" height="100" /></a>
-            </div>
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.singleMember.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
-<table class="table">
-    Tasks
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.singleMemberTask.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.singleMemberTask.StartTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.singleMemberTask.EndTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.singleMemberTask.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.singleMemberTask.Budget)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.singleMemberTask.Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.singleMemberTask.Priority)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.singleMemberTask.Flag)
-        </th>
-        <th></th>
-
-        @foreach (var item in Model.memberTask)
-        {
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.singleMember.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+    <table class="table">
+        Tasks
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Budget)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Priority)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Flag)
-            </td>
-            <td>
-                @Html.ActionLink(linkText: "Edit", actionName: "Edit", controllerName: "MemberTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
-                @Html.ActionLink(linkText: "Details", actionName: "Details", controllerName: "MemberTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
-                @Html.ActionLink(linkText: "Delete", actionName: "Delete", controllerName: "MemberTasks", routeValues: new { id = item.Id }, htmlAttributes: null)
-        </tr>
-        }
-    </table>
-@Html.ActionLink(linkText: "Create new task", actionName: "Create", controllerName: "MemberTasks");
+            <th>
+                @Html.DisplayNameFor(model => model.singleMemberTask.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.singleMemberTask.StartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.singleMemberTask.EndTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.singleMemberTask.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.singleMemberTask.Budget)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.singleMemberTask.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.singleMemberTask.Priority)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.singleMemberTask.Flag)
+            </th>
+            <th></th>
+
+            @foreach (var item in Model.memberTask)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Budget)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Priority)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Flag)
+                </td>
+                <td>
+                    @Html.ActionLink(linkText: "Edit", actionName: "Edit", controllerName: "MemberTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
+                    @Html.ActionLink(linkText: "Details", actionName: "Details", controllerName: "MemberTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
+                    @Html.ActionLink(linkText: "Delete", actionName: "Delete", controllerName: "MemberTasks", routeValues: new { id = item.Id }, htmlAttributes: null)
+            </tr>
+            }
+        </table>
+        @Html.ActionLink(linkText: "Create new task", actionName: "Create", controllerName: "MemberTasks");
+</div>
