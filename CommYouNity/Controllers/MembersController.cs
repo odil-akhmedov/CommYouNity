@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using CommYouNity;
 using CommYouNity.Models;
 using System.IO;
+using System.Net.Mail;
 
 namespace CommYouNity.Controllers
 {
@@ -50,7 +51,7 @@ namespace CommYouNity.Controllers
                 result.member = members.ToList();
             } 
 
-            result.member = members.ToList();
+
             result.memberTask = db.MemberTasks.ToList();
             return View(result);
         }
@@ -76,6 +77,7 @@ namespace CommYouNity.Controllers
         }
 
         // GET: Members/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.CommunityId = new SelectList(db.Communities, "Id", "Name");
@@ -85,6 +87,7 @@ namespace CommYouNity.Controllers
         // POST: Members/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Phone,AboutMe,CommunityId")] Member member, HttpPostedFileBase file)
@@ -122,6 +125,7 @@ namespace CommYouNity.Controllers
         }
 
         // GET: Members/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -198,6 +202,32 @@ namespace CommYouNity.Controllers
             Member member = db.Members.Find(id);
             db.Members.Remove(member);
             db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult SendEmail() {
+            var fromAddress = new MailAddress("akhmedoff.odil@gmail.com", "From Name");
+            var toAddress = new MailAddress("akhmedoff.o.k@gmail.com", "To Name");
+            const string fromPassword = "paramaribo";
+            const string subject = "Subject";
+            const string body = "CommYouNity";
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = subject,
+                Body = body
+            })
+            {
+                smtp.Send(message);
+            }
             return RedirectToAction("Index");
         }
 

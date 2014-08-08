@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using CommYouNity;
 using CommYouNity.Models;
 using System.IO;
+using System.Net.Mail;
 
 namespace CommYouNity.Controllers
 {
@@ -17,10 +18,22 @@ namespace CommYouNity.Controllers
         private CommunityDataModel db = new CommunityDataModel();
 
         // GET: Locations
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder)
         {
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            var locations = from l in db.Locations
+                            select l;
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    locations = locations.OrderByDescending(l => l.Name);
+                    break;
+                default:
+                    locations = locations.OrderBy(l => l.Name);
+                    break;
+            }
             LocationTaskView result = new LocationTaskView();
-            result.location = db.Locations.ToList();
+            result.location = locations.ToList();
             result.locationTask = db.LocationTasks.ToList();
             //var result2 = db.Locations.Include(i => i.LocationTasks);
             return View(result);
@@ -139,6 +152,32 @@ namespace CommYouNity.Controllers
                 location.ImgSrc = "";
                 //return RedirectToAction("Uploads");
             }
+
+            //var emailToAddresses = 
+            //var fromAddress = new MailAddress("akhmedoff.odil@gmail.com", "From Name");
+            //var toAddress = new MailAddress("akhmedoff.o.k@gmail.com", "To Name");
+            //const string fromPassword = "paramaribo";
+            //const string subject = "Subject";
+            //const string body = "CommYouNity";
+
+            //var smtp = new SmtpClient
+            //{
+            //    Host = "smtp.gmail.com",
+            //    Port = 587,
+            //    EnableSsl = true,
+            //    DeliveryMethod = SmtpDeliveryMethod.Network,
+            //    UseDefaultCredentials = false,
+            //    Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            //};
+            //using (var message = new MailMessage(fromAddress, toAddress)
+            //{
+            //    Subject = subject,
+            //    Body = body
+            //})
+            //{
+            //    smtp.Send(message);
+            //}
+
 
             if (ModelState.IsValid)
             {

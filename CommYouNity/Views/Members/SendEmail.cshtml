@@ -1,13 +1,13 @@
 ﻿@model CommYouNity.Member
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "SendEmail";
 }
 
-<h2>Create</h2>
+<h2>SendEmail</h2>
 
 
-@using (Html.BeginForm("Create", "Members", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
@@ -46,20 +46,14 @@
                 @Html.ValidationMessageFor(model => model.AboutMe, "", new { @class = "text-danger" })
             </div>
         </div>
+
         <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        @*<div class="form-group">
             @Html.LabelFor(model => model.ImgSrc, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ImgSrc, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ImgSrc, "", new { @class = "text-danger" })
             </div>
-        </div>*@
+        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.CommunityId, "CommunityId", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -68,15 +62,6 @@
                 @Html.ValidationMessageFor(model => model.CommunityId, "", new { @class = "text-danger" })
             </div>
         </div>
-        <fieldset>
-            <legend>Upload a file</legend>
-            <div class="editor-field">
-                @Html.TextBox("file", "", new { type = "file" })
-            </div>
-            @*<div class="editor-field">
-                <input type="submit" value="Upload" />
-            </div>*@
-        </fieldset>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

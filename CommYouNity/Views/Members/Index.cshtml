@@ -20,6 +20,9 @@
                     @Html.DisplayNameFor(model => model.singleMember.Phone)
                 </th>
                 <th>
+                    @Html.DisplayNameFor(model => model.singleMember.Email)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.singleMember.AboutMe)
                 </th>
                 <th>
@@ -40,26 +43,30 @@
                         @Html.DisplayFor(modelItem => item.Phone)
                     </td>
                     <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.AboutMe)
                     </td>
                     <td>
                         <div class="img">
                             <a href="@item.ImgSrc"><img src="@item.ImgSrc" alt="@item.FullName" width="150" height="100" /></a>
                         </div>
-                        @*@Html.DisplayFor(modelItem => item.ImgSrc)*@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Community.Name)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        @if (Request.IsAuthenticated) {
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }); 
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id });
+                        }
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) 
                     </td>
                 </tr>
             }
         </table>
-        <table>
+        <table class="table">
             Tasks
             <tr>
                 <th>
