@@ -37,9 +37,9 @@ namespace CommYouNity.Controllers
         }
 
         // GET: CommunityTasks/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
-            ViewBag.CommunityId = new SelectList(db.Communities, "Id", "Name");
+            ViewBag.CommunityId = new SelectList(db.Communities.Where(i => i.Id == id), "Id", "Name");
             return View();
         }
 

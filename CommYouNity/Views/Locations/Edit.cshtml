@@ -1,12 +1,10 @@
-﻿  <div class="formbg">
+﻿<div class="formbg">
     @model CommYouNity.Location
-
     @{
         ViewBag.Title = "Edit";
     }
 
     <h2>Edit</h2>
-
 
     @using (Html.BeginForm("Edit", "Locations", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
@@ -33,7 +31,20 @@
                     @Html.ValidationMessageFor(model => model.Zip, "", new { @class = "text-danger" })
                 </div>
             </div>
-
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
             @*<div class="form-group">
                     @Html.LabelFor(model => model.ImgSrc, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
@@ -80,4 +91,4 @@
 
 
     }
-</div>   
+</div>

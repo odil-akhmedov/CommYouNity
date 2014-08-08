@@ -25,6 +25,9 @@
                 @Html.ActionLink("OfficerName", "Index", new { sortOrder = ViewBag.OfficerNameSortParm})
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.singleCommunity.Email)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.singleCommunity.ImgSrc)
             </th>
         </tr>
@@ -44,6 +47,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.OfficerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
                 </td>
                 <td>
                     <div class="img">

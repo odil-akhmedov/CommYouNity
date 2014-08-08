@@ -32,7 +32,13 @@
         <dd>
             @Html.DisplayFor(model => model.singleCommunity.OfficerName)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.singleCommunity.Email)
+        </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.singleCommunity.Email)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.singleCommunity.ImgSrc)
         </dt>
@@ -100,3 +106,4 @@
         </tr>
         }
     </table>
+@Html.ActionLink(linkText: "Create new task", actionName: "Create", controllerName: "CommunityTasks", routeValues: new { id = Model.singleCommunity.Id }));
