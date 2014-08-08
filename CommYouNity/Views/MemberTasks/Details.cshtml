@@ -3,88 +3,89 @@
 @{
     ViewBag.Title = "Details";
 }
-
-<h2>Details</h2>
-
-<div>
-    <h4>MemberTask</h4>
+<div class="formbg">
+    <h2>Details</h2>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Member.FirstName)
-        </dt>
+    <div>
+        <h4>MemberTask</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Member.FirstName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Member.FirstName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Member.FirstName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.StartTime)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.StartTime)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.StartTime)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.StartTime)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EndTime)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.EndTime)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.EndTime)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.EndTime)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Budget)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Budget)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Budget)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Budget)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Priority)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Priority)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Priority)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Priority)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Flag)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Flag)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Flag)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Flag)
+            </dd>
 
-    </dl>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
