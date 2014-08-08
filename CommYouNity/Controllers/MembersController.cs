@@ -51,7 +51,7 @@ namespace CommYouNity.Controllers
                 result.member = members.ToList();
             } 
 
-            result.member = members.ToList();
+
             result.memberTask = db.MemberTasks.ToList();
             return View(result);
         }
