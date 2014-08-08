@@ -9,42 +9,48 @@
 <div>
     <h4>Location</h4>
     <hr />
-        <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.singleLocation.Name)
-                </dt>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.singleLocation.Name)
+        </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.singleLocation.Name)
-                </dd>
+        <dd>
+            @Html.DisplayFor(model => model.singleLocation.Name)
+        </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.singleLocation.Zip)
-                </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.singleLocation.Zip)
+        </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.singleLocation.Zip)
-                </dd>
+        <dd>
+            @Html.DisplayFor(model => model.singleLocation.Zip)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.singleLocation.Email)
+        </dt>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.singleLocation.ImgSrc)
-                </dt>
+        <dd>
+            @Html.DisplayFor(model => model.singleLocation.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.singleLocation.ImgSrc)
+        </dt>
 
-                <dd>
-                    <div class="img">
-                        <a href="@Model.singleLocation.ImgSrc"><img src="@Model.singleLocation.ImgSrc" alt="@Model.singleLocation.Name" width=" 150" height="100" /></a>
-                    </div>
-                </dd>
+        <dd>
+            <div class="img">
+                <a href="@Model.singleLocation.ImgSrc"><img src="@Model.singleLocation.ImgSrc" alt="@Model.singleLocation.Name" width=" 150" height="100" /></a>
+            </div>
+        </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.singleLocation.GoogleMap)
-                </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.singleLocation.GoogleMap)
+        </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.singleLocation.GoogleMap)
-                </dd>
-</dl>
-    
+        <dd>
+            @Html.DisplayFor(model => model.singleLocation.GoogleMap)
+        </dd>
+    </dl>
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.singleLocation.Id }) |

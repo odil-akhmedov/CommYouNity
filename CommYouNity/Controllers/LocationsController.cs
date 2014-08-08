@@ -73,7 +73,7 @@ namespace CommYouNity.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Zip,GoogleMap")] Location location, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "Id,Name,Zip,Email,GoogleMap")] Location location, HttpPostedFileBase file)
         {
             try
             {
@@ -129,7 +129,7 @@ namespace CommYouNity.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Zip,GoogleMap")] Location location, HttpPostedFileBase file)
+        public ActionResult Edit([Bind(Include = "Id,Name,Zip,Email,GoogleMap")] Location location, HttpPostedFileBase file)
         {
             try
             {
