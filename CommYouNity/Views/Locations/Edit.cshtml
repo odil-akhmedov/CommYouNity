@@ -1,30 +1,7 @@
-﻿@model CommYouNity.Location
+﻿  <div class="formbg">
+    @model CommYouNity.Location
 
-@{
-    ViewBag.Title = "Edit";
-}
-
-<h2>Edit</h2>
-
-
-@using (Html.BeginForm("Edit", "Locations", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Location</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
+<<<<<<< HEAD
         <div class="form-group">
             @Html.LabelFor(model => model.Zip, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -39,45 +16,85 @@
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
         </div>
+=======
+    @{
+        ViewBag.Title = "Edit";
+    }
 
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.ImgSrc, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ImgSrc, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ImgSrc, "", new { @class = "text-danger" })
+    <h2>Edit</h2>
+>>>>>>> origin/master
+
+
+    @using (Html.BeginForm("Edit", "Locations", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Location</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>*@
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.GoogleMap, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.GoogleMap, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.GoogleMap, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Zip, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Zip, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Zip, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                    @Html.LabelFor(model => model.ImgSrc, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ImgSrc, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ImgSrc, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.GoogleMap, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.GoogleMap, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.GoogleMap, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <a href="@Model.ImgSrc"><img src="@Model.ImgSrc" alt="@Model.Name" width=" 150" height="100" /></a>
+            <fieldset>
+                <legend>Update an image a file</legend>
+                <div class="editor-field">
+                    @Html.TextBox("file", "", new { type = "file" })
+                </div>
+                @*<div class="editor-field">
+                        <input type="submit" value="Upload" />
+                    </div>*@
+            </fieldset>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
             </div>
         </div>
-        <a href="@Model.ImgSrc"><img src="@Model.ImgSrc" alt="@Model.Name" width=" 150" height="100" /></a>
-        <fieldset>
-            <legend>Update an image a file</legend>
-            <div class="editor-field">
-                @Html.TextBox("file", "", new { type = "file" })
-            </div>
-            @*<div class="editor-field">
-                <input type="submit" value="Upload" />
-            </div>*@
-        </fieldset>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
+
+    }
+
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
     </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+
+    }
+</div>   
