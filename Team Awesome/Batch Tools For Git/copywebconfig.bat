@@ -1,0 +1,1 @@
+copy "C:\Users\Computer Scientist\Desktop\web.config" "C:\Users\Computer Scientist\Documents\GitHub\CommYouNity\CommYouNity\web.config"

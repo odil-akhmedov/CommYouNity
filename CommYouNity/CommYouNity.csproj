@@ -201,12 +201,33 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="img\communities\1-cuisinart-gourmet-meals.jpg" />
+    <Content Include="img\communities\130519083299029446_meal-m.jpg" />
+    <Content Include="img\communities\Cadillac Slide1.PNG" />
+    <Content Include="img\communities\Clean up Pals.PNG" />
+    <Content Include="img\communities\Detroit Fund.PNG" />
+    <Content Include="img\communities\Garden Bounty.PNG" />
+    <Content Include="img\communities\Maxwell Unity.PNG" />
+    <Content Include="img\communities\number_flash_cards.png" />
+    <Content Include="img\communities\Slide1.PNG" />
     <Content Include="img\communities\Taco-Night-A-Meal-for-the-Whole-Family-2-size-3.jpg" />
+    <Content Include="img\communities\Untitled.png" />
+    <Content Include="img\locations\1-cuisinart-gourmet-meals.jpg" />
+    <Content Include="img\locations\cdistricts.png" />
+    <Content Include="img\locations\kazak_sponge_bob.jpg" />
     <Content Include="img\locations\meal02.jpg" />
     <Content Include="img\locations\meal09.JPG" />
+    <Content Include="img\locations\Slide1.PNG" />
+    <Content Include="img\locations\yo_douwg.jpg" />
     <Content Include="img\members\main_bg.jpg" />
     <Content Include="img\members\meal-m.jpg" />
     <Content Include="img\members\Untitled.png" />
+    <Content Include="Models\img\communities\1-cuisinart-gourmet-meals.jpg" />
+    <Content Include="Models\img\communities\Taco-Night-A-Meal-for-the-Whole-Family-2-size-3.jpg" />
+    <Content Include="Models\img\locations\meal02.jpg" />
+    <Content Include="Models\img\locations\meal09.JPG" />
+    <Content Include="Models\img\members\main_bg.jpg" />
+    <Content Include="Models\img\members\meal-m.jpg" />
+    <Content Include="Models\img\members\Untitled.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -230,7 +251,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
