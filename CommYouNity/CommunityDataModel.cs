@@ -38,6 +38,10 @@ namespace CommYouNity
                 .IsUnicode(false);
 
             modelBuilder.Entity<Community>()
+                .Property(e => e.Email)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Community>()
                 .HasMany(e => e.CommunityTasks)
                 .WithRequired(e => e.Community)
                 .WillCascadeOnDelete(false);
@@ -46,6 +50,12 @@ namespace CommYouNity
                 .Property(e => e.Name)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<CommunityTask>()
+                .Property(e => e.StartTime);
+
+            modelBuilder.Entity<CommunityTask>()
+                .Property(e => e.EndTime);
+ 
             modelBuilder.Entity<CommunityTask>()
                 .Property(e => e.Description)
                 .IsUnicode(false);
@@ -60,6 +70,14 @@ namespace CommYouNity
 
             modelBuilder.Entity<Location>()
                 .Property(e => e.ImgSrc)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Location>()
+                .Property(e => e.Email)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Location>()
+                .Property(e => e.Password)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Location>()
@@ -95,15 +113,20 @@ namespace CommYouNity
             modelBuilder.Entity<Member>()
                 .Property(e => e.LastName)
                 .IsUnicode(false);
-            //modelBuilder.Entity<Member>()
-            //    .Property(e => e.Phone)
-            //    .IsUnicode(false);
+
+            modelBuilder.Entity<Member>()
+                .Property(e => e.Phone);
 
             modelBuilder.Entity<Member>()
                 .Property(e => e.AboutMe)
                 .IsUnicode(false);
+
             modelBuilder.Entity<Member>()
                 .Property(e => e.ImgSrc)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Member>()
+                .Property(e => e.Email)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Member>()
