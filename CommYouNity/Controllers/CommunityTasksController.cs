@@ -75,7 +75,7 @@ namespace CommYouNity.Controllers
             else
                 taskType = "alert";
 
-            string body = "Location \"" + fromCommunityName + "\" posted new " + taskType + ":\n";
+            string body = "Community \"" + fromCommunityName + "\" posted new " + taskType + ":\n";
             body += "You can see that on <a href='/location'>";
             var toMembersEmailList = db.Members.Where(i => i.CommunityId == communityTask.CommunityId).Select(e => e.Email).ToList();
             var toNameList = db.Members.Where(i => i.CommunityId == communityTask.CommunityId).Select(n => n.FullName).ToList();
@@ -165,7 +165,7 @@ namespace CommYouNity.Controllers
             else
                 taskType = "alert";
 
-            string body = "Location \"" + fromCommunityName + "\" posted new " + taskType + ":\n";
+            string body = "Community \"" + fromCommunityName + "\" posted new " + taskType + ":\n";
             body += "You can see that on <a href='/location'>";
             var toMembersEmailList = db.Members.Where(i => i.CommunityId == communityTask.CommunityId).Select(e => e.Email).ToList();
             var toNameList = db.Members.Where(i => i.CommunityId == communityTask.CommunityId).Select(n => n.FullName).ToList();
