@@ -59,6 +59,10 @@
     Tasks
     <tr>
         <th>
+            Type
+            @*@Html.DisplayNameFor(model => model.singleCommunityTask.Flag)*@
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.singleCommunityTask.Name)
         </th>
         <th>
@@ -73,14 +77,28 @@
         <th>
             @Html.DisplayNameFor(model => model.singleCommunityTask.Priority)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.singleCommunityTask.Flag)
-        </th>
+        
         <th></th>
 
         @foreach (var item in Model.communityTask)
         {
         <tr>
+            <td>
+                @{if (item.Flag == false)
+                {
+                    <p>Alert</p>
+                }
+                else if (item.Flag == true)
+                {
+                    <p>Task</p>
+                }
+                else
+                {
+                    Html.DisplayFor(modelItem => item.Flag);
+                }
+                }
+                @*@Html.DisplayFor(modelItem => item.Flag)*@
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
@@ -96,9 +114,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Priority)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Flag)
-            </td>
+            
             <td>
                 @Html.ActionLink(linkText: "Edit", actionName: "Edit", controllerName: "CommunityTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
                 @Html.ActionLink(linkText: "Details", actionName: "Details", controllerName: "CommunityTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
