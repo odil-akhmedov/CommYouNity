@@ -147,6 +147,62 @@ namespace CommYouNity.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,StartTime,EndTime,Description,Budget,Status,Priority,Flag,LocationId")] LocationTask locationTask)
         {
+            var x1 = db.Locations;
+            var x2 = x1.Where(i => i.Id == locationTask.LocationId);
+            var x3 = x2.Select(e => e.Email);
+            var fromLocationAddress = x3.FirstOrDefault();
+
+            var x4 = x2.Select(n => n.Name);
+            var fromLocationName = x4.FirstOrDefault();
+
+            var x5 = db.Members;
+            var x6 = db.Communities;
+
+            var fromAddress = new MailAddress(fromLocationAddress, fromLocationName);
+            string fromPassword = db.Locations
+                .Where(i => i.Id == locationTask.LocationId)
+                .Select(p => p.Password).
+                FirstOrDefault()
+                .ToString();
+            string subject = locationTask.Name;
+            string taskType;
+            if (locationTask.Flag == true)
+                taskType = "task";
+            else
+                taskType = "alert";
+
+            string body = "Location \"" + fromLocationName + "\" just edited its " + taskType + ":\n";
+            body += "You can see that on <a href='/location'>";
+            var toCommunityEmailList = db.Communities.Where(i => i.LocationId == locationTask.LocationId).Select(e => e.Email).ToList();
+            var toNameList = db.Communities.Where(i => i.LocationId == locationTask.LocationId).Select(n => n.OfficerName).ToList();
+
+            for (int index = 0; index < toCommunityEmailList.Count; index++)
+            {
+                string toEmail = toCommunityEmailList[index];
+                string toName = toNameList[index];
+                if (toEmail != null)
+                {
+
+                    var toAddress = new MailAddress(toEmail, toName);
+                    var smtp = new SmtpClient
+                    {
+                        Host = "smtp.gmail.com",
+                        Port = 587,
+                        EnableSsl = true,
+                        DeliveryMethod = SmtpDeliveryMethod.Network,
+                        UseDefaultCredentials = false,
+                        Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+                    };
+                    using (var message = new MailMessage(fromAddress, toAddress)
+                    {
+                        Subject = subject,
+                        Body = body
+                    })
+                    {
+                        smtp.Send(message);
+                    }
+                }
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(locationTask).State = EntityState.Modified;
