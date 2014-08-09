@@ -42,6 +42,10 @@ namespace CommYouNity
                 .IsUnicode(false);
 
             modelBuilder.Entity<Community>()
+                .Property(e => e.Password)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Community>()
                 .HasMany(e => e.CommunityTasks)
                 .WithRequired(e => e.Community)
                 .WillCascadeOnDelete(false);
@@ -127,6 +131,9 @@ namespace CommYouNity
 
             modelBuilder.Entity<Member>()
                 .Property(e => e.Email)
+                .IsUnicode(false);
+            modelBuilder.Entity<Member>()
+                .Property(e => e.Password)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Member>()

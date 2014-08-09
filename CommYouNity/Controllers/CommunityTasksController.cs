@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CommYouNity;
+using System.Net.Mail;
 
 namespace CommYouNity.Controllers
 {
@@ -50,6 +51,62 @@ namespace CommYouNity.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,StartTime,EndTime,Description,Budget,Status,Priority,Flag,CommunityId")] CommunityTask communityTask)
         {
+            var x1 = db.Communities;
+            var x2 = x1.Where(i => i.Id == communityTask.CommunityId);
+            var x3 = x2.Select(e => e.Email);
+            var fromCommunityAddress = x3.FirstOrDefault();
+
+            var x4 = x2.Select(n => n.Name);
+            var fromCommunityName = x4.FirstOrDefault();
+
+            var x5 = db.Members;
+            var x6 = db.Communities;
+
+            var fromAddress = new MailAddress(fromCommunityAddress, fromCommunityName);
+            string fromPassword = db.Locations
+                .Where(i => i.Id == communityTask.CommunityId)
+                .Select(p => p.Password).
+                FirstOrDefault()
+                .ToString();
+            string subject = communityTask.Name;
+            string taskType;
+            if (communityTask.Flag == true)
+                taskType = "task";
+            else
+                taskType = "alert";
+
+            string body = "Location \"" + fromCommunityName + "\" posted new " + taskType + ":\n";
+            body += "You can see that on <a href='/location'>";
+            var toMembersEmailList = db.Members.Where(i => i.CommunityId == communityTask.CommunityId).Select(e => e.Email).ToList();
+            var toNameList = db.Members.Where(i => i.CommunityId == communityTask.CommunityId).Select(n => n.FullName).ToList();
+
+            for (int index = 0; index < toMembersEmailList.Count; index++)
+            {
+                string toEmail = toMembersEmailList[index];
+                string toName = toNameList[index];
+                if (toEmail != null)
+                {
+
+                    var toAddress = new MailAddress(toEmail, toName);
+                    var smtp = new SmtpClient
+                    {
+                        Host = "smtp.gmail.com",
+                        Port = 587,
+                        EnableSsl = true,
+                        DeliveryMethod = SmtpDeliveryMethod.Network,
+                        UseDefaultCredentials = false,
+                        Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+                    };
+                    using (var message = new MailMessage(fromAddress, toAddress)
+                    {
+                        Subject = subject,
+                        Body = body
+                    })
+                    {
+                        smtp.Send(message);
+                    }
+                }
+            }
             if (ModelState.IsValid)
             {
                 db.CommunityTasks.Add(communityTask);
@@ -84,6 +141,62 @@ namespace CommYouNity.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,StartTime,EndTime,Description,Budget,Status,Priority,Flag,CommunityId")] CommunityTask communityTask)
         {
+            var x1 = db.Communities;
+            var x2 = x1.Where(i => i.Id == communityTask.CommunityId);
+            var x3 = x2.Select(e => e.Email);
+            var fromCommunityAddress = x3.FirstOrDefault();
+
+            var x4 = x2.Select(n => n.Name);
+            var fromCommunityName = x4.FirstOrDefault();
+
+            var x5 = db.Members;
+            var x6 = db.Communities;
+
+            var fromAddress = new MailAddress(fromCommunityAddress, fromCommunityName);
+            string fromPassword = db.Locations
+                .Where(i => i.Id == communityTask.CommunityId)
+                .Select(p => p.Password).
+                FirstOrDefault()
+                .ToString();
+            string subject = communityTask.Name;
+            string taskType;
+            if (communityTask.Flag == true)
+                taskType = "task";
+            else
+                taskType = "alert";
+
+            string body = "Location \"" + fromCommunityName + "\" posted new " + taskType + ":\n";
+            body += "You can see that on <a href='/location'>";
+            var toMembersEmailList = db.Members.Where(i => i.CommunityId == communityTask.CommunityId).Select(e => e.Email).ToList();
+            var toNameList = db.Members.Where(i => i.CommunityId == communityTask.CommunityId).Select(n => n.FullName).ToList();
+
+            for (int index = 0; index < toMembersEmailList.Count; index++)
+            {
+                string toEmail = toMembersEmailList[index];
+                string toName = toNameList[index];
+                if (toEmail != null)
+                {
+
+                    var toAddress = new MailAddress(toEmail, toName);
+                    var smtp = new SmtpClient
+                    {
+                        Host = "smtp.gmail.com",
+                        Port = 587,
+                        EnableSsl = true,
+                        DeliveryMethod = SmtpDeliveryMethod.Network,
+                        UseDefaultCredentials = false,
+                        Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+                    };
+                    using (var message = new MailMessage(fromAddress, toAddress)
+                    {
+                        Subject = subject,
+                        Body = body
+                    })
+                    {
+                        smtp.Send(message);
+                    }
+                }
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(communityTask).State = EntityState.Modified;

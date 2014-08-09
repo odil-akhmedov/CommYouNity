@@ -37,6 +37,7 @@ namespace CommYouNity
         public string AboutMe { get; set; }
         public string ImgSrc { get; set; }
         public string Email { get; set; }
+        public string Password { get; set; }
 
         public int? CommunityId { get; set; }
 
