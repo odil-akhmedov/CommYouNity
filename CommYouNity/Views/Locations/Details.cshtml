@@ -51,6 +51,7 @@
         @Html.ActionLink("Edit", "Edit", new { id = Model.singleLocation.Id }) |
         @Html.ActionLink("Back to List", "Index")
     </p>
+   <p>@Html.ActionLink(linkText: "Create new task", actionName: "Create", controllerName: "LocationTasks")</p>
     <table class="table">
         Tasks
         <tr>

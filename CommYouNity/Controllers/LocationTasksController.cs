@@ -59,23 +59,15 @@ namespace CommYouNity.Controllers
             var x1 = db.Locations;
             var x2 = x1.Where(i => i.Id == locationTask.LocationId);
             var x3 = x2.Select(e => e.Email);
-            var x35 = x3.FirstOrDefault();
-            var x4 = db.Members;
-            var x5 = db.Communities;
+            var fromLocationAddress = x3.FirstOrDefault();
 
-            var fromLocationAddress = db.Locations.Where(i => i.Id == locationTask
-                .LocationId)
-                .Select(e => e.Email)
-                .ToString();
-            var fromLocationName = db.Locations.Where(i => i.Id == locationTask
-                .LocationId)
-                .Select(n => n.Name)
-                .ToString();
+            var x4 = x2.Select(n => n.Name);
+            var fromLocationName = x4.FirstOrDefault();
+
+            var x5 = db.Members;
+            var x6 = db.Communities;
 
             var fromAddress = new MailAddress(fromLocationAddress, fromLocationName);
-
-            
-
             string fromPassword = db.Locations
                 .Where(i => i.Id == locationTask.LocationId)
                 .Select(p => p.Password).
