@@ -86,25 +86,6 @@
             </div>
         </div>
     }
-
-    @*@using (Html.BeginForm("UploadImages", "Locations", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        @Html.ValidationSummary()
-
-        <div class="form-field">
-            <p>Select pictures:</p>
-            <div class="upload-container">
-                <div class="upload">
-                    <input type="file" name="files" id="file1" />
-                    <img src="@Url.Content("/img/delete.png")" alt="Remove picture." />
-                </div>
-            </div>
-        </div>
-
-        <div class="form-field">
-            <input type="submit" value="Create" />
-        </div>
-    }*@
     <div>
         @Html.ActionLink("Back to List", "Index")
     </div>

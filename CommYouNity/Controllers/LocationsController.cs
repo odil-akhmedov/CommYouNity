@@ -93,14 +93,13 @@ namespace CommYouNity.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Zip,Email,Password,GoogleMap")] Location location, IEnumerable<HttpPostedFileBase> files)
         {
-            //var file = files.ToList()[0];
             var imgFiles = files.ToList();
             string imgSrc = "";
             foreach (var file in imgFiles)
             {
                 try
                 {
-                    if (file.ContentLength > 0)
+                    if (file.ContentLength > 0 && file.FileName != null)
                     {
                         var fileName = Path.GetFileName(file.FileName);
                         fileName = DateTime.Now.ToFileTimeUtc().ToString() + "_" + fileName;
