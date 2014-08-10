@@ -10,7 +10,7 @@
 @using (Html.BeginForm("Edit", "Communities", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Community</h4>
         <hr />
@@ -55,12 +55,12 @@
             </div>
         </div>
         @*<div class="form-group">
-            @Html.LabelFor(model => model.ImgSrc, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ImgSrc, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ImgSrc, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
+                @Html.LabelFor(model => model.ImgSrc, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ImgSrc, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ImgSrc, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.LocationId, "LocationId", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -69,16 +69,32 @@
                 @Html.ValidationMessageFor(model => model.LocationId, "", new { @class = "text-danger" })
             </div>
         </div>
-            <a href="@Model.ImgSrc"><img src="@Model.ImgSrc" alt="@Model.Name" width=" 150" height="100" /></a>
-        <fieldset>
-            <legend>Update an image a file</legend>
-            <div class="editor-field">
-                @Html.TextBox("file", "", new { type = "file" })
+        @*<a href="@Model.ImgSrc"><img src="@Model.ImgSrc" alt="@Model.Name" width=" 150" height="100" /></a>*@
+
+        @{string[] images = Model.ImgSrc.Split(';');
+        for (int i = 0; i < images.Count() - 1; i++)
+        {
+            <a href="@images[i]"><img src="@images[i]" alt="@Model.Name" width="150" height="100" /></a>
+        }
+        }
+        <div class="form-field">
+            <p>Select pictures:</p>
+            <div class="upload-container">
+                <div class="upload">
+                    <input type="file" name="files" id="file1" />
+                    <img src="@Url.Content("/img/delete.png")" alt="Remove picture." />
+                </div>
             </div>
-            @*<div class="editor-field">
-                <input type="submit" value="Upload" />
-            </div>*@
-        </fieldset>
+        </div>
+        @*<fieldset>
+                <legend>Update an image a file</legend>
+                <div class="editor-field">
+                    @Html.TextBox("file", "", new { type = "file" })
+                </div>
+                <div class="editor-field">
+                        <input type="submit" value="Upload" />
+                    </div>
+            </fieldset>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -94,4 +110,19 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var currentImage = 1;
+            $("body").on("change", "input[name='files']", function () {
+                var pathToRemoveIcon = "@Url.Content("~/img/delete.png")";
+                currentImage = currentImage + 1;
+                var htmlToAppend = '<div class="upload"><input type="file" name="files" id="file' + currentImage + '" /><img src="' + pathToRemoveIcon + '" alt="Remove picture." /></div>';
+                $('.upload-container').append(htmlToAppend);
+            }).on("click", ".upload img", function () {
+                if ($(this).parent().siblings().length > 0) {
+                    $(this).parent().remove();
+                }
+            });
+        });
+    </script>
 }

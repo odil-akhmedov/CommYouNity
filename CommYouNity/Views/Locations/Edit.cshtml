@@ -69,9 +69,6 @@
               }
             }
 
-            @*<a href="@item.ImgSrc"><img src="@item.ImgSrc" alt="@item.Name" width="150" height="100" /></a>*@
-
-
             @*<fieldset>
                     <legend>Update an image a file</legend>
                     <div class="editor-field">
@@ -103,11 +100,11 @@
 
     <div>
         @Html.ActionLink("Back to List", "Index")
-    </div>
-
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-        <script type="text/javascript">
+    </div>   
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
             $(document).ready(function () {
                 var currentImage = 1;
                 $("body").on("change", "input[name='files']", function () {
@@ -121,6 +118,5 @@
                     }
                 });
             });
-        </script>
-    }
-</div>
+    </script>
+}
