@@ -38,7 +38,8 @@ namespace CommYouNity
         public string ImgSrc { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-
+        public bool NotifyByEmail { get; set; }
+        public bool NotifyBySMS { get; set; }
         public int? CommunityId { get; set; }
 
         public virtual Community Community { get; set; }

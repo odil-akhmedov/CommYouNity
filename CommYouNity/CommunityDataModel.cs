@@ -132,9 +132,16 @@ namespace CommYouNity
             modelBuilder.Entity<Member>()
                 .Property(e => e.Email)
                 .IsUnicode(false);
+            
             modelBuilder.Entity<Member>()
                 .Property(e => e.Password)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Member>()
+                .Property(n => n.NotifyByEmail);
+
+            modelBuilder.Entity<Member>()
+                .Property(n => n.NotifyBySMS);
 
             modelBuilder.Entity<Member>()
                 .HasMany(e => e.MemberTasks)
