@@ -106,30 +106,34 @@ namespace CommYouNity.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,OfficerName,Email,Password,LocationId")] Community community, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "Id,Name,Description,OfficerName,Email,Password,LocationId")] Community community, IEnumerable<HttpPostedFileBase> files)
         {
-            try
+            var imgFiles = files.ToList();
+            string imgSrc = "";
+            foreach (var file in imgFiles)
             {
-                if (file.ContentLength > 0)
+                try
                 {
-                    var fileName = Path.GetFileName(file.FileName);
-                    fileName = DateTime.Now.ToFileTimeUtc().ToString() + "_" + fileName;
+                    if (file.ContentLength > 0 && file.FileName != null)
+                    {
+                        var fileName = Path.GetFileName(file.FileName);
+                        fileName = DateTime.Now.ToFileTimeUtc().ToString() + "_" + fileName;
+                        var path = Path.Combine(Server.MapPath("~/img/communities"), fileName);
+                        file.SaveAs(path);
 
-                    var path = Path.Combine(Server.MapPath("~/img/communities/"), fileName);
-                    file.SaveAs(path);
-
-                    //var serverPath = "/img/communities/"+ DateTime.Today.ToString() + "_" + fileName;
-                    var serverPath = "/img/communities/" + fileName;
-                    community.ImgSrc = serverPath;
+                        var serverPath = "/img/communities/" + fileName;
+                        imgSrc += serverPath + ";";
+                        community.ImgSrc = imgSrc;
+                    }
+                    ViewBag.Message = "Upload successful";
+                    //return RedirectToAction("Index");
                 }
-                ViewBag.Message = "Upload successful";
-                //return RedirectToAction("Index");
-            }
-            catch
-            {
-                ViewBag.Message = "Upload failed";
-                community.ImgSrc = "";
-                //return RedirectToAction("Uploads");
+                catch
+                {
+                    ViewBag.Message = "Upload failed";
+                    //location.ImgSrc = "";
+                    //return RedirectToAction("Uploads");
+                }
             }
             if (ModelState.IsValid)
             {
@@ -163,31 +167,35 @@ namespace CommYouNity.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,OfficerName,Email,Password,LocationId")] Community community, HttpPostedFileBase file)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description,OfficerName,Email,Password,LocationId")] Community community, IEnumerable<HttpPostedFileBase> files)
         {
 
-            try
+            var imgFiles = files.ToList();
+            string imgSrc = "";
+            foreach (var file in imgFiles)
             {
-                if (file.ContentLength > 0)
+                try
                 {
-                    var fileName = Path.GetFileName(file.FileName);
-                    fileName = DateTime.Now.ToFileTimeUtc().ToString() + "_" + fileName;
+                    if (file.ContentLength > 0 && file.FileName != null)
+                    {
+                        var fileName = Path.GetFileName(file.FileName);
+                        fileName = DateTime.Now.ToFileTimeUtc().ToString() + "_" + fileName;
+                        var path = Path.Combine(Server.MapPath("~/img/communities"), fileName);
+                        file.SaveAs(path);
 
-                    var path = Path.Combine(Server.MapPath("~/img/communities/"), fileName);
-                    file.SaveAs(path);
-
-                    //var serverPath = "/img/communities/"+ DateTime.Today.ToString() + "_" + fileName;
-                    var serverPath = "/img/communities/" + fileName;
-                    community.ImgSrc = serverPath;
+                        var serverPath = "/img/communities/" + fileName;
+                        imgSrc += serverPath + ";";
+                        community.ImgSrc = imgSrc;
+                    }
+                    ViewBag.Message = "Upload successful";
+                    //return RedirectToAction("Index");
                 }
-                ViewBag.Message = "Upload successful";
-                //return RedirectToAction("Index");
-            }
-            catch
-            {
-                ViewBag.Message = "Upload failed";
-                community.ImgSrc = "";
-                //return RedirectToAction("Uploads");
+                catch
+                {
+                    ViewBag.Message = "Upload failed";
+                    //location.ImgSrc = "";
+                    //return RedirectToAction("Uploads");
+                }
             }
             if (ModelState.IsValid)
             {
