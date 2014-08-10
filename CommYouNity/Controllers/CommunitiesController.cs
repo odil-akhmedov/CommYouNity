@@ -17,13 +17,18 @@ namespace CommYouNity.Controllers
         private CommunityDataModel db = new CommunityDataModel();
 
         // GET: Communities
-        public ActionResult Index(int? id, string sortOrder)
+        public ActionResult Index(int? id, string sortOrder, string searchString)
         {
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.LocationSortParm = sortOrder == "Location" ? "location_desc" : "Location";
             ViewBag.OfficerNameSortParm = sortOrder == "OfficerName" ? "officerName_desc" : "OfficerName";
+            ViewBag.EmailSortParm = sortOrder == "Email" ? "email_desc" : "Email";
 
             var communities = db.Communities.Include(c => c.Location);
+            if (!String.IsNullOrEmpty(searchString)) 
+                { 
+                    communities = communities.Where(c => c.Name.ToUpper().Contains(searchString.ToUpper()) || c.Location.Name.ToUpper().Contains(searchString.ToUpper()) || c.OfficerName.ToUpper().Contains(searchString.ToUpper()) || c.Email.ToUpper().Contains(searchString.ToUpper())); 
+                }
             switch (sortOrder)
             {
                 case "name_desc":
@@ -40,6 +45,12 @@ namespace CommYouNity.Controllers
                     break;
                 case "officerName_desc":
                     communities = communities.OrderByDescending(c => c.OfficerName);
+                    break;
+                case "Email":
+                    communities = communities.OrderBy(c => c.Email);
+                    break;
+                case "email_desc":
+                    communities = communities.OrderByDescending(c => c.Email);
                     break;
                 default:
                     communities = communities.OrderBy(c => c.Name);

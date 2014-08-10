@@ -11,16 +11,21 @@
         @Html.ActionLink("Create New", "Create")
     </p>
 
+    @using (Html.BeginForm())
+    {
+        <p> Find a location by name, zipcode or email: @Html.TextBox("SearchString") <input type="submit" value="Search" /></p>
+    }
+
     <table class="table">
         <tr>
             <th>
                 @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.singleLocation.Zip)
+                @Html.ActionLink("Zip", "Index", new { sortOrder = ViewBag.ZipSortParm })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.singleLocation.Email)
+                @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.EmailSortParm })
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.singleLocation.GoogleMap)
@@ -85,7 +90,7 @@
                 @Html.DisplayNameFor(model => model.singleLocationTask.Priority)
             </th>
             <th></th>
-            
+
             @foreach (var item in Model.locationTask)
             {
             <tr>
@@ -125,8 +130,8 @@
                 </td>
                 <td>
                     @*@Html.ActionLink(linkText: "Edit", actionName: "Edit", controllerName: "LocationTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
-                    @Html.ActionLink(linkText: "Details", actionName: "Details", controllerName: "LocationTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
-                    @Html.ActionLink(linkText: "Delete", actionName: "Delete", controllerName: "LocationTasks", routeValues: new { id = item.Id }, htmlAttributes: null)*@
+                        @Html.ActionLink(linkText: "Details", actionName: "Details", controllerName: "LocationTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
+                        @Html.ActionLink(linkText: "Delete", actionName: "Delete", controllerName: "LocationTasks", routeValues: new { id = item.Id }, htmlAttributes: null)*@
                 </td>
             </tr>
             }
