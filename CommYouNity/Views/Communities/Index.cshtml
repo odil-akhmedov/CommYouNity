@@ -9,11 +9,16 @@
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
+
+    @using (Html.BeginForm())
+    {
+        <p> Find a community by name, location, officer name or email: @Html.TextBox("SearchString") <input type="submit" value="Search" /></p>
+    }
     <table class="table">
         <tr>
 
             <th>
-                @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm})
+                @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
             </th>
             <th>
                 @Html.ActionLink("Location", "Index", new { sortOrder = ViewBag.LocationSortParm })
@@ -22,10 +27,10 @@
                 @Html.DisplayNameFor(model => model.singleCommunity.Description)
             </th>
             <th>
-                @Html.ActionLink("OfficerName", "Index", new { sortOrder = ViewBag.OfficerNameSortParm})
+                @Html.ActionLink("OfficerName", "Index", new { sortOrder = ViewBag.OfficerNameSortParm })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.singleCommunity.Email)
+                @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.EmailSortParm })
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.singleCommunity.ImgSrc)

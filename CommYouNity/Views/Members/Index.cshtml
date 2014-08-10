@@ -10,7 +10,10 @@
         <p>
             @Html.ActionLink("Create New", "Create")
         </p>
-
+        @using (Html.BeginForm())
+        {
+            <p> Find a member by name, phone number, email or community name: @Html.TextBox("SearchString") <input type="submit" value="Search" /></p>
+        }
         <table class="table">
             <tr>
                 <th>
@@ -20,7 +23,7 @@
                     @Html.DisplayNameFor(model => model.singleMember.Phone)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.singleMember.Email)
+                    @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.EmailSortParm })
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.singleMember.AboutMe)
@@ -57,11 +60,12 @@
                         @Html.DisplayFor(modelItem => item.Community.Name)
                     </td>
                     <td>
-                        @if (Request.IsAuthenticated) {
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }); 
+                        @if (Request.IsAuthenticated)
+                        {
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id });
                             @Html.ActionLink("Delete", "Delete", new { id = item.Id });
                         }
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) 
+                        @Html.ActionLink("Details", "Details", new { id = item.Id })
                     </td>
                 </tr>
             }
@@ -125,5 +129,5 @@
                 }
 
             </table>
-             </div>
-</div>
+        </div>
+    </div>
