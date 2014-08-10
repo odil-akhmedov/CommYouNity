@@ -90,7 +90,7 @@ namespace CommYouNity.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Phone,Email,AboutMe,CommunityId")] Member member, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Phone,Email,Password,AboutMe,CommunityId")] Member member, HttpPostedFileBase file)
         {
             try
             {
@@ -146,7 +146,7 @@ namespace CommYouNity.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Phone,Email,AboutMe,CommunityId")] Member member, HttpPostedFileBase file)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Phone,Email,Password,AboutMe,CommunityId")] Member member, HttpPostedFileBase file)
         {
             try
             {

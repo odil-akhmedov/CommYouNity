@@ -28,6 +28,7 @@ namespace CommYouNity
         [StringLength(50)]
         public string OfficerName { get; set; }
         public string Email { get; set; }
+        public string Password { get; set; }
 
         public string ImgSrc { get; set; }
 

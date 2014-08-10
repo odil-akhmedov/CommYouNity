@@ -73,8 +73,9 @@ namespace CommYouNity.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Zip,Email,GoogleMap")] Location location, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "Id,Name,Zip,Email,Password,GoogleMap")] Location location, IEnumerable<HttpPostedFileBase> files)
         {
+            var file = files.ToList()[0];
             try
             {
                 if (file.ContentLength > 0)
@@ -129,7 +130,7 @@ namespace CommYouNity.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Zip,Email,GoogleMap")] Location location, HttpPostedFileBase file)
+        public ActionResult Edit([Bind(Include = "Id,Name,Zip,Email,Password,GoogleMap")] Location location, HttpPostedFileBase file)
         {
             try
             {
@@ -153,31 +154,6 @@ namespace CommYouNity.Controllers
                 //return RedirectToAction("Uploads");
             }
 
-            //var emailToAddresses = 
-            //var fromAddress = new MailAddress("akhmedoff.odil@gmail.com", "From Name");
-            //var toAddress = new MailAddress("akhmedoff.o.k@gmail.com", "To Name");
-            //const string fromPassword = "paramaribo";
-            //const string subject = "Subject";
-            //const string body = "CommYouNity";
-
-            //var smtp = new SmtpClient
-            //{
-            //    Host = "smtp.gmail.com",
-            //    Port = 587,
-            //    EnableSsl = true,
-            //    DeliveryMethod = SmtpDeliveryMethod.Network,
-            //    UseDefaultCredentials = false,
-            //    Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
-            //};
-            //using (var message = new MailMessage(fromAddress, toAddress)
-            //{
-            //    Subject = subject,
-            //    Body = body
-            //})
-            //{
-            //    smtp.Send(message);
-            //}
-
 
             if (ModelState.IsValid)
             {
@@ -186,6 +162,22 @@ namespace CommYouNity.Controllers
                 return RedirectToAction("Index");
             }
             return View(location);
+        }
+        [HttpPost]
+        public ActionResult UploadImages(IEnumerable<HttpPostedFileBase> files)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    //Persist the files uploaded.
+                }
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View("Index");
+            }
         }
 
         [HttpPost]
