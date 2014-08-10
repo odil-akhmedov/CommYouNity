@@ -26,7 +26,7 @@ textarea {
 
 label{
 font-family: 'Varela Round', sans-serif;
-
+-webkit-font-smoothing: antialiased;
 
 color:white;
 }
@@ -79,6 +79,7 @@ background: url("../Assets/detroitbuttonface.png") no-repeat center center fixed
 
 h1{
 font-family: 'Indie Flower', cursive;
+-webkit-font-smoothing: antialiased;
 color:white;
 text-align:center;
 font-size:75px;
@@ -86,6 +87,7 @@ font-size:75px;
 
  h2, h3, h4{
 font-family: 'Varela Round', sans-serif;
+-webkit-font-smoothing: antialiased;
 color:white;
 text-align:center;
 font-size:45px;
@@ -93,6 +95,7 @@ font-size:45px;
 
 form, p {
 font-family: 'Varela Round', sans-serif;
+-webkit-font-smoothing: antialiased;
 color:white;
 }
 
@@ -131,6 +134,7 @@ border: 2px inset #d7b9c9
   border-color:black;
   border-width:1px;
   font-family: 'Varela Round', sans-serif;
+  -webkit-font-smoothing: antialiased;
   padding-left:1px;
 
 
@@ -169,6 +173,7 @@ cursor: pointer;
 
 li, ul,  ol{
 font-family: 'Varela Round', sans-serif;
+-webkit-font-smoothing: antialiased;
 color:white;
 padding:5px;
 list-style-type:none;

@@ -57,6 +57,7 @@ html {
     font-family: 'Varela Round', sans-serif;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
+      -webkit-font-smoothing: antialiased;
 }
 
 body {
@@ -310,11 +311,12 @@ table {
 html {
   font-size: 62.5%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
  font-family: 'Varela Round', sans-serif;
-
+ -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.428571429;
   color: #333333;
@@ -477,6 +479,7 @@ h6,
 .h5,
 .h6 {
 font-family: 'Varela Round', sans-serif;
+-webkit-font-smoothing: antialiased;
 
   font-weight: 500;
   line-height: 1.1;
@@ -717,6 +720,7 @@ address {
 code,
 pre {
   font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+  -webkit-font-smoothing: antialiased;
 }
 
 code {
@@ -2024,6 +2028,7 @@ textarea.input-lg {
 
 .btn:focus {
   outline: thin dotted #333;
+  color:aliceblue
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
