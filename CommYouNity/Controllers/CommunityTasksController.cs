@@ -141,7 +141,6 @@ namespace CommYouNity.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,StartTime,EndTime,Description,Budget,Status,Priority,Flag,CommunityId")] CommunityTask communityTask)
         {
-            string body = "";
             var x1 = db.Communities;
             var x2 = x1.Where(i => i.Id == communityTask.CommunityId);
             var x3 = x2.Select(e => e.Email);
@@ -166,7 +165,7 @@ namespace CommYouNity.Controllers
             else
                 taskType = "alert";
 
-            body += "Community \"" + fromCommunityName + "\" posted new " + taskType + ":\n";
+            string body = "Community \"" + fromCommunityName + "\" posted new " + taskType + ":\n";
             body += "You can see that on <a href='/location'>";
             var toMembersEmailList = db.Members
                 .Where(i => i.CommunityId == communityTask.CommunityId)
@@ -176,7 +175,7 @@ namespace CommYouNity.Controllers
             var toNameList = db.Members
                 .Where(i => i.CommunityId == communityTask.CommunityId)
                 .Where(n => n.NotifyByEmail == true)
-                .Select(n => n.FullName)
+                .Select(n => n.LastName)
                 .ToList();
 
             for (int index = 0; index < toMembersEmailList.Count; index++)

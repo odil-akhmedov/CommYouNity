@@ -1,11 +1,11 @@
 ﻿@model CommYouNity.CommunityTask
 
-    @{
-        ViewBag.Title = "Edit";
-    }
+@{
+    ViewBag.Title = "Edit";
+}
 <div class="formbg">
     <h2>Edit</h2>
-<hr />
+    <hr />
 
     @using (Html.BeginForm())
     {
@@ -100,21 +100,16 @@
                 </div>
             </div>
         </div>
-
-
-
-    </div>
-
     }
+</div>
 
-    <div>
-        @Html.ActionLink("Back to List", "Index")
+<div>
+    @Html.ActionLink("Back to List", "Index")
 
-    </div>
-    
+</div>
 
 
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }
-  
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
