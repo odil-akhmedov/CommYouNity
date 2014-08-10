@@ -93,29 +93,34 @@ namespace CommYouNity.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Zip,Email,Password,GoogleMap")] Location location, IEnumerable<HttpPostedFileBase> files)
         {
-            var file = files.ToList()[0];
-            try
+            //var file = files.ToList()[0];
+            var imgFiles = files.ToList();
+            string imgSrc = "";
+            foreach (var file in imgFiles)
             {
-                if (file.ContentLength > 0)
+                try
                 {
-                    var fileName = Path.GetFileName(file.FileName);
-                    fileName = DateTime.Now.ToFileTimeUtc().ToString() + "_" + fileName;
-                    var path = Path.Combine(Server.MapPath("~/img/locations"), fileName);
-                    file.SaveAs(path);
+                    if (file.ContentLength > 0)
+                    {
+                        var fileName = Path.GetFileName(file.FileName);
+                        fileName = DateTime.Now.ToFileTimeUtc().ToString() + "_" + fileName;
+                        var path = Path.Combine(Server.MapPath("~/img/locations"), fileName);
+                        file.SaveAs(path);
 
-                    var serverPath = "/img/locations/" + fileName;
-                    location.ImgSrc = serverPath;
+                        var serverPath = "/img/locations/" + fileName;
+                        imgSrc += serverPath + ";";
+                        location.ImgSrc = imgSrc;
+                    }
+                    ViewBag.Message = "Upload successful";
+                    //return RedirectToAction("Index");
                 }
-                ViewBag.Message = "Upload successful";
-                //return RedirectToAction("Index");
+                catch
+                {
+                    ViewBag.Message = "Upload failed";
+                    //location.ImgSrc = "";
+                    //return RedirectToAction("Uploads");
+                }
             }
-            catch
-            {
-                ViewBag.Message = "Upload failed";
-                location.ImgSrc = "";
-                //return RedirectToAction("Uploads");
-            }
-
             if (ModelState.IsValid)
             {
                 db.Locations.Add(location);
