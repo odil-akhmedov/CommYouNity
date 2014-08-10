@@ -1678,6 +1678,7 @@ input[type="checkbox"] {
 
 input[type="file"] {
   display: block;
+  color: black;
 }
 
 select[multiple],
