@@ -63,11 +63,12 @@
             @*<a href="@Model.ImgSrc"><img src="@Model.ImgSrc" alt="@Model.Name" width=" 150" height="100" /></a>*@
 
             @{string[] images = Model.ImgSrc.Split(';');
-            foreach (var img in images)
-            {
-                <a href="@img"><img src="@img" alt="@Model.Name" width="150" height="100" /></a>
+              for (int i = 0; i < images.Count() - 1; i++ )
+              {
+                    <a href="@images[i]"><img src="@images[i]" alt="@Model.Name" width="150" height="100" /></a>
+              }
             }
-            }
+
             @*<a href="@item.ImgSrc"><img src="@item.ImgSrc" alt="@item.Name" width="150" height="100" /></a>*@
 
 
