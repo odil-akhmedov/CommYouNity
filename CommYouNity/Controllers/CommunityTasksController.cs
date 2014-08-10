@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using CommYouNity;
 using System.Net.Mail;
+using CommYouNity.Models;
 
 namespace CommYouNity.Controllers
 {
@@ -149,11 +150,8 @@ namespace CommYouNity.Controllers
             var x4 = x2.Select(n => n.Name);
             var fromCommunityName = x4.FirstOrDefault();
 
-            var x5 = db.Members;
-            var x6 = db.Communities;
-
             var fromAddress = new MailAddress(fromCommunityAddress, fromCommunityName);
-            string fromPassword = db.Locations
+            string fromPassword = db.Communities
                 .Where(i => i.Id == communityTask.CommunityId)
                 .Select(p => p.Password).
                 FirstOrDefault()
@@ -165,8 +163,8 @@ namespace CommYouNity.Controllers
             else
                 taskType = "alert";
 
-            string body = "Community \"" + fromCommunityName + "\" posted new " + taskType + ":\n";
-            body += "You can see that on <a href='/location'>";
+            string notificationBody = "Community \"" + fromCommunityName + "\" posted new " + taskType + ":\n";
+            notificationBody += "You can see that on <a href='/location'>";
             var toMembersEmailList = db.Members
                 .Where(i => i.CommunityId == communityTask.CommunityId)
                 .Where(n => n.NotifyByEmail == true)
@@ -176,7 +174,7 @@ namespace CommYouNity.Controllers
                 .Where(i => i.CommunityId == communityTask.CommunityId)
                 .Where(n => n.NotifyByEmail == true)
                 .Select(n => n.LastName)
-                .ToList();
+                .ToList();            
 
             for (int index = 0; index < toMembersEmailList.Count; index++)
             {
@@ -198,12 +196,27 @@ namespace CommYouNity.Controllers
                     using (var message = new MailMessage(fromAddress, toAddress)
                     {
                         Subject = subject,
-                        Body = body
+                        Body = notificationBody
                     })
                     {
                         smtp.Send(message);
                     }
                 }
+            }
+
+            //Sending SMS notification if flag is true
+
+            SharpGoogleVoice myAcc = new SharpGoogleVoice(fromCommunityAddress, fromPassword);
+            var toNumbersList = db.Members
+                .Where(i => i.CommunityId == communityTask.CommunityId)
+                .Where(n => n.NotifyBySMS == true)
+                .Select(p => p.Phone)
+                .ToList();
+            for (int index = 0; index < toNumbersList.Count; index++)
+            {
+                string toNumber = "+";
+                toNumber += toNumbersList[index].ToString();
+                myAcc.SendSMS(toNumber, notificationBody);
             }
             if (ModelState.IsValid)
             {
