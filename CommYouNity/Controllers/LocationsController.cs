@@ -18,15 +18,33 @@ namespace CommYouNity.Controllers
         private CommunityDataModel db = new CommunityDataModel();
 
         // GET: Locations
-        public ActionResult Index(string sortOrder)
+        public ActionResult Index(string sortOrder, string searchString)
         {
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.ZipSortParm = sortOrder == "Zip" ? "zip_desc" : "Zip";
+            ViewBag.EmailSortParm = sortOrder == "Email" ? "email_desc" : "Email";
             var locations = from l in db.Locations
                             select l;
+            if (!String.IsNullOrEmpty(searchString)) 
+            { 
+                locations = locations.Where(l => l.Name.ToUpper().Contains(searchString.ToUpper()) || l.Zip.ToString().Contains(searchString.ToUpper()) || l.Email.ToUpper().Contains(searchString.ToUpper())); 
+            }
             switch (sortOrder)
             {
                 case "name_desc":
                     locations = locations.OrderByDescending(l => l.Name);
+                    break;
+                case "Zip":
+                    locations = locations.OrderBy(l => l.Zip);
+                    break;
+                case "zip_desc":
+                    locations = locations.OrderByDescending(l => l.Zip);
+                    break;
+                case "Email":
+                    locations = locations.OrderBy(l => l.Email);
+                    break;
+                case "email_desc":
+                    locations = locations.OrderByDescending(l => l.Email);
                     break;
                 default:
                     locations = locations.OrderBy(l => l.Name);
