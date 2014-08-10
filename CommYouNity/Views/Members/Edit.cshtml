@@ -64,6 +64,24 @@
                     @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                 </div>
             </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.NotifyByEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.NotifyByEmail)
+                        @Html.ValidationMessageFor(model => model.NotifyByEmail, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.NotifyBySMS, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.NotifyBySMS)
+                        @Html.ValidationMessageFor(model => model.NotifyBySMS, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>           
             @*<div class="form-group">
                     @Html.LabelFor(model => model.ImgSrc, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
