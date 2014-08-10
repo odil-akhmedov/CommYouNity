@@ -166,6 +166,11 @@ a:active {
     color: red;
 border-bottom: solid;
 cursor: pointer;
+
+outline: thin dotted #333;
+  color:aliceblue
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
 }
 
 
