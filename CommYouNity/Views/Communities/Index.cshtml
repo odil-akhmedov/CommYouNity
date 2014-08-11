@@ -58,13 +58,16 @@
                 </td>
                 <td>
                     <div class="img">
-                        @{string[] images = item.ImgSrc.Split(';');
-                        <a href="@images[0]"><img src="@images[0]" alt="@item.Name" width="150" height="100" /></a>
+                        @{if (item.ImgSrc != null)
+                        {
+                            string[] images = item.ImgSrc.Split(';');
+                            <a href="@images[0]"><img src="@images[0]" alt="@item.Name" width="150" height="100" /></a>
+                        }                       
                         }
-                        @*<a href="@item.ImgSrc"><img src="@item.ImgSrc" alt="@item.Name" width="150" height="100" /></a>*@
                     </div>
                     @*@Html.DisplayFor(modelItem => item.ImgSrc)*@
                 </td>
+
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                     @Html.ActionLink("Details", "Details", new { id = item.Id }) |

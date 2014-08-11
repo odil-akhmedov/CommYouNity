@@ -64,7 +64,7 @@ namespace CommYouNity.Controllers
             var x6 = db.Communities;
 
             var fromAddress = new MailAddress(fromCommunityAddress, fromCommunityName);
-            string fromPassword = db.Locations
+            string fromPassword = db.Communities
                 .Where(i => i.Id == communityTask.CommunityId)
                 .Select(p => p.Password).
                 FirstOrDefault()
@@ -76,8 +76,8 @@ namespace CommYouNity.Controllers
             else
                 taskType = "alert";
 
-            string body = "Community \"" + fromCommunityName + "\" posted new " + taskType + ":\n";
-            body += "You can see that on <a href='/location'>";
+            string notificationBody = "Community \"" + fromCommunityName + "\" posted new " + taskType + ":\n";
+            notificationBody += "You can see that on <a href='/location'>";
             var toMembersEmailList = db.Members.Where(i => i.CommunityId == communityTask.CommunityId).Select(e => e.Email).ToList();
             var toNameList = db.Members.Where(i => i.CommunityId == communityTask.CommunityId).Select(n => n.FullName).ToList();
 
@@ -101,12 +101,26 @@ namespace CommYouNity.Controllers
                     using (var message = new MailMessage(fromAddress, toAddress)
                     {
                         Subject = subject,
-                        Body = body
+                        Body = notificationBody
                     })
                     {
                         smtp.Send(message);
                     }
                 }
+            }
+            //Sending SMS notification if flag is true
+
+            SharpGoogleVoice myAcc = new SharpGoogleVoice(fromCommunityAddress, fromPassword);
+            var toNumbersList = db.Members
+                .Where(i => i.CommunityId == communityTask.CommunityId)
+                .Where(n => n.NotifyBySMS == true)
+                .Select(p => p.Phone)
+                .ToList();
+            for (int index = 0; index < toNumbersList.Count; index++)
+            {
+                string toNumber = "+";
+                toNumber += toNumbersList[index].ToString();
+                myAcc.SendSMS(toNumber, notificationBody);
             }
             if (ModelState.IsValid)
             {
