@@ -1,4 +1,7 @@
 ﻿@model CommYouNity.Models.CommunityTaskView
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
 <div class="formbg">
     @{
         ViewBag.Title = "Communities List";
@@ -10,27 +13,27 @@
         @Html.ActionLink("Create New", "Create")
     </p>
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Index", "Communities", FormMethod.Get))
     {
-        <p> Find a community by name, location, officer name or email: @Html.TextBox("SearchString") <input type="submit" value="Search" /></p>
+        <p> Find a community by name, location, officer name or email: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string) <input type="submit" value="Search" /></p>
     }
     <table class="table">
         <tr>
 
             <th>
-                @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+                @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
             </th>
             <th>
-                @Html.ActionLink("Location", "Index", new { sortOrder = ViewBag.LocationSortParm })
+                @Html.ActionLink("Location", "Index", new { sortOrder = ViewBag.LocationSortParm, currentFilter = ViewBag.CurrentFilter })
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.singleCommunity.Description)
             </th>
             <th>
-                @Html.ActionLink("OfficerName", "Index", new { sortOrder = ViewBag.OfficerNameSortParm })
+                @Html.ActionLink("OfficerName", "Index", new { sortOrder = ViewBag.OfficerNameSortParm, currentFilter = ViewBag.CurrentFilter })
             </th>
             <th>
-                @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.EmailSortParm })
+                @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.EmailSortParm, currentFilter = ViewBag.CurrentFilter })
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.singleCommunity.ImgSrc)
@@ -62,7 +65,11 @@
                         {
                             string[] images = item.ImgSrc.Split(';');
                             <a href="@images[0]"><img src="@images[0]" alt="@item.Name" width="150" height="100" /></a>
-                        }                       
+                        }
+                        else
+                        {
+                            <a href="@item.ImgSrc"><img src="@item.ImgSrc" alt="@item.Name" width="150" height="100" /></a>
+                        }
                         }
                     </div>
                     @*@Html.DisplayFor(modelItem => item.ImgSrc)*@
@@ -150,4 +157,8 @@
             </tr>
             }
         </table>
+        <br />
+        Page @(Model.pagedCommunity.PageCount < Model.pagedCommunity.PageNumber ? 0 : Model.pagedCommunity.PageNumber) of @Model.pagedCommunity.PageCount
+
+        @Html.PagedListPager(Model.pagedCommunity, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
     </div>
