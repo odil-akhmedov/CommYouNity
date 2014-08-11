@@ -3,24 +3,32 @@
 }
 
 
-<div class="jumbotron">
-    <img src="~/Assets/detroitanight.png" class="topbannerimage" />
-    <br />
-    <p>
-    <h1 ><b style="color:black;">Comm</b><b style="color:yellow;">You</b><b style="color:black;">nity</b></h1>
-    <h4 style="color:purple;">Putting you in the center of your community</h4>
+@*<div class="jumbotron">*@
+    <div class="formbg">
+        
+            <img src="~/Assets/Thatch%20Home.jpg" class="topbannerimage" style="float:left; height:250px; margin-top:20px;" />
+            <img src="~/Assets/City.jpg" class="topbannerimage" style=" height:250px; float:left; margin-top:20px;" />
+            <img src="~/Assets/Village.jpg" class="topbannerimage" style="float:left; height:250px; margin-top:20px;" />
+        
+
+
+        <br />
+        <p>
+            <h1><b style="color:black;">Comm</b><b style="color:yellow;">You</b><b style="color:black;">nity</b></h1>
+            <h4 style="color:purple;">Putting you in the center of your community</h4>
         </p>
-    <div>
-        @using (Html.BeginForm("Index", "Locations", FormMethod.Get))
-        {
-            <p>
-                Find Location by zip: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
-                <input type="submit" value="Search" />
-            </p>
-        }
+
+        <div class="topbannerimage jumbotron" style="align-content:center">
+            @using (Html.BeginForm("Index", "Locations", FormMethod.Get))
+            {
+                <p>
+                    Find Location by zip: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                    <input type="submit" value="Search" />
+                </p>
+            }
+        </div>
     </div>
-    
-</div>
+@*</div>*@
 
 <div class="row">
     <div class="formbg">
