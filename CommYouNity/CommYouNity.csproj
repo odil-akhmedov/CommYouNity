@@ -201,6 +201,7 @@
   <ItemGroup>
     <Content Include="App_Data\Images\meal02.jpg" />
     <Content Include="App_Data\Images\meal09.JPG" />
+    <Content Include="Assets\City.jpg" />
     <Content Include="Assets\detroitanight.png" />
     <Content Include="Assets\detroitbuttonface.png" />
     <Content Include="Assets\Luminosity.jpg" />
@@ -208,7 +209,9 @@
     <Content Include="Assets\Odiljon.jpg" />
     <Content Include="Assets\Pam.png" />
     <Content Include="Assets\projectbackground.jpg" />
+    <Content Include="Assets\Thatch Home.jpg" />
     <Content Include="Assets\Tom.png" />
+    <Content Include="Assets\Village.jpg" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />

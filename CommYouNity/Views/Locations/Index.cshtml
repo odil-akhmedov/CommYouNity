@@ -140,7 +140,14 @@
                 </td>
             </tr>
             }
+
+        <br />
+        <hr />
+        <script src="//www.gmodules.com/ig/ifr?url=http://rssfeedviewer.googlecode.com/svn/trunk/rss/rssWidget.xml&amp;up_myFeed=http%3A%2F%2Fnews.google.com%2F%3Foutput%3Drss&amp;up_noOfFeeds=20&amp;up_zipcode=48201&amp;synd=open&amp;w=1100&amp;h=300&amp;title=Detroit+News&amp;border=http%3A%2F%2Fwww.gmodules.com%2Fig%2Fimages%2F&amp;output=js"></script>
         </table>
     <br /> Page @(Model.pagedLocation.PageCount < Model.pagedLocation.PageNumber ? 0 : Model.pagedLocation.PageNumber) of @Model.pagedLocation.PageCount
     @Html.PagedListPager(Model.pagedLocation, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-    </div>
+   
+
+
+</div>
