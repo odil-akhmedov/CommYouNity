@@ -9,6 +9,8 @@
 
 @using (Html.BeginForm("Edit", "Communities", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
+    string[] imagesArray = Model.ImgSrc.Split(';');
+    var imageCount = imagesArray.Count() - 1;
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
@@ -85,7 +87,7 @@
             <p>Select pictures:</p>
             <div class="upload-container">
                 <div class="upload">
-                    <input type="file" name="files" id="file1" @*value="@images.Count()"*@ />
+                    <input type="file" name="files" id="@(String.Format("file{0}",imageCount))" value="@imageCount" />
                     <img src="@Url.Content("/img/delete.png")" alt="Remove picture." />
                 </div>
             </div>
@@ -106,18 +108,21 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript">
-        $(document).ready(function () {
-            var currentImage = 1;
-            $("body").on("change", "input[name='files']", function () {
-                var pathToRemoveIcon = "@Url.Content("~/img/delete.png")";
-                currentImage = currentImage + 1;
-                var htmlToAppend = '<div class="upload"><input type="file" name="files" id="file' + currentImage + '" /><img src="' + pathToRemoveIcon + '" alt="Remove picture." /></div>';
-                $('.upload-container').append(htmlToAppend);
-            }).on("click", ".upload img", function () {
-                if ($(this).parent().siblings().length > 0) {
-                    $(this).parent().remove();
-                }
-            });
+    $(document).ready(function () {
+        //var currentImage = 1;
+        $("body").on("change", "input[name='files']", function () {
+            var pathToRemoveIcon = "@Url.Content("~/img/delete.png")";
+            //var currentImage = 1;
+            var currentImage = parseInt($(".upload-container").children().last().children().first().attr("value"));
+            alert(currentImage);
+            currentImage = currentImage + 1;
+            var htmlToAppend = '<div class="upload"><input type="file" name="files" id="file' + currentImage + '" value = "' + currentImage + '"/><img src="' + pathToRemoveIcon + '" alt="Remove picture." /></div>';
+            $('.upload-container').append(htmlToAppend);
+        }).on("click", ".upload img", function () {
+            if ($(this).parent().siblings().length > 0) {
+                $(this).parent().remove();
+            }
         });
+    });
     </script>
 }
