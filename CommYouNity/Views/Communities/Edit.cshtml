@@ -87,10 +87,10 @@
                     for (int i = 0; i < images.Count() - 1; i++)
                     {
                         <div class="upload">
-                            <input type="file" name="files" id="@(String.Format("file{0}",i))" value="@i" />
-                            <a href="@images[i]">
+                            <input type="file" name="files" id="@(String.Format("file{0}",i+1))" value="@(String.Format("{0}",i+1))" />
+                            @*<a href="@images[i]">*@
                                 <img src="@images[i]" alt="@Model.Name" width="150" height="100" />
-                            </a>
+                            @*</a>*@
                             <img src="@Url.Content("/img/delete.png")" alt="Remove picture." />
                         </div>
                     }
@@ -120,7 +120,17 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript">
         $(document).ready(function () {
-            //var currentImage = 1;
+            var elemCount = $(".upload-container").children().length;
+
+            for (var i = 0; i < elemCount; i++){
+                $(".upload-container").children(i).on("click", ".upload img", function () {
+                    if ($(this).parent().siblings().length > 0) {
+                        $(this).parent().remove();
+                    }
+                });
+            }
+            
+            
             $("body").on("change", "input[name='files']", function () {
                 var pathToRemoveIcon = "@Url.Content("~/img/delete.png")";
                 //var currentImage = 1;
