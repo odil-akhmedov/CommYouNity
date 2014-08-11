@@ -71,11 +71,14 @@
         </div>
         @*<a href="@Model.ImgSrc"><img src="@Model.ImgSrc" alt="@Model.Name" width=" 150" height="100" /></a>*@
 
-        @{string[] images = Model.ImgSrc.Split(';');
-        for (int i = 0; i < images.Count() - 1; i++)
-        {
-            <a href="@images[i]"><img src="@images[i]" alt="@Model.Name" width="150" height="100" /></a>
-        }
+        @{if (Model.ImgSrc != null)
+          {
+              string[] images = Model.ImgSrc.Split(';');
+              for (int i = 0; i < images.Count() - 1; i++)
+              {
+                <a href="@images[i]"><img src="@images[i]" alt="@Model.Name" width="150" height="100" /></a>
+              }
+          }
         }
         <div class="form-field">
             <p>Select pictures:</p>

@@ -185,6 +185,9 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LocationTaskView.cs" />
     <Compile Include="Models\MemberTaskView.cs" />
+    <Compile Include="Models\SharpGoogleVoice.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RSS.cs" />
     <Compile Include="Startup.cs" />
