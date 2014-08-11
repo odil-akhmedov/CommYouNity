@@ -60,9 +60,6 @@ namespace CommYouNity.Controllers
             var x4 = x2.Select(n => n.Name);
             var fromCommunityName = x4.FirstOrDefault();
 
-            var x5 = db.Members;
-            var x6 = db.Communities;
-
             var fromAddress = new MailAddress(fromCommunityAddress, fromCommunityName);
             string fromPassword = db.Communities
                 .Where(i => i.Id == communityTask.CommunityId)
@@ -78,8 +75,16 @@ namespace CommYouNity.Controllers
 
             string notificationBody = "Community \"" + fromCommunityName + "\" posted new " + taskType + ":\n";
             notificationBody += "You can see that on <a href='/location'>";
-            var toMembersEmailList = db.Members.Where(i => i.CommunityId == communityTask.CommunityId).Select(e => e.Email).ToList();
-            var toNameList = db.Members.Where(i => i.CommunityId == communityTask.CommunityId).Select(n => n.FullName).ToList();
+            var toMembersEmailList = db.Members
+                .Where(i => i.CommunityId == communityTask.CommunityId)
+                .Where(n => n.NotifyByEmail == true)
+                .Select(e => e.Email)
+                .ToList();
+            var toNameList = db.Members
+                .Where(i => i.CommunityId == communityTask.CommunityId)
+                .Where(n => n.NotifyByEmail == true)
+                .Select(n => n.LastName)
+                .ToList();
 
             for (int index = 0; index < toMembersEmailList.Count; index++)
             {
@@ -108,6 +113,7 @@ namespace CommYouNity.Controllers
                     }
                 }
             }
+
             //Sending SMS notification if flag is true
 
             SharpGoogleVoice myAcc = new SharpGoogleVoice(fromCommunityAddress, fromPassword);
@@ -124,11 +130,10 @@ namespace CommYouNity.Controllers
             }
             if (ModelState.IsValid)
             {
-                db.CommunityTasks.Add(communityTask);
+                db.Entry(communityTask).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             ViewBag.CommunityId = new SelectList(db.Communities, "Id", "Name", communityTask.CommunityId);
             return View(communityTask);
         }
