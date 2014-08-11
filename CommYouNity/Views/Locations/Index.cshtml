@@ -1,5 +1,7 @@
-﻿@model CommYouNity.Models.LocationTaskView
-
+﻿@*@model PagedList.IPagedList<CommYouNity.Models.LocationTaskView>*@
+@model CommYouNity.Models.LocationTaskView
+@using PagedList.Mvc; <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@using PagedList;
 @{
     ViewBag.Title = "Location List";
 }
@@ -11,9 +13,9 @@
         @Html.ActionLink("Create New", "Create")
     </p>
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Index","Location", FormMethod.Get))
     {
-        <p> Find a location by name, zipcode or email: @Html.TextBox("SearchString") <input type="submit" value="Search" /></p>
+        <p> Find a location by name, zipcode or email: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string) <input type="submit" value="Search" /></p>
     }
 
     <table class="table">
@@ -35,7 +37,7 @@
             </th>
             <th></th>
         </tr>
-        @foreach (var item in Model.location)
+        @foreach (var item in Model.pagedLocation)
         {
             <tr>
                 <td>
@@ -139,4 +141,6 @@
             </tr>
             }
         </table>
+    <br /> Page @(Model.pagedLocation.PageCount < Model.pagedLocation.PageNumber ? 0 : Model.pagedLocation.PageNumber) of @Model.pagedLocation.PageCount
+    @Html.PagedListPager(Model.pagedLocation, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
     </div>

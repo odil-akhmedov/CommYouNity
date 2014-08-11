@@ -10,6 +10,8 @@ using CommYouNity;
 using CommYouNity.Models;
 using System.IO;
 using System.Net.Mail;
+using PagedList;
+using PagedList.Mvc;
 
 namespace CommYouNity.Controllers
 {
@@ -18,11 +20,16 @@ namespace CommYouNity.Controllers
         private CommunityDataModel db = new CommunityDataModel();
 
         // GET: Locations
-        public ActionResult Index(string sortOrder, string searchString)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.ZipSortParm = sortOrder == "Zip" ? "zip_desc" : "Zip";
             ViewBag.EmailSortParm = sortOrder == "Email" ? "email_desc" : "Email";
+            if (searchString != null)
+                page = 1;
+            else
+                searchString = currentFilter;
+            ViewBag.CurrentFilter = searchString;
             var locations = from l in db.Locations
                             select l;
             if (!String.IsNullOrEmpty(searchString)) 
@@ -50,8 +57,12 @@ namespace CommYouNity.Controllers
                     locations = locations.OrderBy(l => l.Name);
                     break;
             }
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
             LocationTaskView result = new LocationTaskView();
             result.location = locations.ToList();
+            result.pagedLocation = locations.ToPagedList(pageNumber, pageSize);
             result.locationTask = db.LocationTasks.ToList();
             //var result2 = db.Locations.Include(i => i.LocationTasks);
             return View(result);

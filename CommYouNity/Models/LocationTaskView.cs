@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace CommYouNity.Models
     public class LocationTaskView
     {
         public List<Location> location { get; set; }
+        public IPagedList<Location> pagedLocation { get; set; }
         public Location singleLocation { get; set; }
         public String locationName = "Location";
         public String locationZip = "Zip";
