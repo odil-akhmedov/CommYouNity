@@ -64,9 +64,6 @@ namespace CommYouNity.Controllers
             var x4 = x2.Select(n => n.Name);
             var fromLocationName = x4.FirstOrDefault();
 
-            var x5 = db.Members;
-            var x6 = db.Communities;
-
             var fromAddress = new MailAddress(fromLocationAddress, fromLocationName);
             string fromPassword = db.Locations
                 .Where(i => i.Id == locationTask.LocationId)

@@ -1,10 +1,9 @@
-﻿<div class="formbg">
-    @model CommYouNity.Location
-    @{
-        ViewBag.Title = "Create";
-    }
-
-    <h2>Create</h2>
+﻿@model CommYouNity.Location
+@{
+    ViewBag.Title = "Create";
+}
+<h2>Create</h2>
+<div class="formbg">
 
     @using (Html.BeginForm("Create", "Locations", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
@@ -63,11 +62,11 @@
 
 
             @*<fieldset>
-                <legend>Upload a file</legend>
-                <div class="editor-field">
-                    @Html.TextBox("file", "", new { type = "file" })
-                </div>
-            </fieldset>*@
+                    <legend>Upload a file</legend>
+                    <div class="editor-field">
+                        @Html.TextBox("file", "", new { type = "file" })
+                    </div>
+                </fieldset>*@
 
             <div class="form-field">
                 <p>Select pictures:</p>
