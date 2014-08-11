@@ -71,7 +71,7 @@
         </div>
         @*<a href="@Model.ImgSrc"><img src="@Model.ImgSrc" alt="@Model.Name" width=" 150" height="100" /></a>*@
 
-        @*@{if (Model.ImgSrc != null)
+        @{if (Model.ImgSrc != null)
             {
                 string[] images = Model.ImgSrc.Split(';');
                 for (int i = 0; i < images.Count() - 1; i++)
@@ -80,45 +80,16 @@
                     <img src="@Url.Content("/img/delete.png")" alt="Remove picture." />
                 }
             }
-            }*@
+            }
         <div class="form-field">
             <p>Select pictures:</p>
             <div class="upload-container">
-                @{if (Model.ImgSrc != null)
-                {
-                    string[] images = Model.ImgSrc.Split(';');
-                    for (int i = 0; i < images.Count() - 1; i++)
-                    {
-                        string imageId = "file" + (i + 1).ToString();
-                        <div class="upload">
-                            <input type="file" name="files" id="@imageId" />
-                            <a href="@images[i]"><img src="@images[i]" alt="@Model.Name" width="150" height="100" /></a>
-                            <img src="@Url.Content("/img/delete.png")" alt="Remove picture." />
-                        </div>
-                    }
-                }
-                @*}
-                @{if (Model.ImgSrc != null)
-                {
-                    string[] images = Model.ImgSrc.Split(';');*@
-
-                    <div class="upload">
-                        <input type="file" name="files" id="file1" @*value="@images.Count()"*@ />
-                        <img src="@Url.Content("/img/delete.png")" alt="Remove picture." />
-                    </div>
-                @*}
-                }*@
+                <div class="upload">
+                    <input type="file" name="files" id="file1" @*value="@images.Count()"*@ />
+                    <img src="@Url.Content("/img/delete.png")" alt="Remove picture." />
+                </div>
             </div>
         </div>
-        @*<fieldset>
-                <legend>Update an image a file</legend>
-                <div class="editor-field">
-                    @Html.TextBox("file", "", new { type = "file" })
-                </div>
-                <div class="editor-field">
-                        <input type="submit" value="Upload" />
-                    </div>
-            </fieldset>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -139,9 +110,6 @@
             var currentImage = 1;
             $("body").on("change", "input[name='files']", function () {
                 var pathToRemoveIcon = "@Url.Content("~/img/delete.png")";
-                currentImageId = $("input[name='files']").attr('id');
-                //alert($("input[name='files']").attr('id'));
-                alert(currentImageId);
                 currentImage = currentImage + 1;
                 var htmlToAppend = '<div class="upload"><input type="file" name="files" id="file' + currentImage + '" /><img src="' + pathToRemoveIcon + '" alt="Remove picture." /></div>';
                 $('.upload-container').append(htmlToAppend);
