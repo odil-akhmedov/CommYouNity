@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using PagedList;
+using PagedList.Mvc;
 
 namespace CommYouNity.Models
 {
     public class CommunityTaskView
     {
         public List<Community> community { get; set; }
+        public IPagedList<Community> pagedCommunity { get; set; }
         public String communityName = "Community";
         public String communityDescription = "Description";
         public String communityOfficerName = "Officer";

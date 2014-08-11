@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using PagedList;
+using PagedList.Mvc;
 
 namespace CommYouNity.Models
 {
     public class MemberTaskView
     {
         public List<Member> member { get; set; }
+        public IPagedList<Member> pagedMember { get; set; }
         public String memberFirstName = "First Name";
         public String memberLastName = "Last Name";
         public String memberPhone = "Phone #";

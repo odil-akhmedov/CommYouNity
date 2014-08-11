@@ -1,7 +1,7 @@
-﻿@*@model PagedList.IPagedList<CommYouNity.Models.LocationTaskView>*@
-@model CommYouNity.Models.LocationTaskView
-@using PagedList.Mvc; <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
-@using PagedList;
+﻿@model CommYouNity.Models.LocationTaskView
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
 @{
     ViewBag.Title = "Location List";
 }
@@ -13,7 +13,7 @@
         @Html.ActionLink("Create New", "Create")
     </p>
 
-    @using (Html.BeginForm("Index","Location", FormMethod.Get))
+    @using (Html.BeginForm("Index", "Locations", FormMethod.Get))
     {
         <p> Find a location by name, zipcode or email: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string) <input type="submit" value="Search" /></p>
     }
@@ -21,13 +21,13 @@
     <table class="table">
         <tr>
             <th>
-                @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+                @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
             </th>
             <th>
-                @Html.ActionLink("Zip", "Index", new { sortOrder = ViewBag.ZipSortParm })
+                @Html.ActionLink("Zip", "Index", new { sortOrder = ViewBag.ZipSortParm, currentFilter = ViewBag.CurrentFilter })
             </th>
             <th>
-                @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.EmailSortParm })
+                @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.EmailSortParm, currentFilter = ViewBag.CurrentFilter })
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.singleLocation.GoogleMap)
@@ -54,10 +54,17 @@
                 </td>
                 <td>
                     <div class="img">
-                        @{string[] images = item.ImgSrc.Split(';');
+                        @{if (item.ImgSrc != null)
+                        {
+                            string[] images = item.ImgSrc.Split(';');
                             <a href="@images[0]"><img src="@images[0]" alt="@item.Name" width="150" height="100" /></a>
                         }
-                        @*<a href="@item.ImgSrc"><img src="@item.ImgSrc" alt="@item.Name" width="150" height="100" /></a>*@
+                        else
+                        {
+                            <a href="@item.ImgSrc"><img src="@item.ImgSrc" alt="@item.Name" width="150" height="100" /></a>
+                        }
+                        }
+
                     </div>
                 </td>
                 <td>
@@ -141,6 +148,10 @@
             </tr>
             }
         </table>
-    <br /> Page @(Model.pagedLocation.PageCount < Model.pagedLocation.PageNumber ? 0 : Model.pagedLocation.PageNumber) of @Model.pagedLocation.PageCount
-    @Html.PagedListPager(Model.pagedLocation, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+        <br />
+        Page @(Model.pagedLocation.PageCount < Model.pagedLocation.PageNumber ? 0 : Model.pagedLocation.PageNumber) of
+        @Model.pagedLocation.PageCount
+
+        @Html.PagedListPager(Model.pagedLocation, page => Url.Action("Index",
+            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
     </div>
