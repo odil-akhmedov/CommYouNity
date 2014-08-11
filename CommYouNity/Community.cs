@@ -36,8 +36,9 @@ namespace CommYouNity
 
         public virtual Location Location { get; set; }
 
+        public virtual ICollection<Member> Members { get; set; }
         public virtual ICollection<CommunityTask> CommunityTasks { get; set; }
 
-        public virtual ICollection<Member> Members { get; set; }
+        
     }
 }

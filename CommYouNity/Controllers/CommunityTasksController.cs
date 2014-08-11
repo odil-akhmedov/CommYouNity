@@ -39,9 +39,9 @@ namespace CommYouNity.Controllers
         }
 
         // GET: CommunityTasks/Create
-        public ActionResult Create(int? id)
+        public ActionResult Create()
         {
-            ViewBag.CommunityId = new SelectList(db.Communities.Where(i => i.Id == id), "Id", "Name");
+            ViewBag.CommunityId = new SelectList(db.Communities, "Id", "Name");
             return View();
         }
 
@@ -130,7 +130,7 @@ namespace CommYouNity.Controllers
             }
             if (ModelState.IsValid)
             {
-                db.Entry(communityTask).State = EntityState.Modified;
+                db.CommunityTasks.Add(communityTask);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

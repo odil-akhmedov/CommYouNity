@@ -32,7 +32,7 @@ namespace CommYouNity
 
         public int? Priority { get; set; }
 
-        public bool? Flag { get; set; }
+        public bool Flag { get; set; }
 
         public int CommunityId { get; set; }
 
