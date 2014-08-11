@@ -195,6 +195,7 @@
     <Content Include="Assets\detroitanight.png" />
     <Content Include="Assets\detroitbuttonface.png" />
     <Content Include="Assets\Luminosity.jpg" />
+    <Content Include="Assets\MovingCss.css" />
     <Content Include="Assets\Odiljon.jpg" />
     <Content Include="Assets\Pam.png" />
     <Content Include="Assets\projectbackground.jpg" />
