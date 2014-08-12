@@ -33,6 +33,7 @@ namespace CommYouNity
 
         public Int64 Phone { get; set; }
 
+        [DataType(DataType.MultilineText)]
         [Column(TypeName = "text")]
         public string AboutMe { get; set; }
         public string ImgSrc { get; set; }
