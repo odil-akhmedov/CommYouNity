@@ -20,14 +20,14 @@ namespace CommYouNity
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Column(TypeName = "date")]
-        [Display(Name = "Start Time")]
+
         public DateTime StartTime { get; set; }
 
         [Display(Name = "End Date")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Column(TypeName = "date")]
-        [Display(Name = "End Time")]
+
         public DateTime EndTime { get; set; }
 
         [Column(TypeName = "text")]
