@@ -19,11 +19,13 @@ namespace CommYouNity
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Location Name")]
         public string Name { get; set; }
-
+        [Display(Name = "Zip Code")]
         public int Zip { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+        [Display(Name = "Image Source" )]
         public string ImgSrc { get; set; }
         public string GoogleMap { get; set; }
 

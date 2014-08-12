@@ -28,10 +28,11 @@ namespace CommYouNity
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Officer Name")]
         public string OfficerName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-
+        [Display(Name = "Image Source")]
         public string ImgSrc { get; set; }
 
         public int LocationId { get; set; }
