@@ -15,10 +15,18 @@ namespace CommYouNity
         [StringLength(50)]
         public string Name { get; set; }
 
-        [Column(TypeName = "date")]
+        [Display(Name="Start Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Required(ErrorMessage = "Date Format is: yyy-MM-dd")]
+        [Column(TypeName = "Start Date")]
         public DateTime StartTime { get; set; }
 
-        [Column(TypeName = "date")]
+        [Display(Name = "End Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Required(ErrorMessage = "Date Format is: yyy-MM-dd")]
+        [Column(TypeName = "End Date")]
         public DateTime EndTime { get; set; }
 
         [Column(TypeName = "text")]

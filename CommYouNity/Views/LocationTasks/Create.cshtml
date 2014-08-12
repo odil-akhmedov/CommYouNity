@@ -102,27 +102,15 @@
         @Html.ActionLink("Back to List", "Index")
     </div>
 
+</div>
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
+<script type="text/javascript">
+    $(function () {
+        $("#StartTime").datepicker();
+        $("#EndTime").datepicker();
+    });
+</script>
+
     }
-    <script type="text/javascript">
-        //function TaskOrAlert() {
-        var select = document.getElementById('Flag');//.options['value'].innerHTML = 'Alert'
-        // 0 is on 1 is off
-        // false is alert true is task
-        var flag;
-        var taskoralert;
-
-
-        select.children[0].innerHTML = "Task";
-
-
-
-        //if (select.option['value'] == "False") {
-        //    select.option['value'].innerHTML = "Alert"
-        //} else {
-        //    select.option['value'].innerHTML = "Task"
-        //}
-        //}
-    </script>
-</div>
+   
