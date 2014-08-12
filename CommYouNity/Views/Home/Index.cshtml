@@ -28,8 +28,7 @@
             }
         </div>
         <div style="border: 1px solid black;">
-            <iframe src="https://www.Google.com/calendar/embed?src=<%#
-CalId()%>&ctz=Europe%2FMoscow" style="border-style: none; border-color: inherit; border-width: 0; width: 824px;"
+            <iframe id="gCalendar" src="" style="border-style: none; border-color: inherit; border-width: 0; width: 824px;"
                     height="600" frameborder="0" scrolling="no"></iframe>
         </div>
     </div>
@@ -59,3 +58,10 @@ CalId()%>&ctz=Europe%2FMoscow" style="border-style: none; border-color: inherit;
      
     </div>
 </div>
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        console.log('here');
+        var calId = "d4oh4s7bh05dlca75t6d69v31o@group.calendar.google.com";
+        jQuery("#gCalendar").attr("src", "https://www.google.com/calendar/embed?src="  + calId + "&ctz=Europe%2FMoscow");
+    });
+</script>
