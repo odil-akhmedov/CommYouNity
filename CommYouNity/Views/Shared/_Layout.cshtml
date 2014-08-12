@@ -11,10 +11,13 @@
 
 
     <title>@ViewBag.Title - CommYounity</title>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
   
     
       @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("scripts", required: false)
 
 </head>
 <body>
@@ -49,8 +52,6 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+   
 </body>
 </html>

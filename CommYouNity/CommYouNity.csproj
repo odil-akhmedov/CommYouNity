@@ -39,6 +39,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Google.GData.AccessControl, Version=1.8.0.0, Culture=neutral, PublicKeyToken=b4b8eb9a7afc8328, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Google.GData.AccessControl.DLL</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Calendar, Version=1.8.0.0, Culture=neutral, PublicKeyToken=aa6748391206b888, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Google.GData.Calendar.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Client, Version=1.8.0.0, Culture=neutral, PublicKeyToken=04a59ca9b0273830, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Google.GData.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Extensions, Version=1.8.0.0, Culture=neutral, PublicKeyToken=0b4c5df2ebf20876, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Google.GData.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PagedList">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
@@ -188,6 +204,9 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommunityTaskView.cs" />
     <Compile Include="Models\EmaiAlertNotification.cs" />
+    <Compile Include="Models\GoogleCalendar.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LocationTaskView.cs" />
     <Compile Include="Models\MemberTaskView.cs" />
@@ -213,6 +232,7 @@
     <Content Include="Assets\Tom.png" />
     <Content Include="Assets\Village.jpg" />
     <Content Include="Content\bootstrap.css" />
+    <None Include="Content\bootstrap.min.css.old" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />

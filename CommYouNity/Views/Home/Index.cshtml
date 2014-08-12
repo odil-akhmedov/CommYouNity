@@ -27,6 +27,10 @@
                 </p>
             }
         </div>
+        <div style="border: 1px solid black;">
+            <iframe id="gCalendar" src="" style="border-style: none; border-color: inherit; border-width: 0; width: 824px;"
+                    height="600" frameborder="0" scrolling="no"></iframe>
+        </div>
     </div>
 @*</div>*@
 
@@ -50,7 +54,14 @@
             The user will then be able to find their closest block clubs and reach out for additional information regarding officers, meeting times, meeting locations, etc. Alerts will include emergency or security alerts, meeting reminders, activity/program alerts, or community meeting alerts. The application will be based on an interface that is intuitive, engaging, fun to use. Ultimately this application will facilitate networking between individual residents and Block Clubs, and between Block Clubs across the city.
         </p>
 
-
+        <a href="" id="dribbble">dr</a>
      
     </div>
 </div>
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        console.log('here');
+        var calId = "d4oh4s7bh05dlca75t6d69v31o@group.calendar.google.com";
+        jQuery("#gCalendar").attr("src", "https://www.google.com/calendar/embed?src="  + calId + "&ctz=Europe%2FMoscow");
+    });
+</script>

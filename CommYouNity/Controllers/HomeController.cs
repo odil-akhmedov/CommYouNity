@@ -33,6 +33,6 @@ namespace CommYouNity.Controllers
             }
             ViewData["Cookie"] = cookie;
             return View();
-        }
+        }         
     }
 }

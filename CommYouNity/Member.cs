@@ -18,10 +18,12 @@ namespace CommYouNity
 
         [Required]
         [StringLength(30)]
+        [Display(Name = "First Name" )]
         public string FirstName { get; set; }
 
         [Required]
         [StringLength(30)]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
         public string FullName
         {
@@ -35,12 +37,17 @@ namespace CommYouNity
 
         [DataType(DataType.MultilineText)]
         [Column(TypeName = "text")]
+        [Display(Name = "About Me")]
         public string AboutMe { get; set; }
+        [Display(Name = "Image Source")]
         public string ImgSrc { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+        [Display(Name = "Notify By Email")]
         public bool NotifyByEmail { get; set; }
+        [Display(Name = "Notify By Text Message")]
         public bool NotifyBySMS { get; set; }
+        [Display(Name = "Community Group Name")]
         public int? CommunityId { get; set; }
 
         public virtual Community Community { get; set; }
