@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using PagedList;
@@ -11,6 +13,7 @@ namespace CommYouNity.Models
     {
         public List<Member> member { get; set; }
         public IPagedList<Member> pagedMember { get; set; }
+        [Display(Name = "First Name")]
         public String memberFirstName = "First Name";
         public String memberLastName = "Last Name";
         public String memberPhone = "Phone #";
