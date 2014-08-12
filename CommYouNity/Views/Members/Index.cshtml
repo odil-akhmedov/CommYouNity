@@ -1,133 +1,151 @@
-﻿<div class="formbg">
-    @model CommYouNity.Models.MemberTaskView
+﻿@model CommYouNity.Models.MemberTaskView
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
+<div class="formbg">
     @{
         ViewBag.Title = "Members List";
     }
-    <div class="formbg">
-        <h2>Members List</h2>
-        <hr />
-        <p>
-            @Html.ActionLink("Create New", "Create")
-        </p>
-        @using (Html.BeginForm())
+
+    <h2>Members List</h2>
+
+    <hr />
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+    @using (Html.BeginForm("Index", "Members", FormMethod.Get))
+    {
+        <p> Find a member by name, phone number, email or community name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string) <input type="submit" value="Search" /></p>
+    }
+    <table class="table">
+        <tr>
+            <th>
+                @Html.ActionLink("LastName", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>            
+                @Html.DisplayNameFor(model => model.singleMember.Phone)
+            </th>
+            <th>
+                @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.EmailSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.singleMember.AboutMe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.singleMember.ImgSrc)
+            </th>
+            <th>
+                @Html.ActionLink("Community", "Index", new { sortOrder = ViewBag.CommunitySortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.pagedMember)
         {
-            <p> Find a member by name, phone number, email or community name: @Html.TextBox("SearchString") <input type="submit" value="Search" /></p>
-        }
-        <table class="table">
             <tr>
-                <th>
-                    @Html.ActionLink("LastName", "Index", new { sortOrder = ViewBag.NameSortParm })
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.singleMember.Phone)
-                </th>
-                <th>
-                    @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.EmailSortParm })
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.singleMember.AboutMe)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.singleMember.ImgSrc)
-                </th>
-                <th>
-                    @Html.ActionLink("Community", "Index", new { sortOrder = ViewBag.CommunitySortParm })
-                </th>
-                <th></th>
-            </tr>
-            @foreach (var item in Model.member)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FullName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Phone)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AboutMe)
-                    </td>
-                    <td>
-                        <div class="img">
-                            <a href="@item.ImgSrc"><img src="@item.ImgSrc" alt="@item.FullName" width="150" height="100" /></a>
-                        </div>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Community.Name)
-                    </td>
-                    <td>
-                        @if (Request.IsAuthenticated)
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AboutMe)
+                </td>
+                <td>
+                    <div class="img">
+                        @{if (item.ImgSrc != "")
                         {
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id });
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id });
+                            <a href="@item.ImgSrc"><img src="@item.ImgSrc" alt="@item.FullName" width="150" height="100" /></a>
                         }
-                        @Html.ActionLink("Details", "Details", new { id = item.Id })
-                    </td>
-                </tr>
+                        else
+                        {
+                            <img src="~/img/no_image_available.jpg" alt="No image available" width="150" height="100" />
+                        }
+                        }
+
+                    </div>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Community.Name)
+                </td>
+                <td>
+                    @if (Request.IsAuthenticated)
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id });
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id });
+                    }
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </table>
+    <table class="table">
+        Tasks
+        <tr>
+            <th>
+                Owner
+                @*@Html.DisplayNameFor(model => model.Community.Name)*@
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.singleMemberTask.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.singleMemberTask.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.singleMemberTask.Budget)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.singleMemberTask.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.singleMemberTask.Priority)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.singleMemberTask.Flag)
+            </th>
+            <th></th>
+
+            @foreach (var item in Model.memberTask)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Member.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Budget)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Priority)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Flag)
+                </td>
+                <td>
+                    @*@Html.ActionLink(linkText: "Edit", actionName: "Edit", controllerName: "MemberTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
+                        @Html.ActionLink(linkText: "Details", actionName: "Details", controllerName: "MemberTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
+                        @Html.ActionLink(linkText: "Delete", actionName: "Delete", controllerName: "MemberTasks", routeValues: new { id = item.Id }, htmlAttributes: null)*@
+            </tr>
             }
         </table>
-        <table class="table">
-            Tasks
-            <tr>
-                <th>
-                    Owner
-                    @*@Html.DisplayNameFor(model => model.Community.Name)*@
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.singleMemberTask.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.singleMemberTask.Description)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.singleMemberTask.Budget)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.singleMemberTask.Status)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.singleMemberTask.Priority)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.singleMemberTask.Flag)
-                </th>
-                <th></th>
+        <br />
+        Page @(Model.pagedMember.PageCount < Model.pagedMember.PageNumber ? 0 : Model.pagedMember.PageNumber) of
+        @Model.pagedMember.PageCount
 
-                @foreach (var item in Model.memberTask)
-                {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Member.FullName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Budget)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Status)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Priority)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Flag)
-                    </td>
-                    <td>
-                        @*@Html.ActionLink(linkText: "Edit", actionName: "Edit", controllerName: "MemberTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
-                            @Html.ActionLink(linkText: "Details", actionName: "Details", controllerName: "MemberTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
-                            @Html.ActionLink(linkText: "Delete", actionName: "Delete", controllerName: "MemberTasks", routeValues: new { id = item.Id }, htmlAttributes: null)*@
-                </tr>
-                }
-
-            </table>
-        </div>
+        @Html.PagedListPager(Model.pagedMember, page => Url.Action("Index",
+            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
     </div>
+

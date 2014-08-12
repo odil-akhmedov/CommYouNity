@@ -33,6 +33,7 @@ namespace CommYouNity.Controllers
             ViewBag.CurrentFilter = searchString;
             var locations = from l in db.Locations
                             select l;
+            //var communities = db.Communities.Include(c => c.Location);
             if (!String.IsNullOrEmpty(searchString)) 
             { 
                 locations = locations.Where(l => l.Name.ToUpper().Contains(searchString.ToUpper()) || l.Zip.ToString().Contains(searchString.ToUpper()) || l.Email.ToUpper().Contains(searchString.ToUpper())); 

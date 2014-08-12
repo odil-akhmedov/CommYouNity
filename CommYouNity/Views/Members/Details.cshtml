@@ -6,7 +6,7 @@
 <div class="form-horizontal">
 
     <h2>Details</h2>
-<hr />
+    <hr />
     <div>
         <h4>Member</h4>
         <hr />
@@ -75,9 +75,18 @@
             </dt>
 
             <dd>
-                <div class="img">
-                    <a href="@Model.singleMember.ImgSrc"><img src="@Model.singleMember.ImgSrc" alt="@Model.singleMember.FullName" width=" 150" height="100" /></a>
-                </div>
+                @{if (Model.singleMember.ImgSrc.Length > 2)
+                {
+                    <div class="img">
+                        <a href="@Model.singleMember.ImgSrc"><img src="@Model.singleMember.ImgSrc" alt="@Model.singleMember.FullName" width=" 150" height="100" /></a>
+                    </div>
+                }
+                else
+                {
+                    <p>No image uploaded</p>
+                }
+                }
+
             </dd>
 
         </dl>
@@ -86,81 +95,90 @@
         @Html.ActionLink("Edit", "Edit", new { id = Model.singleMember.Id }) |
         @Html.ActionLink("Back to List", "Index")
     </p>
-    <table class="table">
-        Tasks
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.singleMemberTask.Flag)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.singleMemberTask.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.singleMemberTask.StartTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.singleMemberTask.EndTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.singleMemberTask.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.singleMemberTask.Budget)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.singleMemberTask.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.singleMemberTask.Priority)
-            </th>
-            <th></th>
+    @{
+        if (Model.memberTask.Count() > 0)
+        {
+            <table class="table">
+                Tasks
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.singleMemberTask.Flag)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.singleMemberTask.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.singleMemberTask.StartTime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.singleMemberTask.EndTime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.singleMemberTask.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.singleMemberTask.Budget)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.singleMemberTask.Status)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.singleMemberTask.Priority)
+                    </th>
+                    <th></th>
 
-            @foreach (var item in Model.memberTask)
-            {
-            <tr>
-                <td>
-                    @{if (item.Flag == false)
+                    @foreach (var item in Model.memberTask)
                     {
-                        <p>Alert</p>
+                    <tr>
+                        <td>
+                            @{if (item.Flag == false)
+                            {
+                                <p>Alert</p>
+                            }
+                            else if (item.Flag == true)
+                            {
+                                <p>Task</p>
+                            }
+                            else
+                            {
+                                Html.DisplayFor(modelItem => item.Flag);
+                            }
+                            }
+                            @*@Html.DisplayFor(modelItem => item.Flag)*@
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StartTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EndTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Budget)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Priority)
+                        </td>
+                        <td>
+                            @Html.ActionLink(linkText: "Edit", actionName: "Edit", controllerName: "MemberTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
+                            @Html.ActionLink(linkText: "Details", actionName: "Details", controllerName: "MemberTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
+                            @Html.ActionLink(linkText: "Delete", actionName: "Delete", controllerName: "MemberTasks", routeValues: new { id = item.Id }, htmlAttributes: null)
+                    </tr>
                     }
-                    else if (item.Flag == true)
-                    {
-                        <p>Task</p>
-                    }
-                    else
-                    {
-                        Html.DisplayFor(modelItem => item.Flag);
-                    }
-                    }
-                    @*@Html.DisplayFor(modelItem => item.Flag)*@
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StartTime)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EndTime)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Budget)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Priority)
-                </td>
-                <td>
-                    @Html.ActionLink(linkText: "Edit", actionName: "Edit", controllerName: "MemberTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
-                    @Html.ActionLink(linkText: "Details", actionName: "Details", controllerName: "MemberTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
-                    @Html.ActionLink(linkText: "Delete", actionName: "Delete", controllerName: "MemberTasks", routeValues: new { id = item.Id }, htmlAttributes: null)
-            </tr>
-            }
-        </table>
+                </table>
+        }
+        else { 
+        <p>No tasks created yet.</p>
+    }
+    }
+    
         @Html.ActionLink(linkText: "Create new task", actionName: "Create", controllerName: "MemberTasks");
-</div>
+    </div>
