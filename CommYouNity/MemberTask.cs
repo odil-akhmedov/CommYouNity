@@ -13,18 +13,21 @@ namespace CommYouNity
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Task Name")]
         public string Name { get; set; }
 
         [Display(Name = "Start Date")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Column(TypeName = "date")]
+        [Display(Name = "Start Time")]
         public DateTime StartTime { get; set; }
 
         [Display(Name = "End Date")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Column(TypeName = "date")]
+        [Display(Name = "End Time")]
         public DateTime EndTime { get; set; }
 
         [Column(TypeName = "text")]
@@ -39,7 +42,7 @@ namespace CommYouNity
         public int? Priority { get; set; }
 
         public bool Flag { get; set; }
-
+        [Display(Name = "Member Name")]
         public int MemberId { get; set; }
 
         public virtual Member Member { get; set; }
