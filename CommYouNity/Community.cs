@@ -19,6 +19,7 @@ namespace CommYouNity
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Community Group")]
         public string Name { get; set; }
 
         [DataType(DataType.MultilineText)]
