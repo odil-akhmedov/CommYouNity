@@ -27,6 +27,7 @@ namespace CommYouNity
         [StringLength(30)]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
+        [Display(Name = "Member Name")]
         public string FullName
         {
             get
