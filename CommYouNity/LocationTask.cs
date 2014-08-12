@@ -15,10 +15,6 @@ namespace CommYouNity
         [StringLength(50)]
         public string Name { get; set; }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 4df4dce80283e717387ea55eb516a85e7a37ce61
         [Display(Name = "Start Date")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
