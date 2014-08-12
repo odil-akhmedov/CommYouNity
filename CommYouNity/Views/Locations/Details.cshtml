@@ -8,7 +8,7 @@
     <h1> City Details</h1>
 
     <div>
-      
+
         <hr />
         <dl class="dl-horizontal">
             <dt>
@@ -32,9 +32,21 @@
             </dt>
 
             <dd>
-                <div class="img">
-                    <a href="@Model.singleLocation.ImgSrc"><img src="@Model.singleLocation.ImgSrc" alt="@Model.singleLocation.Name" width=" 150" height="100" /></a>
-                </div>
+                @{if (Model.singleLocation.ImgSrc != null)
+                {
+                    string[] images = Model.singleLocation.ImgSrc.Split(';');
+                    for (int i = 0; i < images.Count() - 1; i++)
+                    {
+                        <div class="img">
+                            <a href="@images[i]"><img src="@images[i]" alt="@Model.singleLocation.Name" width=" 150" height="100" /></a>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p>No image uploaded</p>
+                }
+                }
             </dd>
 
             <dt>
@@ -46,12 +58,14 @@
             </dd>
         </dl>
 
+
+
     </div>
     <p>
         @Html.ActionLink("Edit", "Edit", new { id = Model.singleLocation.Id }) |
         @Html.ActionLink("Back to List", "Index")
     </p>
-   <p>@Html.ActionLink(linkText: "Create new task", actionName: "Create", controllerName: "LocationTasks")</p>
+    <p>@Html.ActionLink(linkText: "Create new task", actionName: "Create", controllerName: "LocationTasks")</p>
     <table class="table">
         Tasks
         <tr>
@@ -80,28 +94,28 @@
             <th>
                 @Html.DisplayNameFor(model => model.singleLocationTask.Priority)
             </th>
-            
+
             <th></th>
 
             @foreach (var item in Model.locationTask)
             {
             <tr>
                 <td>
-                   @{if (item.Flag == false)
-                   {
-                    <p>Alert</p>
-                   }
-                   else if (item.Flag == true)
-                   {
-                    <p>Task</p>
-                   }
-                   else
-                   {
-                       Html.DisplayFor(modelItem => item.Flag);
-                   }
-                }
-                @*@Html.DisplayFor(modelItem => item.Flag)*@
-            </td>
+                    @{if (item.Flag == false)
+                    {
+                        <p>Alert</p>
+                    }
+                    else if (item.Flag == true)
+                    {
+                        <p>Task</p>
+                    }
+                    else
+                    {
+                        Html.DisplayFor(modelItem => item.Flag);
+                    }
+                    }
+                    @*@Html.DisplayFor(modelItem => item.Flag)*@
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
@@ -123,7 +137,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Priority)
                 </td>
-                
+
                 <td>
                     @Html.ActionLink(linkText: "Edit City", actionName: "Edit", controllerName: "LocationTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
                     @Html.ActionLink(linkText: "City Details", actionName: "Details", controllerName: "LocationTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
@@ -131,4 +145,4 @@
             </tr>
             }
         </table>
-</div>
+    </div>
