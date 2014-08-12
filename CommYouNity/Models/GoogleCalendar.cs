@@ -11,7 +11,6 @@ namespace CommYouNity.Models
 {
     public partial class _Default : System.Web.UI.Page
     {
-
         protected void Page_Load(object sender, EventArgs e)
         {
         }
@@ -89,6 +88,12 @@ namespace CommYouNity.Models
             {
                 return g_CalId;
             }
+        }
+        public string CalId()
+        {
+            GCalendar cal = new GCalendar
+           ("CommYouNity", "akhmedoff.odil@gmail.com", "paramaribo");
+            return cal.CalId();
         }
     }
 }

@@ -33,12 +33,6 @@ namespace CommYouNity.Controllers
             }
             ViewData["Cookie"] = cookie;
             return View();
-        }
-        public string CalId()
-        {
-            CommYouNity.Models._Default.GCalendar cal = new CommYouNity.Models._Default.GCalendar
-           ("Google calendar name", "Google account name", "Google account password");
-            return cal.CalId();
-        }  
+        }         
     }
 }
