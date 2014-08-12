@@ -67,6 +67,7 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.singleCommunity.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+<p>@Html.ActionLink(linkText: "Create new task", actionName: "Create", controllerName: "CommunityTasks")</p>
 @{
     if (Model.communityTask.Count() > 0)
     {
@@ -144,4 +145,3 @@
     }
 }
 
-@Html.ActionLink(linkText: "Create new task", actionName: "Create", controllerName: "CommunityTasks")
