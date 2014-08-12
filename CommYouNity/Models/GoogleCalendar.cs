@@ -91,8 +91,10 @@ namespace CommYouNity.Models
         }
         public string CalId()
         {
+            
             GCalendar cal = new GCalendar
-           ("CommYouNity", "akhmedoff.odil@gmail.com", "paramaribo");
+           ("CommYouNity", "akhmedoff.odil@gmail.com", "");
+            string url = "https://www.Google.com/calendar/embed?src=&ctz=Europe%2FMoscow";
             return cal.CalId();
         }
     }
