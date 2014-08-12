@@ -75,9 +75,18 @@
             </dt>
 
             <dd>
-                <div class="img">
-                    <a href="@Model.singleMember.ImgSrc"><img src="@Model.singleMember.ImgSrc" alt="@Model.singleMember.FullName" width=" 150" height="100" /></a>
-                </div>
+                @{if (Model.singleMember.ImgSrc.Length > 2)
+                {
+                    <div class="img">
+                        <a href="@Model.singleMember.ImgSrc"><img src="@Model.singleMember.ImgSrc" alt="@Model.singleMember.FullName" width=" 150" height="100" /></a>
+                    </div>
+                }
+                else
+                {
+                    <p>No image uploaded</p>
+                }
+                }
+                
             </dd>
 
         </dl>

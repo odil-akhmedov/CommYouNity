@@ -44,7 +44,7 @@
         </dt>
 
         <dd>
-            @{if (Model.singleCommunity.ImgSrc != null)
+            @{if (Model.singleCommunity.ImgSrc.Length > 2)
             {
                 string[] images = Model.singleCommunity.ImgSrc.Split(';');
                 for (int i = 0; i < images.Count() - 1; i++)
