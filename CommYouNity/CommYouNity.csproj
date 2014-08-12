@@ -241,6 +241,7 @@
     <Content Include="img\members\main_bg.jpg" />
     <Content Include="img\members\meal-m.jpg" />
     <Content Include="img\members\Untitled.png" />
+    <Content Include="img\no_image_available.jpg" />
     <Content Include="Models\img\communities\1-cuisinart-gourmet-meals.jpg" />
     <Content Include="Models\img\communities\Taco-Night-A-Meal-for-the-Whole-Family-2-size-3.jpg" />
     <Content Include="Models\img\locations\meal02.jpg" />
