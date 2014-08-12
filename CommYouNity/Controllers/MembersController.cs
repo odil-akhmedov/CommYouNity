@@ -10,6 +10,8 @@ using CommYouNity;
 using CommYouNity.Models;
 using System.IO;
 using System.Net.Mail;
+using PagedList;
+using PagedList.Mvc;
 
 namespace CommYouNity.Controllers
 {
@@ -18,11 +20,17 @@ namespace CommYouNity.Controllers
         private CommunityDataModel db = new CommunityDataModel();
 
         // GET: Members
-        public ActionResult Index(int? id, string sortOrder, string searchString)
+        public ActionResult Index(int? id, string sortOrder, string currentFilter, string searchString, int? page)
         {
+            ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.CommunitySortParm = sortOrder == "Community" ? "community_desc" : "Community";
             ViewBag.EmailSortParm = sortOrder == "Email" ? "email_desc" : "Email";
+            if (searchString != null)
+                page = 1;
+            else
+                searchString = currentFilter;
+            ViewBag.CurrentFilter = searchString;
             var members = db.Members.Include(m => m.Community);
             if (!String.IsNullOrEmpty(searchString)) 
             {
@@ -49,7 +57,9 @@ namespace CommYouNity.Controllers
                     members = members.OrderBy(m => m.LastName);
                     break;
            }
-         
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
             MemberTaskView result = new MemberTaskView();
             //result.member = db.Members.Include(c => c.Community).ToList();
             if (id != null)
@@ -63,6 +73,7 @@ namespace CommYouNity.Controllers
 
 
             result.memberTask = db.MemberTasks.ToList();
+            result.pagedMember = members.ToPagedList(pageNumber, pageSize);
             return View(result);
         }
 
