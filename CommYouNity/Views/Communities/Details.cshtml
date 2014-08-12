@@ -44,9 +44,21 @@
         </dt>
 
         <dd>
-            <div class="img">
-                <a href="@Model.singleCommunity.ImgSrc"><img src="@Model.singleCommunity.ImgSrc" alt="@Model.singleCommunity.Name" width=" 150" height="100" /></a>
-            </div>
+            @{if (Model.singleCommunity.ImgSrc != null)
+            {
+                string[] images = Model.singleCommunity.ImgSrc.Split(';');
+                for (int i = 0; i < images.Count() - 1; i++)
+                {
+                    <div class="img">
+                        <a href="@images[i]"><img src="@images[i]" alt="@Model.singleCommunity.Name" width=" 150" height="100" /></a>
+                    </div>
+                }
+            }
+            else
+            {
+                <p>No image uploaded</p>
+            }
+            }
         </dd>
 
     </dl>
