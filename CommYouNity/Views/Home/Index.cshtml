@@ -3,40 +3,50 @@
 }
 
 
-<div class="jumbotron">
-    <img src="~/Assets/detroitanight.png" class="topbannerimage" />
-    <br />
-    <p>
-    <h1 ><b style="color:black;">Comm</b><b style="color:yellow;">You</b><b style="color:black;">nity</b></h1>
-    <h4 style="color:purple;">Putting you in the center of your community</h4>
+@*<div class="jumbotron">*@
+    <div class="formbg">
+        
+            <img src="~/Assets/Thatch%20Home.jpg" class="topbannerimage" style="float:left; height:250px; margin-top:20px;" />
+            <img src="~/Assets/City.jpg" class="topbannerimage" style=" height:250px; float:left; margin-top:20px;" />
+            <img src="~/Assets/Village.jpg" class="topbannerimage" style="float:left; height:250px; margin-top:20px;" />
+        
+
+
+        <br />
+        <p>
+            <h1><b style="color:black;">Comm</b><b style="color:yellow;">You</b><b style="color:black;">nity</b></h1>
+            <h4 style="color:purple;">Putting you in the center of your community</h4>
         </p>
-    <div>
-        @using (Html.BeginForm("Index", "Locations", FormMethod.Get))
-        {
-            <p>
-                Find Location by zip: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
-                <input type="submit" value="Search" />
-            </p>
-        }
+
+        <div class="topbannerimage jumbotron" style="align-content:center">
+            @using (Html.BeginForm("Index", "Locations", FormMethod.Get))
+            {
+                <p>
+                    Find Location by zip: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                    <input type="submit" value="Search" />
+                </p>
+            }
+        </div>
     </div>
-    
-</div>
+@*</div>*@
 
 <div class="row">
     <div class="formbg">
         <h2>Getting started</h2>
         <hr />
-        <p>
+        <p style="color:black; font-size:20px;">
             The best way to create a thriving city is to connect and enable community organizations within the city and pull them together into a coalition for growth. Designing a networking tool based on existing community organizations is a good beginning but it is only the first step. Block clubs are the best starting point because they provide individual residents with a mechanism for connecting to and interacting with their neighbors.
 
             Connecting individuals who have recently relocated to the city or moved to new areas will help create a positive sense of community. This application will have two primary functions:
-            
-            <ol>
+            <br />
+            <br />
+          
                 Identify Block Clubs by inputting the user’s zip code, which facilitates joining one of them
-            </ol>
-            <ol>
+            <br />
+            <br />
                 Allow Block Clubs themselves to push alerts out to their membership roster
-            </ol>
+          <br />
+            <br />
             The user will then be able to find their closest block clubs and reach out for additional information regarding officers, meeting times, meeting locations, etc. Alerts will include emergency or security alerts, meeting reminders, activity/program alerts, or community meeting alerts. The application will be based on an interface that is intuitive, engaging, fun to use. Ultimately this application will facilitate networking between individual residents and Block Clubs, and between Block Clubs across the city.
         </p>
 

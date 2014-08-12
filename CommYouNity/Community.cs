@@ -21,6 +21,7 @@ namespace CommYouNity
         [StringLength(50)]
         public string Name { get; set; }
 
+        [DataType(DataType.MultilineText)]
         [Column(TypeName = "text")]
         public string Description { get; set; }
 

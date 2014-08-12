@@ -7,8 +7,8 @@
 }
 
 <div class="formbg">
-    <h2>Location List</h2>
-
+    <h1>City List</h1>
+    <hr />
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
@@ -54,14 +54,14 @@
                 </td>
                 <td>
                     <div class="img">
-                        @{if (item.ImgSrc != null)
+                        @{if (item.ImgSrc.Length > 2)
                         {
                             string[] images = item.ImgSrc.Split(';');
                             <a href="@images[0]"><img src="@images[0]" alt="@item.Name" width="150" height="100" /></a>
                         }
                         else
                         {
-                            <a href="@item.ImgSrc"><img src="@item.ImgSrc" alt="@item.Name" width="150" height="100" /></a>
+                            <img src="~/img/no_image_available.jpg" alt="No image aviable" width="150" height="100" />
                         }
                         }
 

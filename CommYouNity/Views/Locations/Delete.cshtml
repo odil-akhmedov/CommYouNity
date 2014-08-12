@@ -5,9 +5,9 @@
         ViewBag.Title = "Delete";
     }
 
-    <h2>Delete</h2>
+    <h1>Delete City</h1>
     <hr />
-    <h3>Are you sure you want to delete this?</h3>
+    <h3>Are you sure you want to delete this city?</h3>
     <div>
         <h4>Location</h4>
         <hr />
@@ -33,7 +33,21 @@
             </dt>
 
             <dd>
-                <a href="@Model.ImgSrc"><img src="@Model.ImgSrc" alt="@Model.Name" width=" 150" height="100" /></a>
+                @{if (Model.ImgSrc.Length > 2)
+                {
+                    string[] images = Model.ImgSrc.Split(';');
+                    for (int i = 0; i < images.Count() - 1; i++)
+                    {
+                        <div class="img">
+                            <a href="@images[i]"><img src="@images[i]" alt="@Model.Name" width=" 150" height="100" /></a>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p>No image uploaded</p>
+                }
+                }
             </dd>
 
             <dt>

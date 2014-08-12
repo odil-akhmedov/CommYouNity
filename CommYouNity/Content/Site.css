@@ -68,13 +68,18 @@ background: url("../Assets/detroitbuttonface.png") no-repeat center center fixed
 }
 
 .topbannerimage{
-
-
  display: block;
     margin-left: auto;
-    margin-right: auto
+    margin-right: auto      
+}
 
+.center{
+    text-align:center
+}
 
+.medimgsize{
+    height:250px;
+    width:250px;
 }
 
 h1{

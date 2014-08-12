@@ -57,7 +57,16 @@
                 </td>
                 <td>
                     <div class="img">
-                        <a href="@item.ImgSrc"><img src="@item.ImgSrc" alt="@item.FullName" width="150" height="100" /></a>
+                        @{if (item.ImgSrc != "")
+                        {
+                            <a href="@item.ImgSrc"><img src="@item.ImgSrc" alt="@item.FullName" width="150" height="100" /></a>
+                        }
+                        else
+                        {
+                            <img src="~/img/no_image_available.jpg" alt="No image available" width="150" height="100" />
+                        }
+                        }
+
                     </div>
                 </td>
                 <td>
@@ -131,7 +140,6 @@
                         @Html.ActionLink(linkText: "Delete", actionName: "Delete", controllerName: "MemberTasks", routeValues: new { id = item.Id }, htmlAttributes: null)*@
             </tr>
             }
-
         </table>
         <br />
         Page @(Model.pagedMember.PageCount < Model.pagedMember.PageNumber ? 0 : Model.pagedMember.PageNumber) of
