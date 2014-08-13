@@ -39,7 +39,7 @@ namespace CommYouNity
         public int? Priority { get; set; }
 
         public bool Flag { get; set; }
-
+        [Required]
         public int LocationId { get; set; }
 
         public virtual Location Location { get; set; }

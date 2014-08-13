@@ -43,6 +43,7 @@ namespace CommYouNity
 
         public bool Flag { get; set; }
         [Display(Name = "Member Name")]
+        [Required]
         public int MemberId { get; set; }
 
         public virtual Member Member { get; set; }
