@@ -55,6 +55,7 @@
         public bool NotifyByEmail { get; set; }
         [Display(Name = "Notify By Text Msg")]
         public bool NotifyBySMS { get; set; }
+        [Required]
         [Display(Name = "Community Group Name")]
         public int? CommunityId { get; set; }
 
