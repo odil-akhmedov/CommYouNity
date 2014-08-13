@@ -1,4 +1,4 @@
-namespace CommYouNity
+﻿namespace CommYouNity
 {
     using System;
     using System.Collections.Generic;
@@ -37,6 +37,8 @@ namespace CommYouNity
         }
         [Required]
         [Display(Name = "Phone Number")]
+        [DataType(DataType.Text)]
+        [RegularExpression(@"1?(?:[.\s-]?[2-9]\d{2}[.\s-]?|\s?\([2-9]\d{2}\)\s?)(?:[1-9]\d{2}[.\s-]?\d{4}\s?(?:\s?([xX]|[eE][xX]|[eE][xX]\.|[eE][xX][tT]|[eE][xX][tT]\.)\s?\d{3,4})?|[a-zA-Z]{7})", ErrorMessage = "Must be a valid U.S. phone number, including area code")]
         public Int64 Phone { get; set; }
 
         [DataType(DataType.MultilineText)]
