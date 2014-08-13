@@ -257,6 +257,7 @@
   <ItemGroup>
     <Content Include="App_Data\Images\meal02.jpg" />
     <Content Include="App_Data\Images\meal09.JPG" />
+    <Content Include="Assets\Bgupdate.jpg" />
     <Content Include="Assets\City.jpg" />
     <Content Include="Assets\detroitanight.png" />
     <Content Include="Assets\detroitbuttonface.png" />

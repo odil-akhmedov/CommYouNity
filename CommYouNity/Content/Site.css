@@ -42,7 +42,7 @@ scrollbar-arrow-color:AliceBlue;
 .formbg{
 border-radius:50px;
 border:1px solid blue;
-background-color:LightSteelBlue;
+/* background-color:LightSteelBlue; */
 padding-left:5px;
 padding-bottom:10px;
 padding-right:5px;
@@ -52,17 +52,35 @@ width: 100%;
     margin: 0 auto;
     display: block;
     margin-left: auto;
-    margin-right: auto
+    margin-right: auto;
 
 
-background: url("../Assets/detroitbuttonface.png") no-repeat center center fixed; 
+    /*background: rgb(8,13,168); 
+background: -webkit-gradient(linear, left top, left bottom, color-stop(13%,rgb(8,13,168)), color-stop(13%,rgb(8,13,168)), color-stop(86%,rgb(125,185,232)), color-stop(86%,rgb(125,185,232)), color-stop(86%,rgb(125,185,232))); 
+background: -webkit-linear-gradient(top,  rgb(8,13,168) 13%,rgb(8,13,168) 13%,rgb(125,185,232) 86%,rgb(125,185,232) 86%,rgb(125,185,232) 86%);
+background: -ms-linear-gradient(top,  rgb(8,13,168) 13%,rgb(8,13,168) 13%,rgb(125,185,232) 86%,rgb(125,185,232) 86%,rgb(125,185,232) 86%);
+background: linear-gradient(to bottom,  rgb(8,13,168) 13%,rgb(8,13,168) 13%,rgb(125,185,232) 86%,rgb(125,185,232) 86%,rgb(125,185,232) 86%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#080da8', endColorstr='#7db9e8',GradientType=0 );*/
+background: -moz-linear-gradient(top,  rgba(0,56,135,1) 0%, rgba(0,56,135,1) 1%, rgba(0,56,135,0) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,56,135,1)), color-stop(1%,rgba(0,56,135,1)), color-stop(100%,rgba(0,56,135,0))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(0,56,135,1) 0%,rgba(0,56,135,1) 1%,rgba(0,56,135,0) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(0,56,135,1) 0%,rgba(0,56,135,1) 1%,rgba(0,56,135,0) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(0,56,135,1) 0%,rgba(0,56,135,1) 1%,rgba(0,56,135,0) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(0,56,135,1) 0%,rgba(0,56,135,1) 1%,rgba(0,56,135,0) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#003887', endColorstr='#00003887',GradientType=0 ); /* IE6-9 */
+
+
+
+
+
+/*background: url("../Assets/Bgupdate.jpg") no-repeat center center fixed;*/ 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   
   padding-left:10px;
-  
+ 
 
 
 }
@@ -106,7 +124,8 @@ color:white;
 
 body{
 
-background: url("../Assets/projectbackground.jpg") no-repeat center center fixed; 
+background: url("../Assets/Bgupdate.jpg") no-repeat center center fixed;
+
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
