@@ -4,144 +4,145 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div class="formbg">
+    <h2>Community Group Details</h2>
 
-<div>
-    <h4>Community</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.singleCommunity.Name)
-        </dt>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.singleCommunity.Name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.singleCommunity.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.singleCommunity.Description)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.singleCommunity.Name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.singleCommunity.Description)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.singleCommunity.Description)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.singleCommunity.Description)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.singleCommunity.OfficerName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.singleCommunity.OfficerName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.singleCommunity.OfficerName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.singleCommunity.Email)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.singleCommunity.OfficerName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.singleCommunity.Email)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.singleCommunity.Email)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.singleCommunity.ImgSrc)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.singleCommunity.Email)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.singleCommunity.ImgSrc)
+            </dt>
 
-        <dd>
-            @{if (Model.singleCommunity.ImgSrc.Length > 2)
-            {
-                string[] images = Model.singleCommunity.ImgSrc.Split(';');
-                for (int i = 0; i < images.Count() - 1; i++)
+            <dd>
+                @{if (Model.singleCommunity.ImgSrc.Length > 2)
                 {
-                    <div class="img">
-                        <a href="@images[i]"><img src="@images[i]" alt="@Model.singleCommunity.Name" width=" 150" height="100" /></a>
-                    </div>
+                    string[] images = Model.singleCommunity.ImgSrc.Split(';');
+                    for (int i = 0; i < images.Count() - 1; i++)
+                    {
+                        <div class="img">
+                            <a href="@images[i]"><img src="@images[i]" alt="@Model.singleCommunity.Name" width=" 150" height="100" /></a>
+                        </div>
+                    }
                 }
-            }
-            else
-            {
-                <p>No image uploaded</p>
-            }
-            }
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.singleCommunity.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
-<p>@Html.ActionLink(linkText: "Create new task", actionName: "Create", controllerName: "CommunityTasks")</p>
-@{
-    if (Model.communityTask.Count() > 0)
-    {
-        <table class="table">
-            Tasks
-            <tr>
-                <th>
-                    Type
-                    @*@Html.DisplayNameFor(model => model.singleCommunityTask.Flag)*@
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.singleCommunityTask.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.singleCommunityTask.Description)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.singleCommunityTask.Budget)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.singleCommunityTask.Status)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.singleCommunityTask.Priority)
-                </th>
-
-                <th></th>
-
-                @foreach (var item in Model.communityTask)
+                else
                 {
+                    <p>No image uploaded</p>
+                }
+                }
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.singleCommunity.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+    <p>@Html.ActionLink(linkText: "Create new task", actionName: "Create", controllerName: "CommunityTasks")</p>
+    @{
+        if (Model.communityTask.Count() > 0)
+        {
+            <table class="table">
+                Tasks
                 <tr>
-                    <td>
-                        @{if (item.Flag == false)
-                        {
-                            <p>Alert</p>
-                        }
-                        else if (item.Flag == true)
-                        {
-                            <p>Task</p>
-                        }
-                        else
-                        {
-                            Html.DisplayFor(modelItem => item.Flag);
-                        }
-                        }
-                        @*@Html.DisplayFor(modelItem => item.Flag)*@
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Budget)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Status)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Priority)
-                    </td>
+                    <th>
+                        Type
+                        @*@Html.DisplayNameFor(model => model.singleCommunityTask.Flag)*@
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.singleCommunityTask.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.singleCommunityTask.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.singleCommunityTask.Budget)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.singleCommunityTask.Status)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.singleCommunityTask.Priority)
+                    </th>
 
-                    <td>
-                        @Html.ActionLink(linkText: "Edit", actionName: "Edit", controllerName: "CommunityTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
-                        @Html.ActionLink(linkText: "Details", actionName: "Details", controllerName: "CommunityTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
-                        @Html.ActionLink(linkText: "Delete", actionName: "Delete", controllerName: "CommunityTasks", routeValues: new { id = item.Id }, htmlAttributes: null)
-                </tr>
-                }
-            </table>
+                    <th></th>
 
+                    @foreach (var item in Model.communityTask)
+                    {
+                    <tr>
+                        <td>
+                            @{if (item.Flag == false)
+                            {
+                                <p>Alert</p>
+                            }
+                            else if (item.Flag == true)
+                            {
+                                <p>Task</p>
+                            }
+                            else
+                            {
+                                Html.DisplayFor(modelItem => item.Flag);
+                            }
+                            }
+                            @*@Html.DisplayFor(modelItem => item.Flag)*@
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Budget)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Priority)
+                        </td>
+
+                        <td>
+                            @Html.ActionLink(linkText: "Edit", actionName: "Edit", controllerName: "CommunityTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
+                            @Html.ActionLink(linkText: "Details", actionName: "Details", controllerName: "CommunityTasks", routeValues: new { id = item.Id }, htmlAttributes: null)|
+                            @Html.ActionLink(linkText: "Delete", actionName: "Delete", controllerName: "CommunityTasks", routeValues: new { id = item.Id }, htmlAttributes: null)
+                    </tr>
+                    }
+                </table>
+
+        }
+        else
+        {
+            <p>No tasks created yet.</p>
+        }
     }
-    else { 
-        <p>No tasks created yet.</p>
-    }
-}
-
+</div>
