@@ -19,11 +19,18 @@ namespace CommYouNity
 
         [Required]
         [StringLength(50)]
+        [RegularExpression(@"[a-zA-Z''-'\s]*$", ErrorMessage = "Location name must be alphabetical")]
         [Display(Name = "Location Name")]
         public string Name { get; set; }
+        [Required]
         [Display(Name = "Zip Code")]
+        [RegularExpression(@"^(\d{5})[\.\-\+ ]?(\d{4})?$", ErrorMessage = "Must be a valid U.S. Zip Code")]
         public int Zip { get; set; }
+        [Required]
+        [Display(Name = "Location Email")]
+        [RegularExpression(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", ErrorMessage = "Must be a valid email address")]
         public string Email { get; set; }
+        [Required]
         public string Password { get; set; }
         [Display(Name = "Image Source" )]
         public string ImgSrc { get; set; }

@@ -40,7 +40,7 @@ namespace CommYouNity
         public int? Priority { get; set; }
 
         public bool Flag { get; set; }
-
+        [Required]
         public int CommunityId { get; set; }
 
         public virtual Community Community { get; set; }

@@ -28,13 +28,18 @@ namespace CommYouNity
 
         [Required]
         [StringLength(50)]
+        [RegularExpression(@"[a-zA-Z''-'\s]*$", ErrorMessage = "Name must be alphabetical")]
         [Display(Name = "Officer Name")]
         public string OfficerName { get; set; }
+        [Required]
+        [RegularExpression(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", ErrorMessage = "Must be a valid email address")]
         public string Email { get; set; }
+        [Required]
         public string Password { get; set; }
         [Display(Name = "Image Source")]
-        public string ImgSrc { get; set; }
 
+        public string ImgSrc { get; set; }
+        [Required]
         public int LocationId { get; set; }
 
         public virtual Location Location { get; set; }

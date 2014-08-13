@@ -4,81 +4,84 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<div class="formbg">
+    <h2>Are you sure you want to delete this?</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Community</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Location.Name)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Location.Name)
-        </dd>
+    <div>
+        <h4>Community</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Location.Name)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Location.Name)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OfficerName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.OfficerName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.OfficerName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ImgSrc)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.OfficerName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
 
-        <dd>
-            @{if (Model.ImgSrc.Length > 2)
-            {
-                string[] images = Model.ImgSrc.Split(';');
-                for (int i = 0; i < images.Count() - 1; i++)
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ImgSrc)
+            </dt>
+
+            <dd>
+                @{if (Model.ImgSrc.Length > 2)
                 {
-                    <div class="img">
-                        <a href="@images[i]"><img src="@images[i]" alt="@Model.Name" width=" 150" height="100" /></a>
-                    </div>
+                    string[] images = Model.ImgSrc.Split(';');
+                    for (int i = 0; i < images.Count() - 1; i++)
+                    {
+                        <div class="img">
+                            <a href="@images[i]"><img src="@images[i]" alt="@Model.Name" width=" 150" height="100" /></a>
+                        </div>
+                    }
                 }
-            }
-            else
-            {
-                <p>No image uploaded</p>
-            }
-            }
-        </dd>
+                else
+                {
+                    <p>No image uploaded</p>
+                }
+                }
+            </dd>
 
-    </dl>
+        </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
 </div>

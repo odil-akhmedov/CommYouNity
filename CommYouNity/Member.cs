@@ -1,4 +1,4 @@
-namespace CommYouNity
+﻿namespace CommYouNity
 {
     using System;
     using System.Collections.Generic;
@@ -37,6 +37,8 @@ namespace CommYouNity
         }
         [Required]
         [Display(Name = "Phone Number")]
+        [DataType(DataType.Text)]
+        [RegularExpression(@"1?(?:[.\s-]?[2-9]\d{2}[.\s-]?|\s?\([2-9]\d{2}\)\s?)(?:[1-9]\d{2}[.\s-]?\d{4}\s?(?:\s?([xX]|[eE][xX]|[eE][xX]\.|[eE][xX][tT]|[eE][xX][tT]\.)\s?\d{3,4})?|[a-zA-Z]{7})", ErrorMessage = "Must be a valid U.S. phone number, including area code")]
         public Int64 Phone { get; set; }
 
         [DataType(DataType.MultilineText)]
@@ -48,11 +50,13 @@ namespace CommYouNity
         [Required]
         [RegularExpression(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", ErrorMessage = "Must be a valid email address")]
         public string Email { get; set; }
+        [Required]
         public string Password { get; set; }
         [Display(Name = "Notify By Email")]
         public bool NotifyByEmail { get; set; }
         [Display(Name = "Notify By Text Msg")]
         public bool NotifyBySMS { get; set; }
+        [Required]
         [Display(Name = "Community Group Name")]
         public int? CommunityId { get; set; }
 

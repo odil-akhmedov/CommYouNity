@@ -4,146 +4,148 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<div class="formbg">
+    <h2>Edit a Community Group</h2>
 
 
-@using (Html.BeginForm("Edit", "Communities", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    string[] imagesArray;
-    int imageCount = 0;
-    if (Model.ImgSrc != null){
-    
-        imagesArray = Model.ImgSrc.Split(';');
-        imageCount = imagesArray.Count();
-    }
-    @Html.AntiForgeryToken()
+    @using (Html.BeginForm("Edit", "Communities", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        string[] imagesArray;
+        int imageCount = 0;
+        if (Model.ImgSrc != null)
+        {
 
-    <div class="form-horizontal">
-        <h4>Community</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
+            imagesArray = Model.ImgSrc.Split(';');
+            imageCount = imagesArray.Count();
+        }
+        @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.OfficerName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.OfficerName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.OfficerName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.ImgSrc, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.ImgSrc, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ImgSrc, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                 </div>
-            </div>*@
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LocationId, "LocationId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("LocationId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.LocationId, "", new { @class = "text-danger" })
             </div>
-        </div>
-        @*<a href="@Model.ImgSrc"><img src="@Model.ImgSrc" alt="@Model.Name" width=" 150" height="100" /></a>*@
 
-        <div class="form-field">
-            <p>Select pictures:</p>
-            <div class="upload-container">
-                @{if (Model.ImgSrc != null)
-                {
-                    string[] images = Model.ImgSrc.Split(';');
-                    for (int i = 0; i < images.Count() - 1; i++)
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.OfficerName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.OfficerName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.OfficerName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            @*<div class="form-group">
+                    @Html.LabelFor(model => model.ImgSrc, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ImgSrc, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ImgSrc, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.LocationId, "LocationId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("LocationId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.LocationId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            @*<a href="@Model.ImgSrc"><img src="@Model.ImgSrc" alt="@Model.Name" width=" 150" height="100" /></a>*@
+
+            <div class="form-field">
+                <p>Select pictures:</p>
+                <div class="upload-container">
+                    @{if (Model.ImgSrc != null)
                     {
-                        <div class="upload">
-                            <input type="file" name="files" id="@(String.Format("file{0}",i+1))" value="@(String.Format("{0}",i+1))" />
-                            @*<a href="@images[i]">*@
+                        string[] images = Model.ImgSrc.Split(';');
+                        for (int i = 0; i < images.Count() - 1; i++)
+                        {
+                            <div class="upload">
+                                <input type="file" name="files" id="@(String.Format("file{0}",i+1))" value="@(String.Format("{0}",i+1))" />
+                                @*<a href="@images[i]">*@
                                 <img src="@images[i]" alt="@Model.Name" width="150" height="100" />
-                            @*</a>*@
-                            <img src="@Url.Content("/img/delete.png")" alt="Remove picture." />
-                        </div>
+                                @*</a>*@
+                                <img src="@Url.Content("/img/delete.png")" alt="Remove picture." />
+                            </div>
+                        }
                     }
-                }
-                }
+                    }
 
-                <div class="upload">
-                    <input type="file" name="files" id="@(String.Format("file{0}",imageCount))" value="@imageCount" />
-                    <img src="@Url.Content("/img/delete.png")" alt="Remove picture." />
+                    <div class="upload">
+                        <input type="file" name="files" id="@(String.Format("file{0}",imageCount))" value="@imageCount" />
+                        <img src="@Url.Content("/img/delete.png")" alt="Remove picture." />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
                 </div>
             </div>
         </div>
+    }
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
     </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var elemCount = $(".upload-container").children().length;
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var elemCount = $(".upload-container").children().length;
+                for (var i = 0; i < elemCount; i++) {
+                    $(".upload-container").children(i).on("click", ".upload img", function () {
+                        if ($(this).parent().siblings().length > 0) {
+                            $(this).parent().remove();
+                        }
+                    });
+                }
 
-            for (var i = 0; i < elemCount; i++){
-                $(".upload-container").children(i).on("click", ".upload img", function () {
+
+                $("body").on("change", "input[name='files']", function () {
+                    var pathToRemoveIcon = "@Url.Content("~/img/delete.png")";
+                    //var currentImage = 1;
+                    var currentImage = parseInt($(".upload-container").children().last().children().first().attr("value"));
+                    alert(currentImage);
+                    currentImage = currentImage + 1;
+                    var htmlToAppend = '<div class="upload"><input type="file" name="files" id="file' + currentImage + '" value = "' + currentImage + '"/><img src="' + pathToRemoveIcon + '" alt="Remove picture." /></div>';
+                    $('.upload-container').append(htmlToAppend);
+                }).on("click", ".upload img", function () {
                     if ($(this).parent().siblings().length > 0) {
                         $(this).parent().remove();
                     }
                 });
-            }
-            
-            
-            $("body").on("change", "input[name='files']", function () {
-                var pathToRemoveIcon = "@Url.Content("~/img/delete.png")";
-                //var currentImage = 1;
-                var currentImage = parseInt($(".upload-container").children().last().children().first().attr("value"));
-                alert(currentImage);
-                currentImage = currentImage + 1;
-                var htmlToAppend = '<div class="upload"><input type="file" name="files" id="file' + currentImage + '" value = "' + currentImage + '"/><img src="' + pathToRemoveIcon + '" alt="Remove picture." /></div>';
-                $('.upload-container').append(htmlToAppend);
-            }).on("click", ".upload img", function () {
-                if ($(this).parent().siblings().length > 0) {
-                    $(this).parent().remove();
-                }
             });
-        });
-    </script>
-}
+        </script>
+    }
+</div>
