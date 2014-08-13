@@ -7,60 +7,63 @@
 
     <h1> City Details</h1>
 
-    <div>
+    <div style="width:1000px;height:300px;border:1px solid black;">
+        <div style="float:left">
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.singleLocation.Name)
+                </dt>
 
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.singleLocation.Name)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.singleLocation.Name)
+                </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.singleLocation.Name)
-            </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.singleLocation.Zip)
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.singleLocation.Zip)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.singleLocation.Zip)
+                </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.singleLocation.Zip)
-            </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.singleLocation.ImgSrc)
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.singleLocation.ImgSrc)
-            </dt>
-
-            <dd>
-                @{if (Model.singleLocation.ImgSrc.Length > 2)
-                {
-                    string[] images = Model.singleLocation.ImgSrc.Split(';');
-                    for (int i = 0; i < images.Count() - 1; i++)
+                <dd>
+                    @{if (Model.singleLocation.ImgSrc.Length > 2)
                     {
-                        <div class="img">
-                            <a href="@images[i]"><img src="@images[i]" alt="@Model.singleLocation.Name" width=" 150" height="100" /></a>
-                        </div>
+                        string[] images = Model.singleLocation.ImgSrc.Split(';');
+                        for (int i = 0; i < images.Count() - 1; i++)
+                        {
+                            <div class="img">
+                                <a href="@images[i]"><img src="@images[i]" alt="@Model.singleLocation.Name" width=" 150" height="100" /></a>
+                            </div>
+                        }
                     }
-                }
-                else
-                {
-                    <p>No image uploaded</p>
-                }
-                }
-            </dd>
+                    else
+                    {
+                        <p>No image uploaded</p>
+                    }
+                    }
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.singleLocation.GoogleMap)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.singleLocation.GoogleMap)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.singleLocation.GoogleMap)
-            </dd>
-        </dl>
-
-
-
+                <dd>
+                    @Html.DisplayFor(model => model.singleLocation.GoogleMap)
+                </dd>
+            </dl>
+        </div>
+        <div style="border: 1px solid black;width: 380px;height:220px;float:right;margin:20px;">
+            <iframe id="gCalendar" src="" style="border-style: none; border-color: inherit; border-width: 0; width: 364px;height: 215px;"
+                    frameborder="0" scrolling="no"></iframe>
+        </div>
     </div>
+    
     <p>
         @Html.ActionLink("Edit", "Edit", new { id = Model.singleLocation.Id }) |
         @Html.ActionLink("Back to List", "Index")
@@ -148,10 +151,16 @@
                     </tr>
                     }
                 </table>
-        }else { 
-        <p>No tasks created yet.</p>
+        }
+        else
+        {
+            <p>No tasks created yet.</p>
+        }
     }
-    }
-
-    
-    </div>
+</div>
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        var calId = "d4oh4s7bh05dlca75t6d69v31o@group.calendar.google.com";
+        jQuery("#gCalendar").attr("src", "https://www.google.com/calendar/embed?src="  + calId + "&ctz=Europe%2FMoscow");
+    });
+</script>
