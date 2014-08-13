@@ -36,6 +36,7 @@ namespace CommYouNity
         [Display(Name = "Completed")]
         public bool Status { get; set; }
 
+        [Range(1,5)]
         public int? Priority { get; set; }
 
         public bool Flag { get; set; }

@@ -70,8 +70,7 @@
                     @Html.ValidationMessageFor(model => model.Priority, "", new { @class = "text-danger" })
                 </div>
             </div>
-
-            <div class="form-group">
+                 <div class="form-group">
                 @Html.LabelFor(model => model.Flag, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     <div class="checkbox">
@@ -104,23 +103,10 @@
         @Scripts.Render("~/bundles/jqueryval")
     }
     <script type="text/javascript">
-        //function TaskOrAlert() {
-        var select = document.getElementById('Flag');//.options['value'].innerHTML = 'Alert'
-        // 0 is on 1 is off
-        // false is alert true is task
-        var flag;
-        var taskoralert;
-
-
+               var select = document.getElementById('Flag');//.options['value'].innerHTML = 'Alert'
+        
         select.children[0].innerHTML = "Task";
 
-
-
-        //if (select.option['value'] == "False") {
-        //    select.option['value'].innerHTML = "Alert"
-        //} else {
-        //    select.option['value'].innerHTML = "Task"
-        //}
-        //}
+        
     </script>
 </div>
