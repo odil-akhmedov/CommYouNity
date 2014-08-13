@@ -84,11 +84,13 @@
         }
     </table>
     <table class="table">
-        Tasks
+        <a href="MemberTasks/Index">Tasks</a>
         <tr>
             <th>
-                Owner
-                @*@Html.DisplayNameFor(model => model.Community.Name)*@
+                @Html.DisplayNameFor(model => model.singleMember.CommunityId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.singleMember.FullName)  
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.singleMemberTask.Name)
@@ -113,6 +115,9 @@
             @foreach (var item in Model.memberTask)
             {
             <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Member.Community.Name)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Member.FullName)
                 </td>
