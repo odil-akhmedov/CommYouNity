@@ -1,10 +1,7 @@
 ﻿@model CommYouNity.Location
 <div class="formbg">
 
-    @{
-        ViewBag.Title = "Create";
-    }
-    <h1>Create a City</h1>
+    <h1>Add a City</h1>
     
     @using (Html.BeginForm("Create", "Locations", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {

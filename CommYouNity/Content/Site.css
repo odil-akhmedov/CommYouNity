@@ -261,3 +261,19 @@ list-style-type:none;
 .table{
     color:white;
 }
+
+.dl-horizontal dt {
+        float: left;
+        width: 160px;
+        clear: left;
+        text-align: right;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: white;
+    }
+
+    .dl-horizontal dd {
+        margin-left: 180px;
+        color: white;
+    }

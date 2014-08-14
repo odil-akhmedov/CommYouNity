@@ -19,7 +19,6 @@ namespace CommYouNity
 
         [Required]
         [StringLength(50)]
-        [RegularExpression(@"[a-zA-Z''-'\s]*$", ErrorMessage = "Location name must be alphabetical")]
         [Display(Name = "Location Name")]
         public string Name { get; set; }
         [Required]

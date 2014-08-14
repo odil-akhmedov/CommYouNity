@@ -2,20 +2,16 @@
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
-@{
-    ViewBag.Title = "Location List";
-}
-
 <div class="formbg">
-    <h1>City List</h1>
+    <h1>List of Cities</h1>
     <hr />
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Add a city", "Create")
     </p>
 
     @using (Html.BeginForm("Index", "Locations", FormMethod.Get))
     {
-        <p> Find a location by name, zipcode or email: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string) <input type="submit" value="Search" /></p>
+        <p> Find a city by name, zipcode or email: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string) <input type="submit" value="Search" /></p>
     }
 
     <table class="table">
