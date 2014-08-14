@@ -4261,7 +4261,8 @@ outline: thin dotted #333;
 
 .navbar-fixed-top,
 .navbar-fixed-bottom {
-  position: fixed;
+  max-height:30px !important;
+    position: fixed;
   right: 0;
   left: 0;
   border-width: 0 0 1px;
