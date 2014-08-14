@@ -17,8 +17,9 @@
   margin-left: -1px;
   line-height: 1.428571429;
   text-decoration: none;
-  background-color: #ffffff;
+  background-color: #428bca;
   border: 1px solid #dddddd;
+  color: white;
 }
 
 .pagination > li:first-child > a,
@@ -51,7 +52,7 @@
   color: #ffffff;
   cursor: default;
   background-color: #428bca;
-  border-color: #428bca;
+  border-color: #fff;
 }
 
 .pagination > .disabled > span,
@@ -60,7 +61,7 @@
 .pagination > .disabled > a:focus {
   color: #999999;
   cursor: not-allowed;
-  background-color: #ffffff;
+  background-color: #428bca;
   border-color: #dddddd;
 }
 
