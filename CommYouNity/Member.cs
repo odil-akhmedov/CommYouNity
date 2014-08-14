@@ -45,7 +45,7 @@
         [Column(TypeName = "text")]
         [Display(Name = "About Me")]
         public string AboutMe { get; set; }
-        [Display(Name = "Image Source")]
+        [Display(Name = "Member Photo")]
         public string ImgSrc { get; set; }
         [Required]
         [RegularExpression(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", ErrorMessage = "Must be a valid email address")]
