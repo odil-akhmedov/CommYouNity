@@ -144,7 +144,8 @@ pre {
 }
 
 code, kbd, pre, samp {
-    font-family: monospace, monospace;
+    font-family: 'Varela Round', sans-serif;
+  -webkit-font-smoothing: antialiased;
     font-size: 1em;
 }
 
@@ -1144,15 +1145,19 @@ html {
 }
 
 body {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 14px;
+    font-family: 'Varela Round', sans-serif;
+  -webkit-font-smoothing: antialiased;
+    
+     font-size: 14px;
     line-height: 1.42857143;
-    color: #555555;
+    color:white;
     background-color: #ffffff;
 }
 
 input, button, select, textarea {
-    font-family: inherit;
+    color:navy !important;
+    font-family: 'Varela Round', sans-serif;
+  -webkit-font-smoothing: antialiased;
     font-size: inherit;
     line-height: inherit;
 }
@@ -4680,10 +4685,10 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
     }
 
 .pagination {
-    display: inline-block;
-    padding-left: 0;
-    margin: 20px 0;
-    border-radius: 4px;
+    display: inline-block !important;
+    padding-left: 0 !important;
+    margin: 20px 0 !important;
+    border-radius: 4px !important;
 }
 
     .pagination > li {
