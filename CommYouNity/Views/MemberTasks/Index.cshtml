@@ -1,14 +1,10 @@
-﻿<div class="formbg">
-    @model IEnumerable<CommYouNity.MemberTask>
-
-    @{
-        ViewBag.Title = "Index";
-    }
-
-    <h2>Index</h2>
+﻿@model IEnumerable<CommYouNity.MemberTask>
+<div class="formbg">
+    <br/>
+    <h1>Member Task List</h1>
 
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Create a new member task", "Create")
     </p>
     <table class="table">
         <tr>
