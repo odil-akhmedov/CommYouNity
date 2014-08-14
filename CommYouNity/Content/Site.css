@@ -275,7 +275,7 @@ list-style-type:none;
 }*/
 
 .img-expanded{
-    max-width: none;
+    max-width: 100%;
 }
 
 .table{
@@ -293,10 +293,18 @@ list-style-type:none;
         color: white;
     }
 
-    .dl-horizontal dd {
+.dl-horizontal dd {
         margin-left: 180px;
         color: white;
     }
-    .header {
+
+
+.header {
         padding-top: 25px;
     }
+
+
+.btn {
+  padding-bottom: 2em;
+}
+
