@@ -3,7 +3,7 @@
            
                 <br />
             <img src="~/docs/Canfield loft2.JPG" class="topbannerimage" style="float:left; height:250px; margin-top:20px;" />
-            <img src="~/docs/Palmer Woods3.JPG" class="topbannerimage" style=" height:250px; float:left; margin-top:20px;" />
+            <img src="~/docs/Palmer Woods3.JPG" class="topbannerimage" style="float:left; height:250px; margin-top:20px;" />
             <img src="~/docs/Downtown Apartment1.JPG" class="topbannerimage" style="float:left; height:250px; margin-top:20px;" />
         <br />
                
@@ -15,15 +15,19 @@
 
     <br />
    
-    <div class="topbannerimage formbg" style="align-content:center">
-        @using (Html.BeginForm("Index", "Locations", FormMethod.Get))
-        {
-            <p style="align-content:center; vertical-align:middle;">
-                Find Location by zip: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
-                <input type="submit" value="Search" style="align-content:center; vertical-align:middle;" />
-            </p>
-        }
-    </div>
+    <div class="topbannerimage formbg" style="align-content:center; height:100px;">
+        <p style="align-content:center; vertical-align:middle; height:100px;">
+            <h1>
+                @using (Html.BeginForm("Index", "Locations", FormMethod.Get))
+            {
+
+                    Find Location by zip: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                        <input type="submit" value="Search" style="align-content:center; vertical-align:middle; height:50px;" />
+
+            }
+            </h1>
+        </p>
+</div>
 </div>
 
 <div class="row">
