@@ -165,3 +165,7 @@
   cursor: not-allowed;
   background-color: #ffffff;
 }
+
+.header {
+        padding-top: 15px;
+    }
