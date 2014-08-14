@@ -5,7 +5,9 @@
     ViewBag.Title = "Manage Account";
 }
 <div class="formbg">
-    <h1>@ViewBag.Title.</h1>
+    <div class="header">
+        <h1>@ViewBag.Title.</h1>
+    </div>
     <hr />
     <p class="text-success">@ViewBag.StatusMessage</p>
     <div class="row">
@@ -19,10 +21,10 @@
                 @Html.Partial("_SetPasswordPartial")
             }
 
-            <section id="externalLogins">
+            @*<section id="externalLogins">
                 @Html.Action("RemoveAccountList")
                 @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { Action = "LinkLogin", ReturnUrl = ViewBag.ReturnUrl })
-            </section>
+            </section>*@
         </div>
     </div>
     @section Scripts {
