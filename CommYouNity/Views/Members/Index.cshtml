@@ -16,73 +16,78 @@
     {
         <p> Find a member by name, phone number, email or community name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string) <input type="submit" value="Search" style="align-content:center; vertical-align:middle;" /></p>
     }
-    <table class="table">
-        <tr>
-            <th>
-                @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
-            </th>
-            <th>            
-                @Html.DisplayNameFor(model => model.singleMember.Phone)
-            </th>
-            <th>
-                @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.EmailSortParm, currentFilter = ViewBag.CurrentFilter })
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.singleMember.AboutMe)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.singleMember.ImgSrc)
-            </th>
-            <th>
-                @Html.ActionLink("Community Group Name", "Index", new { sortOrder = ViewBag.CommunitySortParm, currentFilter = ViewBag.CurrentFilter })
-            </th>
-            <th></th>
-        </tr>
-        @foreach (var item in Model.pagedMember)
-        {
+    @{if (Model.member.Count() > 0)
+    {
+        <table class="table">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FullName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Phone)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AboutMe)
-                </td>
-                <td>
-                    <div class="img">
-                        @{if (item.ImgSrc != "")
-                        {
-                            <a href="@item.ImgSrc"><img src="@item.ImgSrc" alt="@item.FullName" width="150" height="100" /></a>
-                        }
-                        else
-                        {
-                            <img src="~/img/no_image_available.jpg" alt="No image available" width="150" height="100" />
-                        }
-                        }
-
-                    </div>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Community.Name)
-                </td>
-                <td>
-                    @{if (Request.IsAuthenticated)
-                    {
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }); <br />
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id });<b></b>
-                    }
-                    }
-                    @Html.ActionLink("Details", "Details", new { id = item.Id })
-                </td>
-
+                <th>
+                    @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.singleMember.Phone)
+                </th>
+                <th>
+                    @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.EmailSortParm, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.singleMember.AboutMe)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.singleMember.ImgSrc)
+                </th>
+                <th>
+                    @Html.ActionLink("Community Group Name", "Index", new { sortOrder = ViewBag.CommunitySortParm, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th></th>
             </tr>
-        }
-    </table>
+            @foreach (var item in Model.pagedMember)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AboutMe)
+                    </td>
+                    <td>
+                        <div class="img">
+                            @{if (item.ImgSrc != "")
+                            {
+                                <a href="@item.ImgSrc"><img src="@item.ImgSrc" alt="@item.FullName" width="150" height="100" /></a>
+                            }
+                            else
+                            {
+                                <img src="~/img/no_image_available.jpg" alt="No image available" width="150" height="100" />
+                            }
+                            }
+
+                        </div>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Community.Name)
+                    </td>
+                    <td>
+                        @{if (Request.IsAuthenticated)
+                        {
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }); <br />
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id });<b></b>
+                        }
+                        }
+                        @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    </td>
+
+                </tr>
+            }
+        </table>
+    }
+    }
+    
     <table class="table">
         <a href="MemberTasks/Index">Tasks</a>
         <tr>
@@ -90,7 +95,7 @@
                 @Html.DisplayNameFor(model => model.singleMember.CommunityId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.singleMember.FullName)  
+                @Html.DisplayNameFor(model => model.singleMember.FullName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.singleMemberTask.Name)
@@ -153,4 +158,3 @@
         @Html.PagedListPager(Model.pagedMember, page => Url.Action("Index",
             new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
     </div>
-
