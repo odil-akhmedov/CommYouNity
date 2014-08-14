@@ -7,6 +7,7 @@ namespace CommYouNity.Models
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
+        [RegularExpression(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", ErrorMessage = "Must be a valid email address")]
         public string Email { get; set; }
     }
 
@@ -40,6 +41,7 @@ namespace CommYouNity.Models
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
+        [RegularExpression(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", ErrorMessage = "Must be a valid email address")]
         public string Email { get; set; }
 
         [Required]
@@ -56,6 +58,7 @@ namespace CommYouNity.Models
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
+        [RegularExpression(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", ErrorMessage = "Must be a valid email address")]
         public string Email { get; set; }
 
         [Required]
@@ -75,6 +78,7 @@ namespace CommYouNity.Models
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
+        [RegularExpression(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", ErrorMessage = "Must be a valid email address")]
         public string Email { get; set; }
 
         [Required]
@@ -96,6 +100,7 @@ namespace CommYouNity.Models
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
+        [RegularExpression(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", ErrorMessage = "Must be a valid email address")]
         public string Email { get; set; }
     }
 }
