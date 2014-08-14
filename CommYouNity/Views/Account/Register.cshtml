@@ -5,8 +5,9 @@
     @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
         @Html.AntiForgeryToken()
+    <div class="formbg">
         <div class="header">
-            <h2>Join the CommYOUnity</h2>
+            <h1>Join the CommYOUnity</h1>
         </div>
         <hr />
         @Html.ValidationSummary("", new { @class = "text-danger" })
@@ -33,6 +34,7 @@
                 <input type="submit" class="btn btn-default" value="Register" />
             </div>
         </div>
+    </div>
 
     }
 
