@@ -21,30 +21,7 @@
 
 /*! normalize.css v2.1.0 | MIT License | git.io/normalize */
 /* Start dribbbling */
-#dribbble                              {width:500px; margin:20px auto 10px; text-align:center;}
-#dribbble a                            {position:relative; display:inline-block; z-index:1; padding:7px 12px; border:0;
-                                        overflow:hidden; font-weight:bold; font-family:Arial, sans-serif; color:#666;
-                                        background:#e0e0e0;
-                                        /* css3 */
-                                        -webkit-border-radius:6px;
-                                           -moz-border-radius:6px;
-                                                border-radius:6px;}
 
-
-#dribbble a:before                     {content:""; display:block; position:absolute; z-index:-1; top:50%; left:0; right:0;
-                                        bottom:0; background:#d3d3d3;
-                                        /* css3 */
-                                        -webkit-border-radius:0 0 6px 6px;
-                                           -moz-border-radius:0 0 6px 6px;
-                                                border-radius:0 0 6px 6px;}
-
-
-#dribbble a:after                      {content:"\00bb"; padding-left:5px;}
-
-#dribbble a:hover,
- #dribbble a:focus,
- #dribbble a:active                    {color:#fff; background:#ec6196;}
-#dribbble a:hover:before               {background:#ea4c88;}
 
 
 /* End dribbbling*/
@@ -4261,7 +4238,7 @@ outline: thin dotted #333;
 
 .navbar-fixed-top,
 .navbar-fixed-bottom {
-  max-height:30px !important;
+  max-height:20px !important;
     position: fixed;
   right: 0;
   left: 0;

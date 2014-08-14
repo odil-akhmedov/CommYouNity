@@ -42,11 +42,11 @@ a {
     /*Dribbble */
     min-width:100%; 
     max-width:200px;
-    display:inline-block; margin:20px auto 50px; text-align:center;
+    display:inline-block; margin: 0px auto 0px; text-align:center;
     position:relative;  z-index:1; padding:7px 12px; border:0;
                                         font-weight:bold;  
                                         font-family: 'Varela Round', sans-serif;
-  -webkit-font-smoothing: antialiased; color:sandybrown;
+  -webkit-font-smoothing: antialiased; 
                                         background:Navy;
                                         /* css3 */
                                         -webkit-border-radius:6px;
@@ -4152,12 +4152,12 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
 }
 
 .navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
-    max-height: 50px !important;
+    max-height: 20px !important;
 }
 
 @media (max-width:480px) and (orientation:landscape) {
     .navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
-        max-height: 50px !important;
+        max-height: 20px !important;
     }
 }
 
