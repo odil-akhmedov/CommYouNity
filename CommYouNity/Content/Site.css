@@ -1,6 +1,17 @@
 ﻿@import url('http://fonts.googleapis.com/css?family=Varela Round');
 @import url('http://fonts.googleapis.com/css?family=Indie Flower');
 
+.bigzip{
+
+width:200px;
+height:50px
+
+}
+
+.searchstyle {
+    align-content:center; vertical-align:middle; height:50px; width:100px;
+}
+
 
 body {
     padding-top: 50px;
@@ -259,6 +270,9 @@ list-style-type:none;
     text-align: center;
     max-width: 100%;
 }
+/*.img a, a:before, a:after{
+    background-color:white;
+}*/
 
 .img-expanded{
     max-width: 100%;
@@ -283,6 +297,11 @@ list-style-type:none;
         margin-left: 180px;
         color: white;
     }
+
+.header {
+        padding-top: 25px;
+    }
+
 
 .btn {
   padding-bottom: 2em;
