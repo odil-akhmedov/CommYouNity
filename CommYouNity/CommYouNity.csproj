@@ -241,9 +241,6 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommunityTaskView.cs" />
     <Compile Include="Models\EmaiAlertNotification.cs" />
-    <Compile Include="Models\GoogleCalendar.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LocationTaskView.cs" />
     <Compile Include="Models\MemberTaskView.cs" />
