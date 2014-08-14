@@ -18,13 +18,13 @@
         <div class="topbannerimage formbg" style="align-content:center;">
             <p style="align-content:center; vertical-align:middle;">
                 <h4>
-            <p>Find Location by zip</p>
+            <p>Find a community group by zipcode</p>
             </h4>
-            @{using (Html.BeginForm("Index", "Locations", FormMethod.Get))
+            @{using (Html.BeginForm("Index", "Communities", FormMethod.Get))
             {
 
 
-                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new  { @class="bigzip" });
+                @Html.TextBox("SearchZip", ViewBag.CurrentFilter as string, new  { @class="bigzip" });
                 <input type="submit" class="searchstyle" value="Search"  />
 
             }}
