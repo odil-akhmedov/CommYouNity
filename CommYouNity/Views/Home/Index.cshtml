@@ -24,9 +24,9 @@
     <div class="topbannerimage formbg" style="align-content:center">
         @using (Html.BeginForm("Index", "Locations", FormMethod.Get))
         {
-            <p>
+            <p style="align-content:center; vertical-align:middle;">
                 Find Location by zip: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
-                <input type="submit" value="Search" />
+                <input type="submit" value="Search" style="align-content:center; vertical-align:middle;" />
             </p>
         }
     </div>
