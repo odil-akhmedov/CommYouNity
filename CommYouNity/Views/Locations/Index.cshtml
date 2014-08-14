@@ -16,64 +16,75 @@
     {
         <p> Find a city by name, zipcode or email: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string) <input type="submit" value="Search" /></p>
     }
-
-    <table class="table">
-        <tr>
-            <th>
-                @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
-            </th>
-            <th>
-                @Html.ActionLink("Zip", "Index", new { sortOrder = ViewBag.ZipSortParm, currentFilter = ViewBag.CurrentFilter })
-            </th>
-            <th>
-                @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.EmailSortParm, currentFilter = ViewBag.CurrentFilter })
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.singleLocation.GoogleMap)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.singleLocation.ImgSrc)
-            </th>
-            <th></th>
-        </tr>
-        @foreach (var item in Model.pagedLocation)
-        {
+    @{if (Model.location.Count() > 0)
+    {
+        <table class="table">
             <tr>
-                <td>
-                    @Html.ActionLink(linkText: item.Name, actionName: "Index", controllerName: "Communities", routeValues: new { id = item.Id }, htmlAttributes: null)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Zip)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.GoogleMap)
-                </td>
-                <td>
-                    <div class="img">
-                        @{if (item.ImgSrc.Length > 2)
-                        {
-                            string[] images = item.ImgSrc.Split(';');
-                            <a href="@images[0]"><img src="@images[0]" alt="@item.Name" width="150" height="100" /></a>
-                        }
-                        else
-                        {
-                            <img src="~/img/no_image_available.jpg" alt="No image aviable" width="150" height="100" />
-                        }
-                        }
-
-                    </div>
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
+                <th>
+                    @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Zip", "Index", new { sortOrder = ViewBag.ZipSortParm, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.EmailSortParm, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.singleLocation.GoogleMap)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.singleLocation.ImgSrc)
+                </th>
+                <th></th>
             </tr>
-        }
-    </table>
+            @foreach (var item in Model.pagedLocation)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(linkText: item.Name, actionName: "Index", controllerName: "Communities", routeValues: new { id = item.Id }, htmlAttributes: null)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Zip)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GoogleMap)
+                    </td>
+                    <td>
+                        <div class="img">
+                            @{if (item.ImgSrc.Length > 2)
+                            {
+                                string[] images = item.ImgSrc.Split(';');
+                                <a href="@images[0]"><img src="@images[0]" alt="@item.Name" width="150" height="100" /></a>
+                            }
+                            else
+                            {
+                                <img src="~/img/no_image_available.jpg" alt="No image aviable" width="150" height="100" />
+                            }
+                            }
+
+                        </div>
+                    </td>
+                    <td>
+                        @if (Request.IsAuthenticated)
+                        {
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id });<b> </b>
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id });
+                        }
+                        @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+          <p>No results for </p>
+    }
+    }
+
 
     <table class="table">
         <a href="LocationTasks/Index">Tasks</a>

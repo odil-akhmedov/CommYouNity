@@ -5,7 +5,9 @@
     @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
         @Html.AntiForgeryToken()
-        <h1>Join the CommYOUnity</h1>
+        <div class="header">
+            <h2>Join the CommYOUnity</h2>
+        </div>
         <hr />
         @Html.ValidationSummary("", new { @class = "text-danger" })
         <div class="form-group">
