@@ -15,19 +15,22 @@
 
     <br />
    
-    <div class="topbannerimage formbg" style="align-content:center; height:100px;">
-        <p style="align-content:center; vertical-align:middle; height:100px;">
-            <h1>
-                @using (Html.BeginForm("Index", "Locations", FormMethod.Get))
+        <div class="topbannerimage formbg" style="align-content:center;">
+            <p style="align-content:center; vertical-align:middle;">
+                <h4>
+            <p>Find Location by zip</p>
+            </h4>
+            @{using (Html.BeginForm("Index", "Locations", FormMethod.Get))
             {
 
-                    Find Location by zip: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
-                        <input type="submit" value="Search" style="align-content:center; vertical-align:middle; height:50px;" />
 
-            }
-            </h1>
-        </p>
-</div>
+                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string);
+                <input type="submit" value="Search" style="align-content:center; vertical-align:middle; height:20px;" />
+
+            }}
+            
+            </p>
+        </div>
 </div>
 
 <div class="row">
