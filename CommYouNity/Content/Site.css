@@ -246,6 +246,7 @@ list-style-type:none;
     margin: 5px;
     padding: 5px;
     border: 1px solid black;
+    border
     height: auto;
     width: auto;
     float: left;
@@ -255,4 +256,8 @@ list-style-type:none;
 
 .img-expanded{
     max-width: none;
+}
+
+.table{
+    color:white;
 }
