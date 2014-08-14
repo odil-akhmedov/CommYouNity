@@ -9,7 +9,9 @@
                 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
-                    <h1>Use a local account to log in.</h1>
+                    <div class="header">
+                        <h2>Use a local account to log in.</h2>
+                    </div>
                     <hr />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
@@ -49,11 +51,11 @@
                 }
             </section>
         </div>
-        <div class="col-md-4">
+        @*<div class="col-md-4">
             <section id="socialLoginForm">
                 @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { Action = "ExternalLogin", ReturnUrl = ViewBag.ReturnUrl })
             </section>
-        </div>
+        </div>*@
     </div>
 </div>
 @section Scripts {
