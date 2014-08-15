@@ -31,16 +31,23 @@
     <p class="medtxtsize">
         @Html.ActionLink("Add a city", "Create")
     </p>
-
-    <div class="searchBox">
-        @using (Html.BeginForm("Index", "Locations", FormMethod.Get))
-        {
-            <span>Find a city by name, zipcode or email: </span>@Html.TextBox("SearchString", ViewBag.CurrentFilter as string) 
+   
+        <div class="searchBox">
+          
             
-            <input type="submit" value="Search" />
+              @using (Html.BeginForm("Index", "Locations", FormMethod.Get))
+            {
+                <span>Find a city by name, zipcode or email: </span>@Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+
+                <input type="submit" value="Search" />
+
+            }
+
+
+        </div>
         
-        }
-    </div>
+   
+
     @{if (Model.location.Count() > 0)
     {
         <table class="table medtxtsize center">
