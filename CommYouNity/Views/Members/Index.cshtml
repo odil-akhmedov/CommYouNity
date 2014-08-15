@@ -24,11 +24,17 @@
                 <th>
                     @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
                 </th>
+
+
+
                 <th>
-                    @Html.DisplayNameFor(model => model.singleMember.Phone)
+                    @Html.ActionLink("Phone Number", "Index", new { sortOrder = ViewBag.PhoneSortParm, currentFilter = ViewBag.CurrentFilter })
                 </th>
+
+
+
                 <th>
-                    @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.EmailSortParm, currentFilter = ViewBag.CurrentFilter })
+                    @Html.ActionLink("Email Address", "Index", new { sortOrder = ViewBag.EmailSortParm, currentFilter = ViewBag.CurrentFilter })
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.singleMember.AboutMe)
@@ -76,7 +82,7 @@
                     <td class="center">
                         @{if (Request.IsAuthenticated)
                         {
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id}); <br />
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }); <br />
                             @Html.ActionLink("Delete", "Delete", new { id = item.Id });<b></b>
                         }
                         }
@@ -87,13 +93,13 @@
             }
         </table>
     }
-     else
+    else
     {
-          <p>No results for "<span>@ViewBag.SearchString</span>" Please try again.</p>
+        <p>No results for "<span>@ViewBag.SearchString</span>" Please try again.</p>
     }
     }
-    
-    <table class="table">
+
+    <table class="table medtxtsize center">
         <a href="MemberTasks/Index">Tasks</a>
         <tr>
             <th>
@@ -157,9 +163,11 @@
             }
         </table>
         <br />
-        Page @(Model.pagedMember.PageCount < Model.pagedMember.PageNumber ? 0 : Model.pagedMember.PageNumber) of
+    <div class="medtxtsize">
+        page @(Model.pagedMember.PageCount < Model.pagedMember.PageNumber ? 0 : Model.pagedMember.PageNumber) of
         @Model.pagedMember.PageCount
+    </div>
+            @Html.PagedListPager(Model.pagedMember, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+       
 
-        @Html.PagedListPager(Model.pagedMember, page => Url.Action("Index",
-            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
     </div>
