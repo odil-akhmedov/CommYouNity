@@ -37,7 +37,7 @@
                     @Html.DisplayNameFor(model => model.singleMember.ImgSrc)
                 </th>
                 <th>
-                    @Html.ActionLink("Community Group Name", "Index", new { sortOrder = ViewBag.CommunitySortParm, currentFilter = ViewBag.CurrentFilter })
+                    @Html.ActionLink("CommYOUnity Group Name", "Index", new { sortOrder = ViewBag.CommunitySortParm, currentFilter = ViewBag.CurrentFilter })
                 </th>
                 <th></th>
             </tr>
@@ -73,10 +73,10 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Community.Name)
                     </td>
-                    <td>
+                    <td class="center">
                         @{if (Request.IsAuthenticated)
                         {
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }); <br />
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id}); <br />
                             @Html.ActionLink("Delete", "Delete", new { id = item.Id });<b></b>
                         }
                         }
