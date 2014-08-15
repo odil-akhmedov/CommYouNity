@@ -17,7 +17,7 @@ height:50px
     -webkit-font-smoothing: antialiased;
 }
 .searchstyle {
-    align-content:center; vertical-align:middle; height:50px; width:100px;
+    align-content:center; vertical-align:middle; height:50px; width:100px; font-size:16pt;
 }
 
 
