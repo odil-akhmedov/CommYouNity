@@ -1,11 +1,19 @@
 ﻿@model CommYouNity.Models.LocationTaskView
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<style>
+    .searchBox {
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block 
+    }
+
+</style>
 <script>
     function changeIcon() {
         var icon = document.getElementById("icon");
         var anchor = document.getElementById("SearchString");
-        if (anchor.href.indexOf("desc") >= 0 ) {
+        if (anchor.href.indexOf("desc") >= 0) {
             icon.className = "glyphicon glyphicon-sort-by-alphabet-alt";
         } else {
             icon.className = "glyphicon glyphicon-sort-by-alphabet";
@@ -15,7 +23,7 @@
 
 <div class="formbg">
     <div class="header">
-        <br/>
+        <br />
         <h1>List of Cities</h1>
     </div>
 
@@ -24,10 +32,15 @@
         @Html.ActionLink("Add a city", "Create")
     </p>
 
-    @using (Html.BeginForm("Index", "Locations", FormMethod.Get))
-    {
-        <p> Find a city by name, zipcode or email: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string) <input type="submit" value="Search" /></p>
-    }
+    <div class="searchBox">
+        @using (Html.BeginForm("Index", "Locations", FormMethod.Get))
+        {
+            <span>Find a city by name, zipcode or email: </span>@Html.TextBox("SearchString", ViewBag.CurrentFilter as string) 
+            
+            <input type="submit" value="Search" />
+        
+        }
+    </div>
     @{if (Model.location.Count() > 0)
     {
         <table class="table medtxtsize center">
@@ -35,8 +48,8 @@
                 <th>
                     <span id="icon" class="glyphicon glyphicon-sort-by-alphabet" onclick="changeIcon();">
                         @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
-                </span>
-            </th>
+                    </span>
+                </th>
                 <th>
                     @Html.ActionLink("Zip", "Index", new { sortOrder = ViewBag.ZipSortParm, currentFilter = ViewBag.CurrentFilter })
                 </th>
@@ -94,7 +107,7 @@
     }
     else
     {
-          <p>No results for "<span>@ViewBag.SearchString</span>" Please try again.</p>
+        <p>No results for "<span>@ViewBag.SearchString</span>" Please try again.</p>
     }
     }
 
@@ -172,14 +185,12 @@
             }
         </table>
         <br />
-    <div class=" table medtxtsize">
-         page @(Model.pagedLocation.PageCount < Model.pagedLocation.PageNumber ? 0 : Model.pagedLocation.PageNumber) of
-         @Model.pagedLocation.PageCount
+        <div class=" table medtxtsize">
+            page @(Model.pagedLocation.PageCount < Model.pagedLocation.PageNumber ? 0 : Model.pagedLocation.PageNumber) of
+            @Model.pagedLocation.PageCount
         </div>
-         @Html.PagedListPager(Model.pagedLocation, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+        @Html.PagedListPager(Model.pagedLocation, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
         <br />
         <hr />
         <script src="//www.gmodules.com/ig/ifr?url=http://rssfeedviewer.googlecode.com/svn/trunk/rss/rssWidget.xml&amp;up_myFeed=http%3A%2F%2Fnews.google.com%2F%3Foutput%3Drss&amp;up_noOfFeeds=20&amp;up_zipcode=48201&amp;synd=open&amp;w=1100&amp;h=300&amp;title=Detroit+News&amp;border=http%3A%2F%2Fwww.gmodules.com%2Fig%2Fimages%2F&amp;output=js"></script>
-     </div>
-
-
+    </div>
