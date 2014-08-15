@@ -38,7 +38,7 @@ namespace CommYouNity
 
         [Range(1,5)]
         public int? Priority { get; set; }
-
+        [Display(Name="Task")]
         public bool Flag { get; set; }
         [Required]
         public int LocationId { get; set; }

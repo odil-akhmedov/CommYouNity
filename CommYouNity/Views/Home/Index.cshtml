@@ -1,4 +1,28 @@
-﻿
+﻿<script type="text/javascript">
+    function validate() {
+        var error = false;
+        var errorList = "";
+        var input = document.getElementById("searchZip");
+        var inputData = input.value;
+        var regExZip = /^(\d{5})[\.\-\+ ]?(\d{4})?$/;
+        var zipIsValid = regExZip.test(inputData);
+        if (zipIsValid === false) {
+            error = true;
+            errorList += "<li> Must be a valid U.S. Zipcode </li>";
+        }
+
+        if (error === true) {
+            var errorListElement = document.getElementById("errorList");
+            errorListElement.innerHTML = errorList;
+            return false;
+        }
+        else {
+            var form = document.getElementById("zipForm");
+            form.submit();
+        }
+       
+    }
+</script>
 <div class="formbg progress-bar">
     <br />
     
@@ -10,11 +34,11 @@
 
     <p>
         <h1><b style="color:black;">Comm</b><b style="color:gold;">YOU</b><b style="color:black;">nity</b></h1>
-        <h4 style="color:gold;">Putting,  YOU in the center of your Community</h4>
+
+        <h4 style="color:gold;">Putting YOU in the center of your CommYOUnity</h4>
+
     </p>
     </div>
-
-   
 
     <div class="topbannerimage formbg" style="align-content:center;">
         <p style="align-content:center; vertical-align:middle;">
@@ -23,16 +47,13 @@
                 Find a community group by zipcode
             </h4>
         </p>
-
-        @{using (Html.BeginForm("Index", "Communities", FormMethod.Get))
-        {
-
-
-            @Html.TextBox("SearchZip", ViewBag.CurrentFilter as string, new { @class = "bigzip" });
-            <input type="submit" class="searchstyle" value="Search" />
-
-        }}
-
+       
+        @{using (Html.BeginForm("Index", "Communities", FormMethod.Get, new { id = "zipForm" , onsubmit = "return validate();" }))
+          {            
+            @Html.TextBox("searchZip", ViewBag.CurrentFilter as string, new { @class = "bigzip" });
+            <input type="submit" class="searchstyle" value="Search" id="searchZip"/>
+            <ul id="errorList"></ul>
+          }}
         </p>
     </div>
 </div>
