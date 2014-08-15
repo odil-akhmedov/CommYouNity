@@ -25,24 +25,27 @@
             <tr>
 
                 <th>
-                    @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+                    <span id="icon" class="glyphicon glyphicon-sort-by-alphabet" onclick="changeIcon();">
+                        @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+                    </span>
                 </th>
-                <th>
-                    @Html.ActionLink("Location", "Index", new { sortOrder = ViewBag.LocationSortParm, currentFilter = ViewBag.CurrentFilter })
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.singleCommunity.Description)
-                </th>
-                <th>
-                    @Html.ActionLink("OfficerName", "Index", new { sortOrder = ViewBag.OfficerNameSortParm, currentFilter = ViewBag.CurrentFilter })
-                </th>
-                <th>
-                    @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.EmailSortParm, currentFilter = ViewBag.CurrentFilter })
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.singleCommunity.ImgSrc)
-                </th>
-            </tr>
+    
+    <th>
+        @Html.ActionLink("Location", "Index", new { sortOrder = ViewBag.LocationSortParm, currentFilter = ViewBag.CurrentFilter })
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.singleCommunity.Description)
+    </th>
+    <th>
+        @Html.ActionLink("OfficerName", "Index", new { sortOrder = ViewBag.OfficerNameSortParm, currentFilter = ViewBag.CurrentFilter })
+    </th>
+    <th>
+        @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.EmailSortParm, currentFilter = ViewBag.CurrentFilter })
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.singleCommunity.ImgSrc)
+    </th>
+        </tr>
             @foreach (var item in Model.community)
             {
                 <tr>

@@ -22,7 +22,8 @@
         <table class="table">
             <tr>
                 <th>
-                    @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+                    
+                        @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
                 </th>
                 <th>
                     @Html.ActionLink("Phone Number", "Index", new { sortOrder = ViewBag.PhoneSortParm, currentFilter = ViewBag.CurrentFilter })
@@ -157,11 +158,11 @@
             }
         </table>
         <br />
-    <div class="medtxtsize">
-        page @(Model.pagedMember.PageCount < Model.pagedMember.PageNumber ? 0 : Model.pagedMember.PageNumber) of
-        @Model.pagedMember.PageCount
-    </div>
-            @Html.PagedListPager(Model.pagedMember, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-       
+        <div class="medtxtsize">
+            page @(Model.pagedMember.PageCount < Model.pagedMember.PageNumber ? 0 : Model.pagedMember.PageNumber) of
+            @Model.pagedMember.PageCount
+        </div>
+        @Html.PagedListPager(Model.pagedMember, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
 
     </div>
