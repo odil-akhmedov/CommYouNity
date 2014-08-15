@@ -1,14 +1,17 @@
 ﻿<div class="formbg">
     @model CommYouNity.Location
-
-    <h2>Edit a City</h2>
+    <br />
+    <h1>Edit a City</h1>
 
     @using (Html.BeginForm("Edit", "Locations", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
-            <hr />
+    <div class="form-horizontal">
+        <hr />
+
+        <div class="formbg">
+
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.Id)
 
@@ -42,12 +45,12 @@
                 </div>
             </div>
             @*<div class="form-group">
-                    @Html.LabelFor(model => model.ImgSrc, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.ImgSrc, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.ImgSrc, "", new { @class = "text-danger" })
-                    </div>
-                </div>*@
+                @Html.LabelFor(model => model.ImgSrc, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ImgSrc, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ImgSrc, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
             <div class="form-group">
                 @Html.LabelFor(model => model.GoogleMap, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -59,24 +62,25 @@
             @*<a href="@Model.ImgSrc"><img src="@Model.ImgSrc" alt="@Model.Name" width=" 150" height="100" /></a>*@
 
             @{string[] images = Model.ImgSrc.Split(';');
-              for (int i = 0; i < images.Count() - 1; i++ )
-              {
-                    <a href="@images[i]"><img src="@images[i]" alt="@Model.Name" width="150" height="100" /></a>
-              }
+            for (int i = 0; i < images.Count() - 1; i++)
+            {
+                <a href="@images[i]"><img src="@images[i]" alt="@Model.Name" width="150" height="100" /></a>
+            }
             }
 
             @*<fieldset>
-                    <legend>Update an image a file</legend>
-                    <div class="editor-field">
-                        @Html.TextBox("file", "", new { type = "file" })
+                <legend>Update an image a file</legend>
+                <div class="editor-field">
+                    @Html.TextBox("file", "", new { type = "file" })
+                </div>
+                <div class="editor-field">
+                        <input type="submit" value="Upload" />
                     </div>
-                    <div class="editor-field">
-                            <input type="submit" value="Upload" />
-                        </div>
-                </fieldset>*@
+            </fieldset>*@
 
             <div class="form-field">
-                <p>Select pictures:</p>
+                <p class="medtxtsize">Select pictures: </p>
+
                 <div class="upload-container">
                     <div class="upload">
                         <input type="file" name="files" id="file1" />
@@ -91,6 +95,8 @@
                 </div>
             </div>
         </div>
+    </div>
+
     }
 
 

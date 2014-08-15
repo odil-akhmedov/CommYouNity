@@ -8,6 +8,9 @@ height:50px
 
 }
 
+.medtxtsize{
+    font-size:20px;
+}
 .searchstyle {
     align-content:center; vertical-align:middle; height:50px; width:100px;
 }
