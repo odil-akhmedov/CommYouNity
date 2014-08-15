@@ -1,12 +1,10 @@
 ﻿@model CommYouNity.Member
 
-@{
-    ViewBag.Title = "Edit";
-}
+
 <div class="form-horizontal">
     <div class="formbg">
         <div class="header">
-            <h1>Edit a Member</h1>
+            <h1>Edit a Neighbor</h1>
         </div>
 
         @using (Html.BeginForm("Edit", "Members", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -14,7 +12,6 @@
             @Html.AntiForgeryToken()
 
             <div class="form-horizontal">
-                <h4>Member</h4>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 @Html.HiddenFor(model => model.Id)
