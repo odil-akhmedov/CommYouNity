@@ -9,7 +9,7 @@
     </div>
 
     <hr />
-    <p>
+    <p class="medtxtsize">
         @Html.ActionLink("Add a city", "Create")
     </p>
 
@@ -19,7 +19,7 @@
     }
     @{if (Model.location.Count() > 0)
     {
-        <table class="table">
+        <table class="table medtxtsize center">
             <tr>
                 <th>
                     @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
@@ -60,11 +60,11 @@
                                 string[] images = item.ImgSrc.Split(';');
                                 <a href="@images[0]"><img src="@images[0]" alt="@item.Name" width="150" height="100" /></a>
                             }
-                              else
-                              {
+                            else
+                            {
                                 <img src="~/img/no_image_available.jpg" alt="No image available" width="150" height="100" />
-                              }
-}
+                            }
+                            }
 
                         </div>
                     </td>
@@ -87,7 +87,7 @@
     }
 
 
-    <table class="table">
+    <table class="table medtxtsize center">
         <a href="LocationTasks/Index">Tasks</a>
         <tr>
             <th>
@@ -160,11 +160,11 @@
             }
         </table>
         <br />
-        Page @(Model.pagedLocation.PageCount < Model.pagedLocation.PageNumber ? 0 : Model.pagedLocation.PageNumber) of
-        @Model.pagedLocation.PageCount
-
-        @Html.PagedListPager(Model.pagedLocation, page => Url.Action("Index",
-            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    <div class=" table medtxtsize">
+         page @(Model.pagedLocation.PageCount < Model.pagedLocation.PageNumber ? 0 : Model.pagedLocation.PageNumber) of
+         @Model.pagedLocation.PageCount
+        </div>
+         @Html.PagedListPager(Model.pagedLocation, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
         <br />
         <hr />
         <script src="//www.gmodules.com/ig/ifr?url=http://rssfeedviewer.googlecode.com/svn/trunk/rss/rssWidget.xml&amp;up_myFeed=http%3A%2F%2Fnews.google.com%2F%3Foutput%3Drss&amp;up_noOfFeeds=20&amp;up_zipcode=48201&amp;synd=open&amp;w=1100&amp;h=300&amp;title=Detroit+News&amp;border=http%3A%2F%2Fwww.gmodules.com%2Fig%2Fimages%2F&amp;output=js"></script>
@@ -172,3 +172,4 @@
 
 
     </div>
+
