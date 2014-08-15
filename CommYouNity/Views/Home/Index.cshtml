@@ -1,6 +1,6 @@
 ﻿    
     <div class="formbg progress-bar">        
-           
+           <br/>
                 <br />
             <img src="~/docs/Canfield loft2.JPG" class="topbannerimage" style="float:left; height:250px; margin-top:20px;" />
             <img src="~/docs/Palmer Woods3.JPG" class="topbannerimage" style="float:left; height:250px; margin-top:20px;" />
@@ -9,7 +9,7 @@
                
         <p>
             <h1><b style="color:black;">Comm</b><b style="color:purple;">YOU</b><b style="color:black;">nity</b></h1>
-            <h4 style="color:purple;">Putting you in the center of your community</h4>
+            <h4 style="color:purple;">Putting,  YOU in the center of your CommYOUnity</h4>
         </p>
 
 
@@ -18,13 +18,13 @@
         <div class="topbannerimage formbg" style="align-content:center;">
             <p style="align-content:center; vertical-align:middle;">
                 <h4>
-            <p>Find Location by zip</p>
+            <p>Find a community group by zipcode</p>
             </h4>
-            @{using (Html.BeginForm("Index", "Locations", FormMethod.Get))
+            @{using (Html.BeginForm("Index", "Communities", FormMethod.Get))
             {
 
 
-                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new  { @class="bigzip" });
+                @Html.TextBox("SearchZip", ViewBag.CurrentFilter as string, new  { @class="bigzip" });
                 <input type="submit" class="searchstyle" value="Search"  />
 
             }}
@@ -33,11 +33,11 @@
         </div>
 </div>
 
-<div class="row">
+<div class="row formbg">
     <div class="formbg">
         <h1>Getting started</h1>
         <hr />
-        <p style="color:black; font-size:20px;">
+        <p class="formbg" style="color:white; font-size:20px;">
             The best way to create a thriving city is to connect and enable community organizations within the city and pull them together into a coalition for growth. Designing a networking tool based on existing community organizations is a good beginning but it is only the first step. Block clubs are the best starting point because they provide individual residents with a mechanism for connecting to and interacting with their neighbors.
 
             Connecting individuals who have recently relocated to the city or moved to new areas will help create a positive sense of community. This application will have two primary functions:

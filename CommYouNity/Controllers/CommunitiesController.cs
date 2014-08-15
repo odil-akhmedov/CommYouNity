@@ -19,7 +19,7 @@ namespace CommYouNity.Controllers
         private CommunityDataModel db = new CommunityDataModel();
 
         // GET: Communities
-        public ActionResult Index(int? id, string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index(int? id, string sortOrder, string currentFilter, string searchString, string SearchZip, int? page)
         {
             ViewBag.SearchString = searchString;
             ViewBag.CurrentSort = sortOrder;
@@ -32,7 +32,17 @@ namespace CommYouNity.Controllers
             else
                 searchString = currentFilter;
             ViewBag.CurrentFilter = searchString;
+            
             var communities = db.Communities.Include(c => c.Location);
+
+            if (SearchZip != null)
+                communities = db.Communities.Include(c => c.Location).Where(z => z.Location.Zip.ToString() == SearchZip);
+            else
+                communities = db.Communities.Include(c => c.Location);
+            
+            ViewBag.CurrentFilter = searchString;
+            
+            
             if (!String.IsNullOrEmpty(searchString)) 
                 { 
                     communities = communities.Where(c => c.Name.ToUpper().Contains(searchString.ToUpper()) || c.Location.Name.ToUpper().Contains(searchString.ToUpper()) || c.OfficerName.ToUpper().Contains(searchString.ToUpper()) || c.Email.ToUpper().Contains(searchString.ToUpper())); 
