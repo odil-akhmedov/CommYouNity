@@ -1,5 +1,68 @@
 ﻿@import url('http://fonts.googleapis.com/css?family=Varela Round');
 @import url('http://fonts.googleapis.com/css?family=Indie Flower');
+
+::-webkit-scrollbar {
+  width: 13px;
+  height: 13px; }
+
+::-webkit-scrollbar:hover {
+  height: 18px; }
+
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment {
+  height: 15px;
+  width: 13px;
+  display: block;
+  background:white;
+  background-repeat: no-repeat; }
+
+::-webkit-scrollbar-button:horizontal:decrement {
+  background-image: url(scrollbar/horizontal-decrement-arrow.png);
+  background-position: 4px 3px; }
+
+::-webkit-scrollbar-button:horizontal:increment {
+  background-image: url(scrollbar/horizontal-increment-arrow.png);
+  background-position: 3px 3px; }
+
+::-webkit-scrollbar-button:vertical:decrement {
+  background-image: url(scrollbar/vertical-decrement-arrow.png);
+  background-position: 3px 4px; }
+
+::-webkit-scrollbar-button:vertical:increment {
+  background-image: url(scrollbar/vertical-increment-arrow.png);
+  background-position: 3px 4px; }
+
+::-webkit-scrollbar-button:horizontal:decrement:active {
+  background-image: url(scrollbar/horizontal-decrement-arrow-active.png); }
+
+::-webkit-scrollbar-button:horizontal:increment:active {
+  background-image: url(scrollbar/horizontal-increment-arrow-active.png); }
+
+::-webkit-scrollbar-button:vertical:decrement:active {
+  background-image: url(scrollbar/vertical-decrement-arrow-active.png); }
+
+::-webkit-scrollbar-button:vertical:increment:active {
+  background-image: url(scrollbar/vertical-increment-arrow-active.png); }
+
+::-webkit-scrollbar-track-piece {
+  background-color: navy; }
+
+::-webkit-scrollbar-thumb:vertical {
+  height: 50px;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(206,219,233,1)), color-stop(4%,rgba(170,197,222,1)), color-stop(64%,rgba(58,139,194,1)), color-stop(100%,rgba(30,32,109,1)));
+  border: 1px solid aliceblue;
+  border-top: 1px solid navy;
+  border-left: 1px solid white; }
+
+::-webkit-scrollbar-thumb:horizontal {
+  width: 50px;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(206,219,233,1)), color-stop(4%,rgba(170,197,222,1)), color-stop(64%,rgba(58,139,194,1)), color-stop(100%,rgba(30,32,109,1)));
+  border: 1px solid aliceblue;
+  border-top: 1px solid navy;
+  border-left: 1px solid white; }
+
+
+
 .valign{
     vertical-align:middle;
 
@@ -10,6 +73,8 @@ width:200px;
 height:50px
 
 }
+
+
 
 .medtxtsize{
     font-size:20px;
