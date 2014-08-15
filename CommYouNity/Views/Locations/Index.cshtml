@@ -23,6 +23,7 @@
             <tr>
                 <th>
                     @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+                    <span class="glyphicon glyphicon-sort-by-alphabet"></span>
                 </th>
                 <th>
                     @Html.ActionLink("Zip", "Index", new { sortOrder = ViewBag.ZipSortParm, currentFilter = ViewBag.CurrentFilter })
