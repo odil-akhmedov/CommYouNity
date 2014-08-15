@@ -22,6 +22,7 @@ namespace CommYouNity.Controllers
         // GET: Locations
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
+            ViewBag.SearchString = searchString;
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.ZipSortParm = sortOrder == "Zip" ? "zip_desc" : "Zip";

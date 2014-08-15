@@ -22,6 +22,7 @@ namespace CommYouNity.Controllers
         // GET: Members
         public ActionResult Index(int? id, string sortOrder, string currentFilter, string searchString, int? page)
         {
+            ViewBag.SearchString = searchString;
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.CommunitySortParm = sortOrder == "Community" ? "community_desc" : "Community";
