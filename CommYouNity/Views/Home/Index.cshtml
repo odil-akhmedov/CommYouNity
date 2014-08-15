@@ -1,36 +1,39 @@
-﻿    
-    <div class="formbg progress-bar">        
-           <br/>
-                <br />
-            <img src="~/docs/Canfield loft2.JPG" class="topbannerimage" style="float:left; height:250px; margin-top:20px;" />
-            <img src="~/docs/Palmer Woods3.JPG" class="topbannerimage" style="float:left; height:250px; margin-top:20px;" />
-            <img src="~/docs/Downtown Apartment1.JPG" class="topbannerimage" style="float:left; height:250px; margin-top:20px;" />
-        <br />
-               
-        <p>
-            <h1><b style="color:black;">Comm</b><b style="color:purple;">YOU</b><b style="color:black;">nity</b></h1>
-            <h4 style="color:purple;">Putting,  YOU in the center of your CommYOUnity</h4>
-        </p>
+﻿
+<div class="formbg progress-bar">
+    <br />
+    <br />
+    <img src="~/docs/Canfield loft2.JPG" class="topbannerimage" style="float:left; height:250px; margin-top:20px;" />
+    <img src="~/docs/Palmer Woods3.JPG" class="topbannerimage" style="float:left; height:250px; margin-top:20px;" />
+    <img src="~/docs/Downtown Apartment1.JPG" class="topbannerimage" style="float:left; height:250px; margin-top:20px;" />
+    <br />
+
+    <p>
+        <h1><b style="color:black;">Comm</b><b style="color:purple;">YOU</b><b style="color:black;">nity</b></h1>
+        <h4 style="color:purple;">Putting,  YOU in the center of your CommYOUnity</h4>
+    </p>
 
 
     <br />
-   
-        <div class="topbannerimage formbg" style="align-content:center;">
-            <p style="align-content:center; vertical-align:middle;">
-                <h4>
-            <p>Find a community group by zipcode</p>
+
+    <div class="topbannerimage formbg" style="align-content:center;">
+        <p style="align-content:center; vertical-align:middle;">
+        <p>
+            <h4>
+                Find a community group by zipcode
             </h4>
-            @{using (Html.BeginForm("Index", "Communities", FormMethod.Get))
-            {
+        </p>
+
+        @{using (Html.BeginForm("Index", "Communities", FormMethod.Get))
+        {
 
 
-                @Html.TextBox("SearchZip", ViewBag.CurrentFilter as string, new  { @class="bigzip" });
-                <input type="submit" class="searchstyle" value="Search"  />
+            @Html.TextBox("SearchZip", ViewBag.CurrentFilter as string, new { @class = "bigzip" });
+            <input type="submit" class="searchstyle" value="Search" />
 
-            }}
-            
-            </p>
-        </div>
+        }}
+
+        </p>
+    </div>
 </div>
 
 <div class="row formbg">
@@ -43,26 +46,26 @@
             Connecting individuals who have recently relocated to the city or moved to new areas will help create a positive sense of community. This application will have two primary functions:
             <br />
             <br />
-          
-                Identify Block Clubs by inputting the user’s zip code, which facilitates joining one of them
+
+            Identify Block Clubs by inputting the user’s zip code, which facilitates joining one of them
             <br />
             <br />
-                Allow Block Clubs themselves to push alerts out to their membership roster
-          <br />
+            Allow Block Clubs themselves to push alerts out to their membership roster
+            <br />
             <br />
             The user will then be able to find their closest block clubs and reach out for additional information regarding officers, meeting times, meeting locations, etc. Alerts will include emergency or security alerts, meeting reminders, activity/program alerts, or community meeting alerts. The application will be based on an interface that is intuitive, engaging, fun to use. Ultimately this application will facilitate networking between individual residents and Block Clubs, and between Block Clubs across the city.
         </p>
 
 
-       
-     
+
+
     </div>
 </div>
 <script type="text/javascript">
     jQuery(document).ready(function () {
         console.log('here');
         var calId = "d4oh4s7bh05dlca75t6d69v31o@group.calendar.google.com";
-        jQuery("#gCalendar").attr("src", "https://www.google.com/calendar/embed?src="  + calId + "&ctz=Europe%2FMoscow");
+        jQuery("#gCalendar").attr("src", "https://www.google.com/calendar/embed?src=" + calId + "&ctz=Europe%2FMoscow");
     });
 </script>
 
