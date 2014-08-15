@@ -4,13 +4,12 @@
 <script>
     function changeIcon() {
         var icon = document.getElementById("icon");
-        icon.descending = !icon.descending;
-        if (icon.descending) {
+        var anchor = document.getElementById("SearchString");
+        if (anchor.href.indexOf("desc") >= 0 ) {
             icon.className = "glyphicon glyphicon-sort-by-alphabet-alt";
         } else {
             icon.className = "glyphicon glyphicon-sort-by-alphabet";
         }
-
     }
 </script>
 
@@ -101,7 +100,7 @@
 
 
     <table class="table medtxtsize center">
-        <a href="LocationTasks/Index">Tasks</a>
+        <a href="/LocationTasks/Index">Tasks</a>
         <tr>
             <th>
                 Type
