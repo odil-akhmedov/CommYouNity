@@ -1,8 +1,9 @@
 ﻿<div class="formbg">
     @model CommYouNity.Models.LocationTaskView
 
-
-    <h1> City Details</h1>
+    <div class="header">
+        <h1> City Details</h1>
+    </div>
 
     <div style="width:1000px;height:300px;border:1px solid black;">
         <div style="float:left">
@@ -60,7 +61,7 @@
                     frameborder="0" scrolling="no"></iframe>
         </div>
     </div>
-    
+
     <p>
         @Html.ActionLink("Edit", "Edit", new { id = Model.singleLocation.Id }) |
         @Html.ActionLink("Back to List", "Index")
@@ -158,6 +159,6 @@
 <script type="text/javascript">
     jQuery(document).ready(function () {
         var calId = "d4oh4s7bh05dlca75t6d69v31o@group.calendar.google.com";
-        jQuery("#gCalendar").attr("src", "https://www.google.com/calendar/embed?src="  + calId + "&ctz=Europe%2FMoscow");
+        jQuery("#gCalendar").attr("src", "https://www.google.com/calendar/embed?src=" + calId + "&ctz=Europe%2FMoscow");
     });
 </script>
