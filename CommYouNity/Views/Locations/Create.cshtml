@@ -1,8 +1,11 @@
 ﻿@model CommYouNity.Location
 <div class="formbg">
-    <br />
-    <h1>Add a City</h1>
-    
+
+    <div class="header">
+        <h1>Add a City</h1>
+    </div>
+
+
     @using (Html.BeginForm("Create", "Locations", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken();

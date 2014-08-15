@@ -1,13 +1,14 @@
-﻿<div class="formbg">
-    @model IEnumerable<CommYouNity.LocationTask>
+﻿@model IEnumerable<CommYouNity.LocationTask>
 
-    @{
-        ViewBag.Title = "Index";
-    }
-
-    <h2>Index</h2>
+@{
+    ViewBag.Title = "Index";
+}
+<div class="formbg">
+    <div class="header">
+        <h2>Location Task List</h2>
+    </div>
     <hr />
-        @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create")
     <p>
     </p>
     <table class="table">

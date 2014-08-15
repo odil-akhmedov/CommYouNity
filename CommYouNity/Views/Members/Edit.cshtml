@@ -5,8 +5,9 @@
 }
 <div class="form-horizontal">
     <div class="formbg">
-
-        <h2>Edit</h2>
+        <div class="header">
+            <h1>Edit a Member</h1>
+        </div>
 
         @using (Html.BeginForm("Edit", "Members", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
