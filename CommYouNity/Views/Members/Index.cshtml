@@ -5,17 +5,17 @@
 <div class="formbg">
     <div class="header">
         <br />
-        <h1>Members List</h1>
+        <h1>Neighbor List</h1>
     </div>
 
     <hr />
     <p>
-        @Html.ActionLink("Add a member", "Create")
+        @Html.ActionLink("Add a Neighbor", "Create")
     </p>
 
     @using (Html.BeginForm("Index", "Members", FormMethod.Get))
     {
-        <p> Find a member by name, phone number, email or community name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string) <input type="submit" value="Search" style="align-content:center; vertical-align:middle;" /></p>
+        <p class="medtxtsize;"> Find a member by name, phone number, email or community name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string) <input type="submit" value="Search" style="align-content:center; vertical-align:middle;" /></p>
     }
     @{if (Model.member.Count() > 0)
     {
@@ -44,16 +44,16 @@
             @foreach (var item in Model.pagedMember)
             {
                 <tr>
-                    <td>
+                    <td class="medtxtsize center">
                         @Html.DisplayFor(modelItem => item.FullName)
                     </td>
-                    <td>
+                    <td class="medtxtsize center">
                         @Html.DisplayFor(modelItem => item.Phone)
                     </td>
-                    <td>
+                    <td class="medtxtsize center">
                         @Html.DisplayFor(modelItem => item.Email)
                     </td>
-                    <td>
+                    <td class="medtxtsize center">
                         @Html.DisplayFor(modelItem => item.AboutMe)
                     </td>
                     <td>
@@ -70,7 +70,7 @@
 
                         </div>
                     </td>
-                    <td>
+                    <td class="medtxtsize center">
                         @Html.DisplayFor(modelItem => item.Community.Name)
                     </td>
                     <td class="center">

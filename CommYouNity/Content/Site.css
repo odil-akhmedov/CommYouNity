@@ -1,6 +1,9 @@
 ﻿@import url('http://fonts.googleapis.com/css?family=Varela Round');
 @import url('http://fonts.googleapis.com/css?family=Indie Flower');
+.valign{
+    vertical-align:middle;
 
+}
 .bigzip{
 
 width:200px;
@@ -10,6 +13,8 @@ height:50px
 
 .medtxtsize{
     font-size:20px;
+    font-family: 'Varela Round', sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 .searchstyle {
     align-content:center; vertical-align:middle; height:50px; width:100px;
