@@ -6,7 +6,7 @@
 <div class="form-horizontal">
     <div class="formbg">
         <div class="header">
-            <h1>Create a Member</h1>
+            <h1>Add a Member</h1>
             <div class="header">
 
                 @using (Html.BeginForm("Create", "Members", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -14,7 +14,6 @@
                     @Html.AntiForgeryToken()
 
                     <div class="form-horizontal">
-                        <h4>Member</h4>
                         <hr />
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div class="form-group">

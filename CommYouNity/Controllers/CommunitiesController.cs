@@ -11,6 +11,7 @@ using CommYouNity.Models;
 using System.IO;
 using PagedList;
 using PagedList.Mvc;
+using System.Text.RegularExpressions;
 
 namespace CommYouNity.Controllers
 {
@@ -19,7 +20,7 @@ namespace CommYouNity.Controllers
         private CommunityDataModel db = new CommunityDataModel();
 
         // GET: Communities
-        public ActionResult Index(int? id, string sortOrder, string currentFilter, string searchString, string SearchZip, int? page)
+        public ActionResult Index(int? id, string sortOrder, string currentFilter, string searchString, string searchZip, int? page)
         {
             ViewBag.SearchString = searchString;
             ViewBag.CurrentSort = sortOrder;
@@ -32,13 +33,22 @@ namespace CommYouNity.Controllers
             else
                 searchString = currentFilter;
             ViewBag.CurrentFilter = searchString;
-            
-            var communities = db.Communities.Include(c => c.Location);
 
-            if (SearchZip != null)
-                communities = db.Communities.Include(c => c.Location).Where(z => z.Location.Zip.ToString() == SearchZip);
+            //Regex rgx = new Regex(@"^(\d{5})[\.\-\+ ]?(\d{4})?$");
+            //if (!rgx.IsMatch(searchZip))
+            //{
+            //    ViewData["ErrorMessage"] = "Must be a valid U.S. Zipcode";
+            //    Redirect("Home/Index");
+            //}
+            
+            var communities = db.Communities.Include(c => c.Location);            
+
+            if (searchZip != null)
+                communities = db.Communities.Include(c => c.Location).Where(z => z.Location.Zip.ToString() == searchZip);
             else
                 communities = db.Communities.Include(c => c.Location);
+
+
             
             ViewBag.CurrentFilter = searchString;
             
